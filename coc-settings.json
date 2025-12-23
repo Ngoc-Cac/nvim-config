@@ -1,0 +1,5 @@
+{
+    "python.analysis.typeCheckingMode": "off",
+    "pyright.inlayHints.variableTypes": false,
+    "pyright.inlayHints.parameterTypes": false
+}
