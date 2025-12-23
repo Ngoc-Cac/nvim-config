@@ -4,7 +4,6 @@ return {
     priority = 1000,
     opts = {
         on_colors = function(c)
-            local bg_dark_coffee = "#2b2522"
             local bg_coffee = "#2b2522"
             c.background = bg_coffee
         end,
@@ -16,7 +15,4 @@ return {
             hl["@variable.member"] = { fg = "#b8b864" }
         end
     },
-    config = function()
-        vim.cmd.colorscheme("jellybeans")
-    end,
 }
