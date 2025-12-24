@@ -1,6 +1,83 @@
+local function bind_textobj_keymaps(select_module)
+    vim.keymap.set({"x", "o"}, "av", function()
+        select_module.select_textobject("@container.outer", "textobjects")
+    end)
+    vim.keymap.set({"x", "o"}, "iv", function()
+        select_module.select_textobject("@container.inner", "textobjects")
+    end)
+
+    vim.keymap.set({ "x", "o" }, "af", function()
+        select_module.select_textobject("@function.outer", "textobjects")
+    end)
+    vim.keymap.set({ "x", "o" }, "if", function()
+        select_module.select_textobject("@function.inner", "textobjects")
+    end)
+
+    vim.keymap.set({ "x", "o" }, "ac", function()
+        select_module.select_textobject("@class.outer", "textobjects")
+    end)
+    vim.keymap.set({ "x", "o" }, "ic", function()
+        select_module.select_textobject("@class.inner", "textobjects")
+    end)
+
+    -- You can also use captures from other query groups like `locals.scm`
+    vim.keymap.set({ "x", "o" }, "as", function()
+        select_module.select_textobject("@local.scope", "locals")
+    end)
+end
+
+local textobj_config = {
+    -- Automatically jump forward to textobj, similar to targets.vim
+    lookahead = true,
+    -- You can choose the select mode (default is charwise 'v')
+    -- Can also be a function which gets passed a table with the keys
+    -- * query_string: eg '@function.inner'
+    -- * method: eg 'v' or 'o'
+    -- and should return the mode ('v', 'V', or '<c-v>') or a table
+    -- mapping query_strings to modes.
+    selection_modes = {
+        ['@parameter.outer'] = 'v', -- charwise
+        ['@function.outer'] = 'V', -- linewise
+        -- ['@class.outer'] = '<c-v>', -- blockwise
+    },
+    -- If you set this to `true` (default is `false`) then any textobject is
+    -- extended to include preceding or succeeding whitespace. Succeeding
+    -- whitespace has priority in order to act similarly to eg the built-in
+    -- `ap`.
+    --
+    -- Can also be a function which gets passed a table with the keys
+    -- * query_string: eg '@function.inner'
+    -- * selection_mode: eg 'v'
+    -- and should return true of false
+    include_surrounding_whitespace = false,
+}
+
 return {
-    'nvim-treesitter/nvim-treesitter',
-    lazy = false,
-    build = ':TSUpdate'
+    {
+        'nvim-treesitter/nvim-treesitter',
+        lazy = false,
+        build = ':TSUpdate',
+        config = function()
+            -- enable syntax highlighting with treesitter
+            vim.api.nvim_create_autocmd("FileType", {
+                pattern = { "python", "json" , "markdown"},
+                callback = function() vim.treesitter.start() end,
+            })
+            -- incremental_selection = {
+            --     enable = true,
+            -- }
+        end
+    },
+    {
+        "nvim-treesitter/nvim-treesitter-textobjects",
+        branch = "main",
+        config = function()
+            -- configuration
+            require("nvim-treesitter-textobjects").setup {
+                select = textobj_config,
+            }
+            bind_textobj_keymaps(require("nvim-treesitter-textobjects.select"))
+        end
+    }
 }
 
