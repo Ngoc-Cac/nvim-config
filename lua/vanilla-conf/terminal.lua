@@ -1,6 +1,6 @@
 -- Functions for toggling terminal
 -- keep track of the win and buffer
-local term = {buf = nil, win = nil}
+local term = {buf = nil, win = nil, is_float = false}
 
 local function is_valid_win(win)
     return win and vim.api.nvim_win_is_valid(win)
@@ -16,9 +16,11 @@ local function create_split(dim)
 
   vim.cmd.vnew()
   vim.cmd.wincmd("L")
+
   term.win = vim.api.nvim_get_current_win()
   vim.api.nvim_win_set_width(term.win, width)
   vim.api.nvim_win_set_buf(term.win, term.buf)
+  term.is_float = false
 end
 
 local function create_float(dim)
@@ -39,6 +41,7 @@ local function create_float(dim)
     style = "minimal",
     border = "rounded",
   })
+  term.is_float = true
 end
 
 function toggle_term(opts)
@@ -50,7 +53,8 @@ function toggle_term(opts)
   if is_valid_win(term.win) then
     vim.api.nvim_win_close(term.win, true)
     term.win = nil
-    return
+    -- do not exit if we are switching between float and split
+    if term.is_float ~= split then return end
   end
 
   -- Create buffer if needed
@@ -72,18 +76,15 @@ end
 
 -- automatically close the tab if 'exit' is called 
 vim.api.nvim_create_autocmd("TermClose", {
-  callback = function(args)
-    local buf = args.buf
-    if buf == term.buf then
-      vim.api.nvim_buf_delete(buf, { force = true })
-    end
-  end,
+    callback = function(args)
+        local buf = args.buf
+        if buf == term.buf and is_valid_win(term.win) then
+            vim.api.nvim_buf_delete(buf, { force = false })
+        end
+    end,
 })
 
 vim.keymap.set("t", "<esc>", "<C-\\><C-n>")
-vim.keymap.set("n", "<leader>t", function()
-    toggle_term()
-end)
-vim.keymap.set("n", "<leader>f", function()
-    toggle_term({split = false})
-end)
+vim.keymap.set("n", "<leader>t", function() toggle_term() end)
+vim.keymap.set("n", "<leader>f", function() toggle_term({split = false}) end)
+
