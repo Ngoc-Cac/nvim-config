@@ -1,4 +1,4 @@
-; inherits: python
+; extends
 
 (
   function_definition

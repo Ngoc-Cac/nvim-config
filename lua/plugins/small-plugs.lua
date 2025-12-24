@@ -13,7 +13,11 @@ return {
         }
     },
     {
-        "vim-airline/vim-airline"
+        "vim-airline/vim-airline",
+        init = function()
+            vim.g["airline#extensions#tabline#enabled"] = 1
+            vim.g["airline#extensions#branch#enabled"] = 1
+        end
     },
     {
         "terryma/vim-multiple-cursors"
