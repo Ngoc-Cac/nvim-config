@@ -1,39 +1,39 @@
-vim.o.encoding = "utf-8"
-vim.o.ignorecase = true -- ignore the case on tab complete
+vim.opt.encoding = "utf-8"
+vim.opt.ignorecase = true -- ignore the case on tab complete
 
-vim.o.termguicolors = true -- not set by default for some reason
-vim.o.errorbells = false 
-vim.o.number = true
-vim.o.relativenumber = true
-vim.o.wrap = false
+vim.opt.termguicolors = true -- not set by default for some reason
+vim.opt.errorbells = false 
+vim.opt.number = true
+vim.opt.relativenumber = true
+vim.opt.wrap = false
 
-vim.o.splitbelow = true
-vim.o.splitright = true
+vim.opt.splitbelow = true
+vim.opt.splitright = true
 
-vim.o.scrolloff = 5 -- num lines above/below cursor
-vim.o.whichwrap = "<,>,[,]" -- wraps around the previous and next line
+vim.opt.scrolloff = 5 -- num lines above/below cursor
+vim.opt.whichwrap = "<,>,[,]" -- wraps around the previous and next line
 
-vim.o.mouse = "a"
+vim.opt.mouse = "a"
 
 -- softtab allows deleting tab char as a whole
 -- shiftwidth is the num space to do autoindent (>> and <<) 
-vim.o.tabstop = 4
-vim.o.softtabstop = 4
-vim.o.shiftwidth = 4
-vim.o.smartindent = true
-vim.o.expandtab = true -- make tab char becomes space
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.smartindent = true
+vim.opt.expandtab = true -- make tab char becomes space
 
 -- delete over autoindent, eol and start of insert
-vim.o.backspace = "indent,eol,start"
+vim.opt.backspace = "indent,eol,start"
 
 -- allow copy to clipboard (+ reg)
-vim.o.clipboard = "unnamedplus"
+vim.opt.clipboard = "unnamedplus"
 
 -- a preview window when doing %s
-vim.o.inccommand = "split"
+vim.opt.inccommand = "split"
 
-vim.o.foldlevel = 99
-vim.o.foldlevelstart = 99
-vim.o.foldenable = true
-vim.o.foldcolumn = "2"
+vim.opt.foldlevel = 99
+vim.opt.foldlevelstart = 99
+vim.opt.foldenable = true
+vim.opt.foldcolumn = "2"
 
