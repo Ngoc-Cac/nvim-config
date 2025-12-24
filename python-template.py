@@ -3,7 +3,11 @@ from datetime import date
 
 # this is a comment
 var: int = 5 + 5 - 2 % 1
- 
+var_but_formatted = (
+    "really long expr"
+    "that spans multiple line"
+)
+
 def wrapper(func):
     def inner(*args):
         print(f"Args received: {args}")
