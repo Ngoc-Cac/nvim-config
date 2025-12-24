@@ -2,16 +2,17 @@ return {
     {
         "neoclide/coc.nvim",
         branch = "release",
+        lazy = false
     },
-    {
-        "tpope/vim-commentary",
-    },
+    { "tpope/vim-commentary" },
     {
         "OXY2DEV/markview.nvim",
         opts = {
             preview = { enable = false }
         }
     },
+    { "terryma/vim-multiple-cursors" },
+    { 'Vimjas/vim-python-pep8-indent' },
     {
         "vim-airline/vim-airline",
         init = function()
@@ -20,11 +21,9 @@ return {
         end
     },
     {
-        "terryma/vim-multiple-cursors"
-    },
-    {
         "windwp/nvim-autopairs",
-        opts = { fast_wrap = {} }
+        opts = { fast_wrap = {} },
+        lazy = false
     },
     {
         "norcalli/nvim-colorizer.lua",
@@ -33,7 +32,5 @@ return {
             lua = { mode = "foreground" }
         }
     },
-    {
-        "mechatroner/rainbow_csv"
-    }
+    { "mechatroner/rainbow_csv" },
 }
