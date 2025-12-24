@@ -12,7 +12,7 @@ return {
         }
     },
     { "terryma/vim-multiple-cursors" },
-    { 'Vimjas/vim-python-pep8-indent' },
+    { "Vimjas/vim-python-pep8-indent" },
     {
         "vim-airline/vim-airline",
         init = function()
