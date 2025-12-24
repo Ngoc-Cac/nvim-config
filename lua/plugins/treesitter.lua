@@ -63,9 +63,6 @@ return {
                 pattern = { "python", "json" , "markdown"},
                 callback = function() vim.treesitter.start() end,
             })
-            -- incremental_selection = {
-            --     enable = true,
-            -- }
         end
     },
     {
