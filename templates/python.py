@@ -3,12 +3,28 @@ from datetime import date
 
 # this is a comment
 var: int = 5 + 5 - 2 % 1
-var_but_formatted = (
+var_but_multine = (
     "really long expr"
     "that spans multiple line"
 )
+some_dict = {
+    'a': 1,
+    'relly-long-key': 'with really long values'
+}
+
+"""
+This is a multiline string.
+Adding a line here so it becomes a multiline string.
+"""
 
 def wrapper(func):
+    """
+    This is a documentation of the function above.
+    random words random words.
+    Args:
+        func: not sure what this is. Just pass whatever
+            is callable.
+    """
     def inner(*args):
         print(f"Args received: {args}")
         return func(*args)
