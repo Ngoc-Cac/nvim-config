@@ -9,8 +9,8 @@ require("config.lazy")
 -- make lazy set up the plugins
 require("lazy").setup("plugins")
 
----- some common shortcuts I'm used to
-vim.cmd.runtime("sub-config/key-mappings.vim")
+-- some common shortcuts I'm used to
+require("key-mappings")
 
 vim.cmd.colorscheme("jellybeans")
 
