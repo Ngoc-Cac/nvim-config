@@ -1,8 +1,8 @@
 -- General Config
-require("vanilla-conf.general-conf")
+require("config.general")
 
 -- toggleable terminal settings
-require("vanilla-conf.terminal")
+require("terminal")
 
 -- setup lazy.nvim
 require("config.lazy")
