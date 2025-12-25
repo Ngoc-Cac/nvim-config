@@ -19,5 +19,12 @@ return {
             -- hidden files
             filtered_items = {visible = true}
         }
+    },
+    keys = {
+        {
+            "<C-b>", "<CMD>Neotree show toggle<CR>",
+            mode = { "n", "i" }, remap = true,
+            desc = "Toggle Neotree."
+        }
     }
 }

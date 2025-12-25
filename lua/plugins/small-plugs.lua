@@ -1,10 +1,11 @@
 return {
     {
-        "neoclide/coc.nvim",
-        branch = "release",
-        lazy = false
+        "tpope/vim-commentary",
+        keys = {{
+            "<C-_>", "<C-o>gcc", mode = "i", remap = true,
+            desc = "Comment selected code."
+        }}
     },
-    { "tpope/vim-commentary" },
     {
         "OXY2DEV/markview.nvim",
         opts = {
