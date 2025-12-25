@@ -85,6 +85,6 @@ vim.api.nvim_create_autocmd("TermClose", {
 })
 
 vim.keymap.set("t", "<esc>", "<C-\\><C-n>")
-vim.keymap.set("n", "<leader>t", function() toggle_term() end)
-vim.keymap.set("n", "<leader>f", function() toggle_term({split = false}) end)
+vim.keymap.set("n", "<LocalLeader>t", function() toggle_term() end)
+vim.keymap.set("n", "<LocalLeader>f", function() toggle_term({split = false}) end)
 

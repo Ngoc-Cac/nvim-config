@@ -1,11 +1,12 @@
+-- setup lazy.nvim
+require("config.lazy")
+
 -- General Config
 require("config.general")
 
 -- toggleable terminal settings
 require("terminal")
 
--- setup lazy.nvim
-require("config.lazy")
 -- make lazy set up the plugins
 require("lazy").setup("plugins")
 
