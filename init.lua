@@ -14,9 +14,23 @@ require("lazy").setup("plugins")
 require("key-mappings")
 
 vim.cmd.colorscheme("jellybeans")
+vim.diagnostic.config({
+    virtual_lines = true
+})
 
----- alpha greeting screen and session manager
---require("alpha").setup(
---    require("alpha.themes.startify").config
---)
+local tel_bg = "#231c1c"
+local TelescopePrompt = {
+    TelescopePromptBorder = { bg = tel_bg },
+    TelescopePreviewBorder = { bg = tel_bg },
+    TelescopeResultsBorder = { bg = tel_bg },
+    TelescopePromptNormal = { bg = tel_bg },
+    TelescopePreviewNormal = { bg = tel_bg },
+    TelescopeResultsNormal = { bg = tel_bg },
+    TelescopePromptTitle = { bg = tel_bg },
+    TelescopePreviewTitle = { bg = tel_bg },
+    TelescopeResultsTitle = { bg = tel_bg },
+}
+for hl, col in pairs(TelescopePrompt) do
+    vim.api.nvim_set_hl(0, hl, col)
+end
 
