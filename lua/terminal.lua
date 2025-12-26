@@ -84,7 +84,16 @@ vim.api.nvim_create_autocmd("TermClose", {
     end,
 })
 
-vim.keymap.set("t", "<esc>", "<C-\\><C-n>")
-vim.keymap.set("n", "<LocalLeader>t", function() toggle_term() end)
-vim.keymap.set("n", "<LocalLeader>f", function() toggle_term({split = false}) end)
+vim.keymap.set(
+    "t", "<esc>", "<C-\\><C-n>",
+    { desc = "Exit terminal mode." }
+)
+vim.keymap.set(
+    "n", "<LocalLeader>tv", function() toggle_term() end,
+    { desc = "Toggle terminal in split view." }
+)
+vim.keymap.set(
+    "n", "<LocalLeader>tf", function() toggle_term({split = false}) end,
+    { desc = "Toggle terminal in float window." }
+)
 
