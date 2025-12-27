@@ -29,8 +29,8 @@ return {
         "mason-org/mason-lspconfig.nvim",
         opts = {
             automatic_enable = {
-                -- "basedpyright", -- project-config will override ls conf
-                "pyright",
+                "basedpyright", -- project-config will override ls conf
+                -- "pyright",
             }
         },
         dependencies = {
