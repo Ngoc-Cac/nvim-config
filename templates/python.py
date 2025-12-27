@@ -2,7 +2,7 @@ import math
 from datetime import date
 
 # this is a comment
-var: int = 5 + 5 - 2 % 1
+_var: int = 5 + 5 - 2 % 1
 var_but_multine = (
     "really long expr"
     "that spans multiple line"
@@ -34,9 +34,16 @@ def wrapper(func):
 def random_func(a, b):
     return a + b / a
 
+class _VeryPrivateClass:
+    def __init__(self) -> None:
+        self._not_accessed = None
+
 class ABC:
     def __init__(self) -> None:
         self.a = 5
+    @property
+    def some_param(self):
+        return None
     def foo(self, a, b, *args, **kwargs) -> None:
         return None
     def __len__(self) -> int:
