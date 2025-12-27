@@ -13,3 +13,9 @@ keyset("i", "<C-h>", function()
     else return '<Right><Esc>"_cb' end
 end, { expr = true })
 
+-- alt + motion to move line up and down
+keyset("n", "<M-j>", ":m+<CR>==")
+keyset("n", "<M-k>", ":m-2<CR>==")
+keyset("v", "<M-j>", ":m'>+1<CR>gv=gv")
+keyset("v", "<M-k>", ":m'<-2<CR>gv=gv")
+
