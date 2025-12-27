@@ -37,3 +37,8 @@ vim.opt.foldlevelstart = 99
 vim.opt.foldenable = true
 vim.opt.foldcolumn = "2"
 
+-- show lsp diagnostics as virtual line
+vim.diagnostic.config({
+    virtual_lines = true
+})
+

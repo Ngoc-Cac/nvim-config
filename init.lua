@@ -14,10 +14,6 @@ require("lazy").setup("plugins")
 require("key-mappings")
 
 vim.cmd.colorscheme("jellybeans")
-vim.diagnostic.config({
-    virtual_lines = true
-})
-
 local tel_bg = "#231c1c"
 local TelescopePrompt = {
     TelescopePromptBorder = { bg = tel_bg },
