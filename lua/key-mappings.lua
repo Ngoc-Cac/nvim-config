@@ -19,3 +19,7 @@ keyset("n", "<M-k>", ":m-2<CR>==")
 keyset("v", "<M-j>", ":m'>+1<CR>gv=gv")
 keyset("v", "<M-k>", ":m'<-2<CR>gv=gv")
 
+-- better page down and pge up
+keyset("n", "<C-d>", "<C-d>zz")
+keyset("n", "<C-u>", "<C-u>zz")
+
