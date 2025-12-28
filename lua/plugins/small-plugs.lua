@@ -22,6 +22,7 @@ return {
             desc = "Comment selected code."
         }}
     },
+    { "tpope/vim-fugitive" },
     {
         "OXY2DEV/markview.nvim",
         opts = {
