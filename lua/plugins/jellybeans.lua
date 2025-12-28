@@ -9,6 +9,7 @@ return {
         end,
         on_highlights = function(hl, c)
             hl.Type = { italic = false, fg = "#36db80" }
+            hl["@module.python"] = { italic = false }
 
             hl["@variable.parameter"] = { italic = false }
             -- hl["@variable.member"] = { fg = "#8c8c70" }
