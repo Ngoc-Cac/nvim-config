@@ -14,6 +14,8 @@ vim.opt.scrolloff = 5 -- num lines above/below cursor
 vim.opt.whichwrap = "<,>,[,]" -- wraps around the previous and next line
 
 vim.opt.mouse = "a"
+vim.opt.cursorline = true
+vim.opt.cursorlineopt = "number"
 
 -- softtab allows deleting tab char as a whole
 -- shiftwidth is the num space to do autoindent (>> and <<) 
