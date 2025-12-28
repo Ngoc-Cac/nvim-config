@@ -3,9 +3,12 @@ vim.opt.ignorecase = true -- ignore the case on tab complete
 
 vim.opt.termguicolors = true -- not set by default for some reason
 vim.opt.errorbells = false 
+vim.opt.wrap = false
+
 vim.opt.number = true
 vim.opt.relativenumber = true
-vim.opt.wrap = false
+vim.opt.cursorline = true
+vim.opt.cursorlineopt = "number"
 
 vim.opt.splitbelow = true
 vim.opt.splitright = true
@@ -14,8 +17,6 @@ vim.opt.scrolloff = 5 -- num lines above/below cursor
 vim.opt.whichwrap = "<,>,[,]" -- wraps around the previous and next line
 
 vim.opt.mouse = "a"
-vim.opt.cursorline = true
-vim.opt.cursorlineopt = "number"
 
 -- softtab allows deleting tab char as a whole
 -- shiftwidth is the num space to do autoindent (>> and <<) 
