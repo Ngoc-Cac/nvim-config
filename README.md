@@ -33,15 +33,17 @@ These are listed in the order of dependency and importance.
 - [`neovim-session-manager`](Shatur/neovim-session-manager): This plugins builds
     upon Neovim's builtin `:mksession` and handles all of the session saving
     and loading in an **organised** fashion (it saves to one directory that is).
+- [`nvim-ufo`](https://github.com/kevinhwang91/nvim-ufo): This is an enhanced
+    code folding plugin which allows for LSP support.
 
 **Cool Plug**:
 - [`vim-multiple-cursors`](https://github.com/terryma/vim-multiple-cursors):
     This is basically the VISUAL BLOCK mode extended, or the Ctrl-D shortcut
     in VS Code.
-- [`nvim-ufo`](https://github.com/kevinhwang91/nvim-ufo): This is an enhanced
-    code folding plugin which allows for LSP support.
 - [`jellybeans.nvim`](https://github.com/WTFox/jellybeans.nvim): A jellybeans
     theme with treesitter support.
+- [`nvim-notify`](https://github.com/rcarriga/nvim-notify): A plugin for beautiful
+    and animated notification.
 
 **Nice Utilities**:
 - [`vim-python-pep8-indent`](https://github.com/Vimjas/vim-python-pep8-indent):
