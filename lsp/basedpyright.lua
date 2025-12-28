@@ -3,17 +3,29 @@ local diagnostic_overrides = {
     reportUnusedClass = "hint",
     reportUnusedFunction = "hint",
     reportUnusedVariable = "hint",
+    reportUnusedImport = "hint",
+    reportUnusedCallResult = false,
+
+    reportFunctionMemberAccess = "hint",
+    reportAttributeAccessIssue = "hint",
+    reportPrivateUsage = false,
+    reportPrivateImportUsage = false,
 
     reportGeneralTypeIssues = false,
     reportPropertyTypeMismatch = false,
-    reportFunctionMemberAccess = "hint",
-    reportUnusedImport = "hint",
 
     reportArgumentType = false,
+    reportReturnType = false,
     reportAssertTypeFailure = false,
-    reportAttributeAccessIssue = "hint",
     reportInvalidTypeArguments = false,
     reportImplicitOverride = false,
+    reportCallIssue = false,
+
+    reportOptionalSubscript = false,
+    reportOptionalMemberAccess = false,
+    reportOptionalCall = false,
+
+    reportPossiblyUnboundVariable = "hint",
 
     reportUnknownParameterType = false,
     reportUnknownArgumentType = false,
@@ -29,6 +41,8 @@ local diagnostic_overrides = {
     reportExplicitAny = false,
     reportUnusedParameter = "hint",
     reportUnannotatedClassAttribute = false,
+    reportPrivateLocalImportUsage = false,
+    reportMissingTypeStubs = false,
 } 
 return {
     settings = {
