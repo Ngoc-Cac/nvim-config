@@ -15,11 +15,16 @@ local diagnostic_overrides = {
     reportPropertyTypeMismatch = false,
 
     reportArgumentType = false,
+    reportAssignmentType = false,
     reportReturnType = false,
     reportAssertTypeFailure = false,
     reportInvalidTypeArguments = false,
-    reportImplicitOverride = false,
+    reportInvalidTypeForm = "hint",
     reportCallIssue = false,
+    reportConstantRedefinition = "hint",
+
+    reportImplicitOverride = false,
+    reportImplicitStringConcatenation = false,
 
     reportOptionalSubscript = false,
     reportOptionalMemberAccess = false,
