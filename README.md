@@ -46,6 +46,11 @@ These are listed in the order of dependency and importance.
     and animated notification.
 
 **Nice Utilities**:
+- [`vim-fugitive`](https://github.com/tpope/vim-fugitive): A plugin that wraps
+    around Git to allow for editing hunks straight in your Neovim session.
+- [`gitsigns.nvim`](https://github.com/lewis6991/gitsigns.nvim): A plugin that shows
+    tracked Git changes in your sign columns. A nice visual that can help a lot when
+    staging and commiting changes.
 - [`vim-python-pep8-indent`](https://github.com/Vimjas/vim-python-pep8-indent):
     This is a plugin that correctly indents code on newlines (pressing `<CR>`).
 - [`markview.nvim`](https://github.com/OXY2DEV/markview.nvim): A Markdown
