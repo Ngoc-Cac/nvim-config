@@ -36,6 +36,7 @@ return {
         }}
     },
     { "tpope/vim-fugitive" },
+    { "lewis6991/gitsigns.nvim" },
     -- markdown previewer
     {
         "OXY2DEV/markview.nvim",
