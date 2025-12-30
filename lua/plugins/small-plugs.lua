@@ -1,3 +1,4 @@
+
 return {
     {
         "m4xshen/hardtime.nvim",
@@ -46,24 +47,6 @@ return {
     },
     { "terryma/vim-multiple-cursors" },
     { "Vimjas/vim-python-pep8-indent" },
-    -- status line
-    {
-        "vim-airline/vim-airline",
-        init = function()
-            vim.g.airline_powerline_fonts = 1
-
-            vim.g["airline#extensions#tabline#enabled"] = 1
-            vim.g["airline#extensions#tabline#formatter"] = "unique_tail_improved"
-
-            vim.g["airline#extensions#branch#enabled"] = 1
-        end,
-        -- config = function()
-        --     vim.g.airline_section_a = vim.fn["airline#section#create"]({
-        --         'mode', ' ',
-        --         vim.fn["airline#extensions#branch#get_head"]()
-        --     })
-        -- end
-    },
     -- autopairs
     {
         "windwp/nvim-autopairs",
