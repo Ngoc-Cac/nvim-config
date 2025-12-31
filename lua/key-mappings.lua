@@ -1,5 +1,8 @@
 local keyset = vim.keymap.set
 
+-- escape key
+keyset("i", "jj", "<Esc>")
+
 -- quick undo and redo in insert mode
 keyset("i", "<C-z>", "<Esc>ui")
 keyset("i", "<C-r>", "<C-r>i")
