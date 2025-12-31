@@ -46,6 +46,11 @@ return {
         vim.keymap.set("n", "<leader>fc", builtin.colorscheme, { desc = "Telescope list colorscheme" })
         vim.keymap.set("n", "<leader>fn", ":Telescope notify<CR>", { desc = "Telescope list notify" })
 
+        vim.keymap.set("n", "<leader>gg", builtin.git_status, { desc = "Telescope list Git status" })
+        vim.keymap.set("n", "<leader>gb", builtin.git_branches, { desc = "Telescope list Git branches" })
+        vim.keymap.set("n", "<leader>gc", builtin.git_commits, { desc = "Telescope list Git commits" })
+        vim.keymap.set("n", "<leader>gs", builtin.git_stash, { desc = "Telescope list Git stashes" })
+        
         vim.keymap.set("n", "<leader>jd", builtin.lsp_definitions, { desc = "Jump to definition" })
         vim.keymap.set(
             "n", "<leader>jv", function()
