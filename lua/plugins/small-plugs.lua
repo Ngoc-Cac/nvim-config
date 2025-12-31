@@ -1,4 +1,3 @@
-
 return {
     {
         "m4xshen/hardtime.nvim",
@@ -30,9 +29,18 @@ return {
     -- markdown previewer
     {
         "OXY2DEV/markview.nvim",
-        opts = {
-            preview = { enable = false }
-        }
+        lazy = false,
+        opts = { preview = { enable = false } },
+        config = function()
+            vim.keymap.set(
+                "n", "<leader>mm", ":Markview toggle<CR>",
+                { desc = "Toggle Markdown preview for current buffer" }
+            )
+            vim.keymap.set(
+                "n", "<leader>mv", ":Markview splitToggle<CR>",
+                { desc = "Toggle Markdown split preview for current buffer" }
+            )
+        end
     },
     { "terryma/vim-multiple-cursors" },
     { "Vimjas/vim-python-pep8-indent" },
