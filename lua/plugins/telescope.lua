@@ -45,5 +45,13 @@ return {
         vim.keymap.set("n", "<leader>fm", builtin.marks, { desc = "Telescope list marks" })
         vim.keymap.set("n", "<leader>fc", builtin.colorscheme, { desc = "Telescope list colorscheme" })
         vim.keymap.set("n", "<leader>fn", ":Telescope notify<CR>", { desc = "Telescope list notify" })
+
+        vim.keymap.set("n", "<leader>jd", builtin.lsp_definitions, { desc = "Jump to definition" })
+        vim.keymap.set(
+            "n", "<leader>jv", function()
+                builtin.lsp_definitions({ jump_type = "vsplit" })
+            end,
+            { desc = "Jump to definition in vertical split" }
+        )
     end
 }

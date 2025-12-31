@@ -25,4 +25,3 @@ keyset("v", "<M-k>", ":m'<-2<CR>gv=gv")
 -- better page down and pge up
 keyset("n", "<C-d>", "<C-d>zz")
 keyset("n", "<C-u>", "<C-u>zz")
-
