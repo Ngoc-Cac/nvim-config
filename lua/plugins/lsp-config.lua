@@ -25,12 +25,16 @@ local blink_opts = {
 }
 
 return {
-    { 
+    {
         "mason-org/mason-lspconfig.nvim",
         opts = {
             automatic_enable = {
+                "bashls",
+
+                "jsonls", "yamlls",
+
+                "lua_ls",
                 "basedpyright", -- project-config will override ls conf
-                -- "pyright",
             }
         },
         dependencies = {
