@@ -21,11 +21,31 @@ local function set_telescope_hl(event)
     end
 end
 
-local default_options = {
-    winblend = 5,
-    border = true,
-    borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" }
-}
+local function set_keymap()
+    require("telescope").setup({defaults = default_options})
+    local keyset = vim.keymap.set
+
+    local builtin = require("telescope.builtin")
+    keyset("n", "<leader>ff", builtin.find_files, { desc = "Telescope find files" })
+    keyset("n", "<leader>fg", builtin.live_grep, { desc = "Telescope live grep" })
+    keyset("n", "<leader>fb", builtin.current_buffer_fuzzy_find, { desc = "Telescope buffers" })
+    keyset("n", "<leader>fm", builtin.marks, { desc = "Telescope list marks" })
+    keyset("n", "<leader>fc", builtin.colorscheme, { desc = "Telescope list colorscheme" })
+    keyset("n", "<leader>fn", ":Telescope notify<CR>", { desc = "Telescope list notify" })
+
+    keyset("n", "<leader>gg", builtin.git_status, { desc = "Telescope list Git status" })
+    keyset("n", "<leader>gb", builtin.git_branches, { desc = "Telescope list Git branches" })
+    keyset("n", "<leader>gc", builtin.git_commits, { desc = "Telescope list Git commits" })
+    keyset("n", "<leader>gs", builtin.git_stash, { desc = "Telescope list Git stashes" })
+
+    keyset("n", "<leader>jd", builtin.lsp_definitions, { desc = "Jump to definition" })
+    keyset(
+        "n", "<leader>jv", function()
+            builtin.lsp_definitions({ jump_type = "vsplit" })
+        end,
+        { desc = "Jump to definition in vertical split" }
+    )
+end
 
 return {
     "nvim-telescope/telescope.nvim", tag = "v0.2.0",
@@ -35,28 +55,5 @@ return {
             callback = set_telescope_hl
         })
     end,
-    config = function()
-        require("telescope").setup({defaults = default_options})
-
-        local builtin = require("telescope.builtin")
-        vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Telescope find files" })
-        vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Telescope live grep" })
-        vim.keymap.set("n", "<leader>fb", builtin.current_buffer_fuzzy_find, { desc = "Telescope buffers" })
-        vim.keymap.set("n", "<leader>fm", builtin.marks, { desc = "Telescope list marks" })
-        vim.keymap.set("n", "<leader>fc", builtin.colorscheme, { desc = "Telescope list colorscheme" })
-        vim.keymap.set("n", "<leader>fn", ":Telescope notify<CR>", { desc = "Telescope list notify" })
-
-        vim.keymap.set("n", "<leader>gg", builtin.git_status, { desc = "Telescope list Git status" })
-        vim.keymap.set("n", "<leader>gb", builtin.git_branches, { desc = "Telescope list Git branches" })
-        vim.keymap.set("n", "<leader>gc", builtin.git_commits, { desc = "Telescope list Git commits" })
-        vim.keymap.set("n", "<leader>gs", builtin.git_stash, { desc = "Telescope list Git stashes" })
-        
-        vim.keymap.set("n", "<leader>jd", builtin.lsp_definitions, { desc = "Jump to definition" })
-        vim.keymap.set(
-            "n", "<leader>jv", function()
-                builtin.lsp_definitions({ jump_type = "vsplit" })
-            end,
-            { desc = "Jump to definition in vertical split" }
-        )
-    end
+    config = set_keymap
 }
