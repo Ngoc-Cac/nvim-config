@@ -65,11 +65,12 @@ return {
         config = function()
             vim.notify = require("notify")
             vim.notify.setup({
+                fps=1,
                 timeout = 100,
                 max_width = 60,
                 top_down = false,
                 render = "wrapped-default",
-                stages = "fade",
+                stages = "static",
             })
         end
     }
