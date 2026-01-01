@@ -4,8 +4,12 @@ local keyset = vim.keymap.set
 keyset("i", "jj", "<Esc>")
 
 -- quick undo and redo in insert mode
-keyset("i", "<C-z>", "<Esc>ui")
-keyset("i", "<C-r>", "<C-r>i")
+keyset("i", "<C-z>", "<C-o>u")
+keyset("i", "<C-r>", "<C-o><C-r>")
+
+-- saving with ctrl-s
+keyset("n", "<C-s>", ":w<CR>")
+keyset("i", "<C-s>", "<C-o>:w<CR>")
 
 -- ctrl-backspace in insert mode
 -- if at end of line: space -> normal -> "_cb
