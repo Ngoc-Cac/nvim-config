@@ -1,0 +1,12 @@
+{
+   "objects": [
+       {"name": "object_1", "description": "This is the first object."},
+       {"name": "object_2", "description": "This is the second object."},
+       {"name": "object_3", "description": this is not formatted correctly}
+   ],
+   "radom_number": 50,
+   "more_random_numbers": [2, 10, 99, 69, 420, 100],
+   ["missing property"],
+   "this is missing a comma": 0
+   "this_is_another_field_but_extra_comma": "abc",
+}

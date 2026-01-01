@@ -1,0 +1,16 @@
+section:
+  name: This is just a section
+  value: 0
+
+section_badly_indent:
+   name:
+  not_sure_what_this_is: abc
+
+mixed_seq_map:
+  - name: abc
+  value: "not_ok"
+
+invalid_commas:
+  no_commas: [1 2 3]
+  extra_commas: [1, 2, 3,]
+  unclosed: [1, 2, 3
