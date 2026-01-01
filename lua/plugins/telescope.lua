@@ -38,9 +38,9 @@ local function set_keymap()
     keyset("n", "<leader>gc", builtin.git_commits, { desc = "Telescope list Git commits" })
     keyset("n", "<leader>gs", builtin.git_stash, { desc = "Telescope list Git stashes" })
 
-    keyset("n", "<leader>jd", builtin.lsp_definitions, { desc = "Jump to definition" })
+    keyset("n", "grd", builtin.lsp_definitions, { desc = "Jump to definition" })
     keyset(
-        "n", "<leader>jv", function()
+        "n", "grv", function()
             builtin.lsp_definitions({ jump_type = "vsplit" })
         end,
         { desc = "Jump to definition in vertical split" }
