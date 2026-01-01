@@ -24,26 +24,13 @@ return {
             desc = "Comment selected code."
         }}
     },
+    -- git plugins
     { "tpope/vim-fugitive" },
     { "lewis6991/gitsigns.nvim" },
-    -- markdown previewer
-    {
-        "OXY2DEV/markview.nvim",
-        lazy = false,
-        opts = { preview = { enable = false } },
-        config = function()
-            vim.keymap.set(
-                "n", "<leader>mm", ":Markview toggle<CR>",
-                { desc = "Toggle Markdown preview for current buffer" }
-            )
-            vim.keymap.set(
-                "n", "<leader>mv", ":Markview splitToggle<CR>",
-                { desc = "Toggle Markdown split preview for current buffer" }
-            )
-        end
-    },
+    --
     { "terryma/vim-multiple-cursors" },
     { "Vimjas/vim-python-pep8-indent" },
+    { "mechatroner/rainbow_csv" },
     -- autopairs
     {
         "windwp/nvim-autopairs",
@@ -51,15 +38,6 @@ return {
         config = true,
         opts = { fast_wrap = {} },
     },
-    -- color previewer
-    {
-        "norcalli/nvim-colorizer.lua",
-        opts = {
-            vim = { mode = "foreground" },
-            lua = { mode = "foreground" }
-        }
-    },
-    { "mechatroner/rainbow_csv" },
     -- notification plugin
     {
         "rcarriga/nvim-notify",
@@ -72,6 +50,7 @@ return {
                 top_down = false,
                 render = "wrapped-default",
                 stages = "static",
+                merge_duplicates = true,
             })
         end
     }
