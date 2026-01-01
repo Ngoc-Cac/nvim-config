@@ -9,7 +9,7 @@ return {
                 ["<Right>"] = {"n", "v"},
             }
         },
-    },   
+    },
     -- key mappings hint
     {
         "folke/which-key.nvim",
@@ -47,8 +47,9 @@ return {
     -- autopairs
     {
         "windwp/nvim-autopairs",
+        event = "InsertEnter",
+        config = true,
         opts = { fast_wrap = {} },
-        lazy = false
     },
     -- color previewer
     {
