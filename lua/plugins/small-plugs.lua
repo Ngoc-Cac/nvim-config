@@ -14,7 +14,17 @@ return {
     {
         "folke/which-key.nvim",
         event = "VeryLazy",
-        opts = { preset = "helix" },
+        opts = {
+            preset = "helix",
+            spec = {
+                { "\\t", group = "Toggle terminal" },
+                { "<leader>f", group = "Telescope find and list" },
+                { "<leader>g", group = "Telescope git utilities" },
+                { "<leader>m", group = "Markdown preview" },
+                { "<leader>s", group = "Treesj features" },
+                { "gr", group = "LSP actions" }
+            }
+        },
     },
     -- commenting code
     {
@@ -24,6 +34,7 @@ return {
             desc = "Comment selected code."
         }}
     },
+    -- code split-join
     {
         "Wansmer/treesj",
         dependencies = { "nvim-treesitter/nvim-treesitter" },
