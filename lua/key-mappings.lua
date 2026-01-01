@@ -5,7 +5,7 @@ keyset("i", "jj", "<Esc>")
 keyset("c", "jj", "<C-c>")
 
 -- quick command mode
-keyset("n", "<leader>;", ":", { desc = "Enter command-line mode" })
+keyset("n", ";", ":", { desc = "Enter command-line mode" })
 
 -- quick undo and redo in insert mode
 keyset("i", "<C-z>", "<C-o>u")
