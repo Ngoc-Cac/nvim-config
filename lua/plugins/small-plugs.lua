@@ -10,22 +10,6 @@ return {
             }
         },
     },
-    -- key mappings hint
-    {
-        "folke/which-key.nvim",
-        event = "VeryLazy",
-        opts = {
-            preset = "helix",
-            spec = {
-                { "\\t", group = "Toggle terminal" },
-                { "<leader>f", group = "Telescope find and list" },
-                { "<leader>g", group = "Telescope git utilities" },
-                { "<leader>m", group = "Markdown preview" },
-                { "<leader>s", group = "Treesj features" },
-                { "gr", group = "LSP actions" }
-            }
-        },
-    },
     -- commenting code
     {
         "tpope/vim-commentary",
@@ -54,21 +38,4 @@ return {
     { "j-hui/fidget.nvim", opts = {} }, -- progress report for lsps
     { "terryma/vim-multiple-cursors" },
     { "Vimjas/vim-python-pep8-indent" },
-    { "mechatroner/rainbow_csv" },
-    -- notification plugin
-    {
-        "rcarriga/nvim-notify",
-        config = function()
-            vim.notify = require("notify")
-            vim.notify.setup({
-                fps=1,
-                timeout = 100,
-                max_width = 60,
-                top_down = false,
-                render = "wrapped-default",
-                stages = "static",
-                merge_duplicates = true,
-            })
-        end
-    }
 }
