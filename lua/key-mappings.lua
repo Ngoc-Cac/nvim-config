@@ -1,29 +1,30 @@
 local keyset = vim.keymap.set
 
 -- escape key
-keyset("i", "jj", "<Esc>")
-keyset("c", "jj", "<C-c>")
+keyset("i", "jj", "<esc>")
+keyset("c", "jj", "<c-c>")
 
 -- quick command mode
 keyset("n", ";", ":", { desc = "Enter command-line mode" })
 
 -- quick undo and redo in insert mode
-keyset("i", "<C-z>", "<C-o>u")
-keyset("i", "<C-r>", "<C-o><C-r>")
+-- keyset("i", "<c-z>", "<c-o>u")
+keyset("i", "<c-r>", "<c-o><c-r>")
 
 -- saving with ctrl-s
-keyset("n", "<C-s>", ":w<CR>")
-keyset("i", "<C-s>", "<C-o>:w<CR>")
+keyset("n", "<c-s>", ":w<cr>")
+keyset("i", "<c-s>", "<c-o>:w<cr>")
 
 -- ctrl-backspace in insert mode
 -- if at end of line: space -> normal -> "_cb
 -- else move right once, enter normal mode and replace backwards
-keyset("i", "<C-h>", function()
-    return (vim.fn.col(".") == vim.fn.col("$") and " " or "<Right>") .. '<Esc>"_cb'
+keyset("i", "<c-h>", function()
+    return (vim.fn.col(".") == vim.fn.col("$") and " " or "<right>") .. '<esc>"_cb'
 end, { expr = true })
+keyset("n", "X", ":%d_<cr>")
 
 -- alt + motion to move line up and down
-keyset("n", "<M-j>", ":m+<CR>==")
-keyset("n", "<M-k>", ":m-2<CR>==")
-keyset("v", "<M-j>", ":m'>+1<CR>gv=gv")
-keyset("v", "<M-k>", ":m'<-2<CR>gv=gv")
+keyset("n", "<m-j>", ":m+<cr>==")
+keyset("n", "<m-k>", ":m-2<cr>==")
+keyset("v", "<m-j>", ":m'>+1<cr>gv=gv")
+keyset("v", "<m-k>", ":m'<-2<cr>gv=gv")
