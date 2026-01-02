@@ -1,8 +1,9 @@
 vim.opt.encoding = "utf-8"
 vim.opt.ignorecase = true -- ignore the case on tab complete
+vim.opt.smartcase = true -- if pattern has uppercase char, respect it
 
 vim.opt.termguicolors = true -- not set by default for some reason
-vim.opt.errorbells = false 
+vim.opt.errorbells = false
 vim.opt.wrap = false
 
 vim.opt.number = true
