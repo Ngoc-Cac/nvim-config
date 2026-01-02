@@ -10,7 +10,8 @@ require("terminal")
 -- make lazy set up the plugins
 require("lazy").setup({
     { import = "plugins" },
-    { import = "plugins.ui" }
+    { import = "plugins.ui" },
+    { import = "plugins.edit_utils" }
 })
 
 -- some common shortcuts I'm used to
