@@ -55,13 +55,6 @@ return {
     { "terryma/vim-multiple-cursors" },
     { "Vimjas/vim-python-pep8-indent" },
     { "mechatroner/rainbow_csv" },
-    -- autopairs
-    {
-        "windwp/nvim-autopairs",
-        event = "InsertEnter",
-        config = true,
-        opts = { fast_wrap = {} },
-    },
     -- notification plugin
     {
         "rcarriga/nvim-notify",
