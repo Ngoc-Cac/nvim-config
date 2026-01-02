@@ -1,5 +1,5 @@
 vim.opt.encoding = "utf-8"
-vim.opt.ignorecase = true -- ignore the case on tab complete
+vim.opt.ignorecase = true -- ignore the case on tab complete, search, etc.
 vim.opt.smartcase = true -- if pattern has uppercase char, respect it
 
 vim.opt.termguicolors = true -- not set by default for some reason
