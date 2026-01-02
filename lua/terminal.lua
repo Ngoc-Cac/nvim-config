@@ -89,6 +89,10 @@ vim.keymap.set(
     { desc = "Exit terminal mode." }
 )
 vim.keymap.set(
+    "t", "jj", "<C-\\><C-n>",
+    { desc = "Exit terminal mode." }
+)
+vim.keymap.set(
     "n", "<LocalLeader>tv", function() toggle_term() end,
     { desc = "Toggle terminal in split view." }
 )
