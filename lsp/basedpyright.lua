@@ -1,20 +1,13 @@
 -- type checking config
 local diagnostic_overrides = {
-    reportUnusedClass = "hint",
-    reportUnusedFunction = "hint",
-    reportUnusedVariable = "hint",
-    reportUnusedImport = "hint",
     reportUnusedCallResult = false,
 
     reportFunctionMemberAccess = "hint",
     reportAttributeAccessIssue = "hint",
-    reportPrivateUsage = false,
     reportPrivateImportUsage = false,
 
     reportGeneralTypeIssues = false,
-    reportPropertyTypeMismatch = false,
 
-    reportArgumentType = false,
     reportAssignmentType = false,
     reportReturnType = false,
     reportAssertTypeFailure = false,
@@ -23,50 +16,28 @@ local diagnostic_overrides = {
     reportCallIssue = false,
     reportConstantRedefinition = "hint",
 
-    reportImplicitOverride = false,
-    reportImplicitStringConcatenation = false,
-
     reportOptionalSubscript = false,
     reportOptionalMemberAccess = false,
     reportOptionalCall = false,
 
     reportPossiblyUnboundVariable = "hint",
-
-    reportUnknownParameterType = false,
-    reportUnknownArgumentType = false,
-    reportUnknownLambdaType = false,
-    reportUnknownVariableType = false,
-    reportUnknownMemberType = false,
-
-    reportMissingParameterType = false,
-    reportMissingTypeArgument = false,
-
-    -- basedpyright exclusive
-    reportAny = false,
-    reportExplicitAny = false,
-    reportUnusedParameter = "hint",
-    reportUnannotatedClassAttribute = false,
-    reportPrivateLocalImportUsage = false,
-    reportMissingTypeStubs = false,
-} 
-return {
-    settings = {
-        basedpyright = {
-            python = { 
-                venvPath = ".",
-                venv = ".venv"
-            },
-            analysis = {
-                diagnosticMode = "openFilesOnly",
-                autoSearchPaths = true,
-                inlayHints = {
-                    callArgumentNames = true,
-                    variableTypes = false,
-                    parameterTypes = false
-                },
-
-                diagnosticSeverityOverrides = diagnostic_overrides
-            }
-        }
-    }
 }
+return { settings = { basedpyright = {
+    python = {
+        venvPath = ".",
+        venv = ".venv"
+    },
+    analysis = {
+        typeCheckingMode = "basic",
+        diagnosticMode = "openFilesOnly",
+        autoSearchPaths = true,
+        autoImportCompletions = false,
+        inlayHints = {
+            callArgumentNames = true,
+            variableTypes = false,
+            parameterTypes = false
+        },
+
+        diagnosticSeverityOverrides = diagnostic_overrides
+    }
+}}}
