@@ -21,7 +21,18 @@ local blink_opts = {
         }
     },
 
-    sources = { default = { "lsp", "path", "snippets", "buffer" } },
+    sources = {
+        default = { "lazydev", "lsp", "path", "snippets", "buffer" },
+        providers = {
+            -- setting up a provider for lazydev
+            lazydev = {
+                name = "LazyDev",
+                module = "lazydev.integrations.blink",
+                -- make lazydev completions top priority (see `:h blink.cmp`)
+                score_offset = 100,
+            },
+        },
+    },
     fuzzy = { implementation = "prefer_rust_with_warning" }
 }
 
@@ -30,24 +41,27 @@ return {
         "mason-org/mason-lspconfig.nvim",
         opts = {
             automatic_enable = {
-                "bashls",
-
-                "jsonls", "yamlls",
+                "bashls", "jsonls", "yamlls",
 
                 "lua_ls",
-                "basedpyright", -- project-config will override ls conf
+                "markdown_oxide",
+                "basedpyright", -- NOTE: pyrightconfig.json will override ls conf
             }
         },
         dependencies = {
             {
                 "mason-org/mason.nvim",
-                opts = {
-                    -- enable when issue
+                opts = {-- enable when issue
                     -- log_level = vim.log.levels.DEBUG,
                 }
             },
             "neovim/nvim-lspconfig",
         },
+    },
+    {
+        "folke/lazydev.nvim",
+        ft = "lua", -- only load on lua files
+        opts = {},
     },
     {
         "saghen/blink.cmp",
