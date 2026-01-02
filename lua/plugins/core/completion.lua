@@ -37,32 +37,8 @@ local blink_opts = {
 }
 
 return {
-    {
-        "mason-org/mason-lspconfig.nvim",
-        opts = {
-            automatic_enable = {
-                "bashls", "jsonls", "yamlls",
-
-                "lua_ls",
-                "markdown_oxide",
-                "basedpyright", -- NOTE: pyrightconfig.json will override ls conf
-            }
-        },
-        dependencies = {
-            {
-                "mason-org/mason.nvim",
-                opts = {-- enable when issue
-                    -- log_level = vim.log.levels.DEBUG,
-                }
-            },
-            "neovim/nvim-lspconfig",
-        },
-    },
-    {
-        "folke/lazydev.nvim",
-        ft = "lua", -- only load on lua files
-        opts = {},
-    },
+    -- extends the base lua LSP to recognize my neovim configurations
+    { "folke/lazydev.nvim", ft = "lua", opts = {} },
     {
         "saghen/blink.cmp",
         dependencies = { "rafamadriz/friendly-snippets" },

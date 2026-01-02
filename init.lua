@@ -10,6 +10,7 @@ require("terminal")
 -- make lazy set up the plugins
 require("lazy").setup({
     { import = "plugins" },
+    { import = "plugins.core" },
     { import = "plugins.ui" },
     { import = "plugins.edit_utils" }
 })
