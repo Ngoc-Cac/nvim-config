@@ -19,12 +19,6 @@ return {
             end,
             { desc = "Peek into the current fold." }
         )
-
-        ufo.setup({
-            provider_selector = function (bufnr, filetype, buftype)
-                -- fold based on indentation first, then treesitter
-                return { "indent", "treesitter" }
-            end
-        })
+        ufo.setup()
     end
 }
