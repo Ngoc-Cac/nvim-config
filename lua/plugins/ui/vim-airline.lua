@@ -1,4 +1,4 @@
-function init_airline()
+local function init_airline()
     local create = vim.fn["airline#section#create"]
     vim.g.airline_section_a = create({'mode', ' ', 'branch'})
     vim.g.airline_section_b = create({'hunks', '| ', 'file'})
