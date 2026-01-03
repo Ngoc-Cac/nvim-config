@@ -7,6 +7,9 @@ require("config.general")
 -- toggleable terminal settings
 require("terminal")
 
+-- some common shortcuts I'm used to
+require("key-mappings")
+
 -- make lazy set up the plugins
 require("lazy").setup({
     { import = "plugins" },
@@ -15,7 +18,5 @@ require("lazy").setup({
     { import = "plugins.edit_utils" }
 })
 
--- some common shortcuts I'm used to
-require("key-mappings")
-
 vim.cmd.colorscheme("jellybeans")
+-- vim.cmd.colorscheme("gruvbox")
