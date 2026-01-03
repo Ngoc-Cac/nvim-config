@@ -22,7 +22,13 @@ local function set_telescope_hl(event)
 end
 
 local function set_keymap()
-    require("telescope").setup({})
+    require("telescope").setup({
+        pickers = {
+            colorscheme = {
+                enable_preview = true
+            }
+        }
+    })
     local keyset = vim.keymap.set
 
     local builtin = require("telescope.builtin")
