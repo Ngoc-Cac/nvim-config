@@ -36,6 +36,19 @@ vim.opt.clipboard = "unnamedplus"
 -- a preview window when doing %s
 vim.opt.inccommand = "split"
 
+vim.opt.fillchars = {
+    horiz = "━",
+    horizup = "┻",
+    horizdown = "┳",
+    vert = "┃",
+    vertleft = "┫",
+    vertright = "┣",
+    verthoriz = "╋",
+    fold = " ",
+    foldopen = "˅",
+    foldclose = ">",
+}
+
 vim.opt.foldlevel = 99
 vim.opt.foldlevelstart = 99
 vim.opt.foldenable = true
