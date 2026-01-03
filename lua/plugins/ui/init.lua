@@ -16,14 +16,13 @@ local notify_config = {
 }
 
 return {
+    { "morhetz/gruvbox", priority = 1000 },
     { "mechatroner/rainbow_csv" },
     -- key mappings hint
     {
         "folke/which-key.nvim",
         event = "VeryLazy",
-        opts = {
-            preset = "helix", spec = which_key_spec
-        },
+        opts = { preset = "helix", spec = which_key_spec },
     },
     -- notification plugin
     {
