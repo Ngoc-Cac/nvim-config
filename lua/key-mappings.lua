@@ -8,8 +8,18 @@ keyset("c", "jj", "<c-c>")
 keyset({ "n", "v" }, ";", ":", { desc = "Enter command-line mode" })
 
 -- quick undo and redo in insert mode
--- keyset("i", "<c-z>", "<c-o>u")
 keyset("i", "<c-r>", "<c-o><c-r>")
+
+keyset(
+    "t", "<esc><esc>", "<C-\\><C-n>",
+    { desc = "Exit terminal mode." }
+)
+-- not recommended because this can be
+-- annoying when doing interactive git
+-- vim.keymap.set(
+--     "t", "jj", "<C-\\><C-n>",
+--     { desc = "Exit terminal mode." }
+-- )
 
 -- saving with ctrl-s
 keyset("n", "<c-s>", ":w<cr>")

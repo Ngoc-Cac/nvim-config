@@ -44,7 +44,7 @@ local function create_float(dim)
   term.is_float = true
 end
 
-function toggle_term(opts)
+local function toggle_term(opts)
   opts = opts or {}
   local split = opts.split ~= false -- default: true
   local dim = opts.dim
@@ -58,7 +58,8 @@ function toggle_term(opts)
   end
 
   -- Create buffer if needed
-  if not term.buf or not vim.api.nvim_buf_is_valid(term.buf) then
+  -- if not term.buf or not vim.api.nvim_buf_is_valid(term.buf) then
+  if not is_valid_buf(term.buf) then
     term.buf = vim.api.nvim_create_buf(false, true)
     vim.bo[term.buf].bufhidden = "hide"
     vim.api.nvim_buf_call(term.buf, function()
@@ -84,14 +85,6 @@ vim.api.nvim_create_autocmd("TermClose", {
     end,
 })
 
-vim.keymap.set(
-    "t", "<esc>", "<C-\\><C-n>",
-    { desc = "Exit terminal mode." }
-)
-vim.keymap.set(
-    "t", "jj", "<C-\\><C-n>",
-    { desc = "Exit terminal mode." }
-)
 vim.keymap.set(
     "n", "<LocalLeader>tv", function() toggle_term() end,
     { desc = "Toggle terminal in split view." }
