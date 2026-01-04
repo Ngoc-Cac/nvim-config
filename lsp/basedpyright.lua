@@ -8,11 +8,13 @@ local diagnostic_overrides = {
 
     reportGeneralTypeIssues = false,
 
+    reportArgumentType = false,
     reportAssignmentType = false,
     reportReturnType = false,
     reportAssertTypeFailure = false,
     reportInvalidTypeArguments = false,
     reportInvalidTypeForm = "hint",
+
     reportCallIssue = false,
     reportConstantRedefinition = "hint",
 
