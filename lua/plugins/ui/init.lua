@@ -1,7 +1,7 @@
 local which_key_spec = {
     { "\\t", group = "Toggle terminal" },
     { "<leader>f", group = "Telescope find and list" },
-    { "<leader>g", group = "Telescope git utilities" },
+    { "<leader>g", group = "Git Utilities" },
     { "<leader>m", group = "Markdown preview" },
     { "<leader>s", group = "Treesj features" },
     { "gr", group = "LSP actions" }
