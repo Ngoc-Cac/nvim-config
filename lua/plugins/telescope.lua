@@ -39,10 +39,10 @@ local function set_keymap()
     keyset("n", "<leader>fc", builtin.colorscheme, { desc = "Telescope list colorscheme" })
     keyset("n", "<leader>fn", ":Telescope notify<CR>", { desc = "Telescope list notify" })
 
-    keyset("n", "<leader>gg", builtin.git_status, { desc = "Telescope list Git status" })
-    keyset("n", "<leader>gb", builtin.git_branches, { desc = "Telescope list Git branches" })
-    keyset("n", "<leader>gc", builtin.git_commits, { desc = "Telescope list Git commits" })
-    keyset("n", "<leader>gs", builtin.git_stash, { desc = "Telescope list Git stashes" })
+    -- keyset("n", "<leader>gg", builtin.git_status, { desc = "Telescope list Git status" })
+    -- keyset("n", "<leader>gb", builtin.git_branches, { desc = "Telescope list Git branches" })
+    -- keyset("n", "<leader>gc", builtin.git_commits, { desc = "Telescope list Git commits" })
+    -- keyset("n", "<leader>gs", builtin.git_stash, { desc = "Telescope list Git stashes" })
 
     keyset("n", "grd", builtin.lsp_definitions, { desc = "Jump to definition" })
     keyset(

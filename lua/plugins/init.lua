@@ -11,9 +11,6 @@ return {
         },
     },
     { "Weyaaron/nvim-training", pin= true, opts = {} },
-    -- git plugins
-    { "tpope/vim-fugitive" },
-    { "lewis6991/gitsigns.nvim" },
     -- progress report for lsps
-    { "j-hui/fidget.nvim", opts = {} }
+    { "j-hui/fidget.nvim", opts = {} },
 }
