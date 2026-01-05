@@ -4,6 +4,7 @@ return {
         "tpope/vim-fugitive",
         keys = {
             { "<leader>gs", ":G<cr>", desc = "Open vim-fugitive staging area" },
+            { "<leader>gl", ":G log", desc = "Open Git Log" },
             { "<leader>gp", ":G push", desc = "Type git push but you gotta make the choice." }
         }
     },
