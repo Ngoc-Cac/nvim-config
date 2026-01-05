@@ -7,7 +7,7 @@ local function is_valid_win(win)
 end
 
 local function is_valid_buf(buf)
-    return buf and vim.api.nvim_buf_is_valid(buf) 
+    return buf and vim.api.nvim_buf_is_valid(buf)
 end
 
 local function create_split(dim)
@@ -23,7 +23,7 @@ local function create_split(dim)
   term.is_float = false
 end
 
-local function create_float(dim)
+local function create_float()
   local ui = vim.api.nvim_list_uis()[1]
 
   local width  = math.floor(ui.width  * 0.8)
@@ -65,13 +65,13 @@ local function toggle_term(opts)
     vim.api.nvim_buf_call(term.buf, function()
         vim.cmd.term()
     end)
-    vim.api.nvim_chan_send(vim.bo[term.buf].channel, "clear\n")
+    -- vim.api.nvim_chan_send(vim.bo[term.buf].channel, "clear\n")
   end
 
   if split then
     create_split(dim)
   else
-    create_float(dim)
+    create_float()
   end
 end
 
