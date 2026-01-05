@@ -1,27 +1,28 @@
 local function bind_textobj_keymaps(select_module)
-    vim.keymap.set({"x", "o"}, "av", function()
+    local keyset = vim.keymap.set
+
+    keyset({"x", "o"}, "av", function()
         select_module.select_textobject("@container.outer", "textobjects")
     end)
-    vim.keymap.set({"x", "o"}, "iv", function()
+    keyset({"x", "o"}, "iv", function()
         select_module.select_textobject("@container.inner", "textobjects")
     end)
 
-    vim.keymap.set({ "x", "o" }, "af", function()
+    keyset({ "x", "o" }, "af", function()
         select_module.select_textobject("@function.outer", "textobjects")
     end)
-    vim.keymap.set({ "x", "o" }, "if", function()
+    keyset({ "x", "o" }, "if", function()
         select_module.select_textobject("@function.inner", "textobjects")
     end)
 
-    vim.keymap.set({ "x", "o" }, "ac", function()
+    keyset({ "x", "o" }, "ac", function()
         select_module.select_textobject("@class.outer", "textobjects")
     end)
-    vim.keymap.set({ "x", "o" }, "ic", function()
+    keyset({ "x", "o" }, "ic", function()
         select_module.select_textobject("@class.inner", "textobjects")
     end)
 
-    -- You can also use captures from other query groups like `locals.scm`
-    vim.keymap.set({ "x", "o" }, "as", function()
+    keyset({ "x", "o" }, "as", function()
         select_module.select_textobject("@local.scope", "locals")
     end)
 end
