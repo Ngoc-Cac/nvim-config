@@ -3,13 +3,6 @@ local keyset = vim.keymap.set
 -- escape key
 keyset("i", "jj", "<esc>")
 keyset("c", "jj", "<c-c>")
-
--- quick command mode
-keyset({ "n", "v" }, ";", ":", { desc = "Enter command-line mode" })
-
--- quick undo and redo in insert mode
-keyset("i", "<c-r>", "<c-o><c-r>")
-
 keyset(
     "t", "<esc><esc>", "<C-\\><C-n>",
     { desc = "Exit terminal mode." }
@@ -21,9 +14,18 @@ keyset(
 --     { desc = "Exit terminal mode." }
 -- )
 
+-- quick command mode
+keyset({ "n", "v" }, ";", ":", { desc = "Enter command-line mode" })
+
+-- quick undo and redo in insert mode
+keyset("i", "<c-r>", "<c-o><c-r>")
+
 -- saving with ctrl-s
 keyset("n", "<c-s>", ":w<cr>")
 keyset("i", "<c-s>", "<c-o>:w<cr>")
+
+keyset("n", "gb", ":bn<cr>", { desc = "Navigate to the next buffer" })
+keyset("n", "gB", ":bp<cr>", { desc = "Navigate to the previous buffer" })
 
 -- ctrl-backspace in insert mode
 -- if at end of line: space -> normal -> "_cb
