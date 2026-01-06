@@ -18,6 +18,7 @@ local notify_config = {
 return {
     { "morhetz/gruvbox", priority = 1000 },
     { "mechatroner/rainbow_csv" },
+    { "bling/vim-bufferline" },
     -- key mappings hint
     {
         "folke/which-key.nvim",
