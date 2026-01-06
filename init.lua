@@ -7,8 +7,7 @@ require("config.general")
 -- toggleable terminal settings
 require("terminal")
 
--- some commands
-require("commands")
+require("buf_delete")
 
 -- some common shortcuts I'm used to
 require("key-mappings")

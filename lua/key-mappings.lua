@@ -24,9 +24,6 @@ keyset("i", "<c-r>", "<c-o><c-r>")
 keyset("n", "<c-s>", ":w<cr>")
 keyset("i", "<c-s>", "<c-o>:w<cr>")
 
-keyset("n", "gb", ":bn<cr>", { desc = "Navigate to the next buffer" })
-keyset("n", "gB", ":bp<cr>", { desc = "Navigate to the previous buffer" })
-
 -- ctrl-backspace in insert mode
 -- if at end of line: space -> normal -> "_cb
 -- else move right once, enter normal mode and replace backwards
