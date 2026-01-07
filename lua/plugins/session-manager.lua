@@ -34,5 +34,17 @@ return {
                 end
             end,
         })
+        vim.keymap.set(
+            "n", "<localleader>ss", ":SessionManager load_session<cr>",
+            { desc = "Load saved sessions" }
+        )
+        vim.keymap.set(
+            "n", "<localleader>sg", ":SessionManager load_git_session<cr>",
+            { desc = "Load saved sessions" }
+        )
+        vim.keymap.set(
+            "n", "<localleader>sl", ":SessionManager load_last_session<cr>",
+            { desc = "Load saved sessions" }
+        )
     end
 }

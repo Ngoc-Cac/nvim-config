@@ -4,6 +4,7 @@ local which_key_spec = {
     { "<leader>g", group = "Git Utilities" },
     { "<leader>m", group = "Markdown preview" },
     { "<leader>s", group = "Treesj features" },
+    { "<localleader>s", group = "SessionManager features" },
     { "gr", group = "LSP actions" }
 }
 local notify_config = {
