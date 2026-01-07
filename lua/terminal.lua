@@ -93,4 +93,3 @@ vim.keymap.set(
     "n", "<LocalLeader>tf", function() toggle_term({split = false}) end,
     { desc = "Toggle terminal in float window." }
 )
-

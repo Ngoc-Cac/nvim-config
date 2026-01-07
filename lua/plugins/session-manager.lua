@@ -1,12 +1,3 @@
-local function find_terminal_buf()
-  for _, buf in ipairs(vim.api.nvim_list_bufs()) do
-    if vim.api.nvim_buf_is_valid(buf) and vim.bo[buf].buftype == "terminal" then
-      return buf
-    end
-  end
-  return nil
-end
-
 return {
     "Shatur/neovim-session-manager",
     dependencies = {
@@ -15,6 +6,7 @@ return {
     config = function()
         local sess_config = require("session_manager.config")
         require("session_manager").setup({
+            autosave_ignore_buftypes = { "terminal" }, -- don't save terminal buffers
             autosave_only_in_session = true,
             autoload_mode = {
                 sess_config.AutoloadMode.GitSession,
@@ -22,29 +14,17 @@ return {
                 sess_config.AutoloadMode.Disabled
             }
         })
-        local config_group = vim.api.nvim_create_augroup('MyConfigGroup', {}) -- A global group for all your config autocommands
-
-        vim.api.nvim_create_autocmd({ 'User' }, {
-            pattern = "SessionSavePre",
-            group = config_group,
-            callback = function()
-                local buf = find_terminal_buf()
-                if buf then
-                    vim.api.nvim_chan_send(vim.bo[buf].channel, 'exit\r\n')
-                end
-            end,
-        })
         vim.keymap.set(
             "n", "<localleader>ss", ":SessionManager load_session<cr>",
             { desc = "Load saved sessions" }
         )
         vim.keymap.set(
             "n", "<localleader>sg", ":SessionManager load_git_session<cr>",
-            { desc = "Load saved sessions" }
+            { desc = "Load saved git sessions" }
         )
         vim.keymap.set(
             "n", "<localleader>sl", ":SessionManager load_last_session<cr>",
-            { desc = "Load saved sessions" }
+            { desc = "Load last saved sessions" }
         )
     end
 }

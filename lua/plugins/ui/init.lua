@@ -1,11 +1,11 @@
 local which_key_spec = {
-    { "\\t", group = "Toggle terminal" },
+    { "<localleader>t", group = "Toggle terminal" },
+    { "<localleader>b", group = "Buffer actions" },
+    { "<localleader>s", group = "SessionManager features" },
     { "<leader>f", group = "Telescope find and list" },
     { "<leader>g", group = "Git Utilities" },
     { "<leader>m", group = "Markdown preview" },
     { "<leader>s", group = "Treesj features" },
-    { "<localleader>b", group = "Buffer actions" },
-    { "<localleader>s", group = "SessionManager features" },
     { "gr", group = "LSP actions" }
 }
 local notify_config = {
