@@ -1,10 +1,13 @@
+local glog = "G log --graph --oneline"
 return {
     { "lewis6991/gitsigns.nvim" },
     {
         "tpope/vim-fugitive",
         keys = {
-            { "<leader>gs", ":G<cr>", desc = "Open vim-fugitive staging area" },
-            { "<leader>gl", ":G log", desc = "Open Git Log" },
+            { "<leader>gs", ":vertical G<cr>", desc = "Open vim-fugitive staging area" },
+            { "<leader>gg", ":tab G<cr>", desc = "Open vim-fugitive staging area in a new tab." },
+            { "<leader>gll", ":vertical" .. glog .. "<cr", desc = "Open Git Log" },
+            { "<leader>glt", ":tab" .. glog .. "<cr", desc = "Open Git Log" },
             { "<leader>gp", ":G push", desc = "Type git push but you gotta make the choice." }
         }
     },
