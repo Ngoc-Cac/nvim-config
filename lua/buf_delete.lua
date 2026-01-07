@@ -1,3 +1,8 @@
+-- for some reason, treesitter parses vim.cmd("whatever")
+-- as ERROR, so doing this as alternative 
+local tab_cmd = "tabn"
+local buf_cmd = "bn"
+
 local function buf_del()
     local cur_buf = vim.api.nvim_get_current_buf()
     local cur_win = vim.api.nvim_get_current_win()
@@ -16,12 +21,11 @@ local function buf_del()
         local alt_buf = vim.fn.bufnr("#")
         local is_valid = vim.api.nvim_buf_is_valid(alt_buf)
 
-        if alt_buf ~= -1 and is_valid and alt_buf ~= cur_buf then
+        if alt_buf == -1 then
+            vim.cmd(tab_cmd)  -- see above for why
+        elseif is_valid and alt_buf ~= cur_buf then
             vim.api.nvim_set_current_buf(alt_buf)
         else
-            -- for some reason, treesitter parses vim.cmd("bn")
-            -- as ERROR, so doing this as alternative 
-            local buf_cmd = "bn"
             vim.cmd(buf_cmd)
         end
     end

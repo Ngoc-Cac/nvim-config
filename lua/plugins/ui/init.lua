@@ -4,6 +4,7 @@ local which_key_spec = {
     { "<leader>g", group = "Git Utilities" },
     { "<leader>m", group = "Markdown preview" },
     { "<leader>s", group = "Treesj features" },
+    { "<localleader>b", group = "Buffer actions" },
     { "<localleader>s", group = "SessionManager features" },
     { "gr", group = "LSP actions" }
 }
@@ -19,7 +20,13 @@ local notify_config = {
 return {
     { "morhetz/gruvbox", priority = 1000 },
     { "mechatroner/rainbow_csv" },
-    { "bling/vim-bufferline" },
+    {
+        "bling/vim-bufferline",
+        init = function()
+            vim.g.bufferline_show_bufnr = 0 -- show index 
+            vim.g.bufferline_echo = 0 -- do not echo to stdout
+        end
+    },
     -- key mappings hint
     {
         "folke/which-key.nvim",
