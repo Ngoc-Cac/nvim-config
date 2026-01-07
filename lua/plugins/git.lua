@@ -8,7 +8,7 @@ return {
             { "<leader>gg", ":tab G<cr>", desc = "Open vim-fugitive staging area in a new tab." },
             { "<leader>gll", ":vertical " .. glog .. "<cr>", desc = "Open Git Log" },
             { "<leader>glt", ":tab " .. glog .. "<cr>", desc = "Open Git Log" },
-            { "<leader>gp", ":G push", desc = "Type git push but you gotta make the choice." }
+            { "<leader>gp", ":G push", desc = "Populate the command-line with git push" }
         }
     },
     -- has nice ui stuff 

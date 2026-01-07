@@ -31,7 +31,11 @@ return {
     {
         "folke/which-key.nvim",
         event = "VeryLazy",
-        opts = { preset = "helix", spec = which_key_spec },
+        opts = {
+            preset = "helix",
+            spec = which_key_spec,
+            win = { title_pos = "center" }
+        },
     },
     -- notification plugin
     {
