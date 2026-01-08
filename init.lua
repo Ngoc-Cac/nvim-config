@@ -4,10 +4,8 @@ require("config.lazy")
 -- General Config
 require("config.general")
 
--- toggleable terminal settings
-require("terminal")
-
-require("buf_delete")
+-- custom plugins
+require("custom-plugs")
 
 -- some common shortcuts I'm used to
 require("key-mappings")
