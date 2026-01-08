@@ -30,6 +30,7 @@ keyset("i", "<c-s>", "<c-o>:w<cr>")
 keyset("i", "<c-h>", function()
     return (vim.fn.col(".") == vim.fn.col("$") and " " or "<right>") .. '<esc>"_cb'
 end, { expr = true })
+-- delete everything in file
 keyset("n", "X", ":%d_<cr>")
 
 -- alt + motion to move line up and down
