@@ -1,21 +1,20 @@
-local function set_markview_keymap()
-    vim.keymap.set(
-        "n", "<leader>mm", ":Markview toggle<CR>",
-        { desc = "Toggle Markdown preview for current buffer" }
-    )
-    vim.keymap.set(
-        "n", "<leader>mv", ":Markview splitToggle<CR>",
-        { desc = "Toggle Markdown split preview for current buffer" }
-    )
-end
-
 return {
     -- markdown previewer
     {
         "OXY2DEV/markview.nvim",
+        dependencies = { "nvim-tree/nvim-web-devicons" },
         lazy = false,
         opts = { preview = { enable = false } },
-        config = set_markview_keymap
+        keys = {
+            {
+                "<leader>mm", ":Markview toggle<cr>",
+                desc = "Toggle Markdown preview for current buffer"
+            },
+            {
+                "<leader>mv", ":Markview splitToggle<cr>",
+                desc = "Toggle Markdown split preview for current buffer"
+            }
+        }
     },
     -- color previewer
     {
