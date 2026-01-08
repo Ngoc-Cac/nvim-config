@@ -7,6 +7,7 @@ return {
         "nvim-tree/nvim-web-devicons",
     },
     lazy = false, -- neo-tree will lazily load itself
+    enabled=false,
     ---@module 'neo-tree'
     ---@type neotree.Config
     opts = {
@@ -22,9 +23,8 @@ return {
     },
     keys = {
         {
-            "<C-b>", "<CMD>Neotree show toggle<CR>",
-            mode = { "n", "i" }, remap = true,
-            desc = "Toggle Neotree."
+            "<C-b>", ":Neotree show toggle<cr>",
+            mode = { "n", "i" }, desc = "Toggle Neotree."
         }
     }
 }
