@@ -11,6 +11,10 @@ require("key-mappings")
 -- custom plugins
 require("custom-plugs")
 
+-- do not load the plugins if this file is
+-- being called from the vscode extension
+if vim.g.vscode then return end
+
 -- setup lazy.nvim and plugins 
 require("config.lazy")
 
