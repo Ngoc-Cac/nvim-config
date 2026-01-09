@@ -1,5 +1,4 @@
 return {
-    { "terryma/vim-multiple-cursors" },
     { "Vimjas/vim-python-pep8-indent" },
     -- commenting code
     {
