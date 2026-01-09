@@ -7,9 +7,16 @@ It is also to share my configuration in case someone wants to use it.
 ## Plugins Used
 These are listed in the order of dependency and usability. 
 
-:::{dropdown} Must Have
-- [`lazy.nvim`](https://github.com/folke/lazy.nvim): Plugin manager with lazy-
-    loading support. **Must install before any other plugins.**
+<details>
+    <summary>Must Have</summary>
+    <ul>
+        <li>
+            <a href="https://github.com/folke/lazy.nvim"><code>lazy.nvim</code></a>:
+            Plugin manager with lazy-loading support. **Must install before any other plugins.**
+        </li>
+    </ul>
+</details>
+
 - [`mason.nvim`](https://github.com/mason-org/mason.nvim): A package manager for
     LSP servers and more. I mainly use this for LSP support.
 - [`mason-lspconfig.nvim`](https://github.com/mason-org/mason-lspconfig.nvim):
@@ -29,7 +36,6 @@ These are listed in the order of dependency and usability.
 - [`nvim-autopairs`](https://github.com/windwp/nvim-autopairs): Auto-pairing
     when editing. This pretty much just speeds up the rest of the configuration
     for other plugins, so definitely needs to be installed right of the bat.
-:::
 
 **Highly Recommended**:
 - [`nvim-treesitter-textobjects`](https://github.com/nvim-treesitter/nvim-treesitter-textobjects):
