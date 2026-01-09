@@ -38,3 +38,6 @@ vim.keymap.set(
     "n", "<localleader>bb", ":%bd|e#|b#",
     { desc = "Delete all buffers except the current one."}
 )
+vim.api.nvim_create_user_command("R", function(opts)
+    vim.cmd("e " .. opts.args .. " | bd#")
+end, { nargs = 1, complete = "file" })
