@@ -12,7 +12,7 @@ end
 
 local function create_split(dim)
     local width = dim and dim.width
-    or math.floor(vim.o.columns / 3)
+    or math.floor(vim.o.columns / 2.5)
 
     vim.cmd.vnew()
     vim.cmd.wincmd("L")
@@ -26,8 +26,8 @@ end
 local function create_float()
     local ui = vim.api.nvim_list_uis()[1]
 
-    local width  = math.floor(ui.width  * 0.8)
-    local height = math.floor(ui.height * 0.8)
+    local width  = math.floor(ui.width  * 0.85)
+    local height = math.floor(ui.height * 0.85)
 
     local row = math.floor((ui.height - height) / 2)
     local col = math.floor((ui.width  - width)  / 2)
@@ -65,11 +65,10 @@ local function toggle_term(opts)
         vim.api.nvim_buf_call(term.buf, function()
             vim.cmd.term()
         end)
-        -- vim.api.nvim_chan_send(vim.bo[term.buf].channel, "clear\n")
     end
 
-    if split then create_split(dim) else create_float()
-    end
+    if split then create_split(dim) else create_float() end
+    vim.cmd.startinsert()
 end
 
 -- automatically close the tab if 'exit' is called 
