@@ -4,6 +4,53 @@ in case if I make any oopsies, I can restore the previous history.
 
 It is also to share my configuration in case someone wants to use it.
 
+## Installation
+### Getting Neovim
+It's easy, just use a package manager or download one of the releases.
+See [here](https://neovim.io/doc/install/) for more information.
+
+### Terminal Configuration
+First, you need to install a Nerd Font. Some plugins use glyphs that
+is only provided by Nerd Fonts. See [here](https://www.nerdfonts.com/font-downloads)
+for some fonts. 
+
+Secondly, make sure your terminal supports 256 color. It might be fine if your terminal
+doesn't support this, won't look nice though.
+
+### Configuration and Setting Up Plugins
+Depends on the machine, clone this to the appropriate location. On Linux,
+this will be `~/.config/nvim`. On Windows, this will be `~/AppData/Local/nvim`.
+
+Now, running `nvim` before installing any plugins will definitely throw errors,
+because some plugins in this configuration requires some external configuration first.
+
+To start, the most cumbersome plugin is `treesitter-nvim`, so it is best to get
+this out of the way first. The plugin requires `treesitter` (of course) and a C compiler.
+The installation of [`treesitter`](https://github.com/tree-sitter/tree-sitter/blob/master/crates/cli/README.md)
+is straight-forward, the installation of the [C compiler](https://docs.rs/cc/latest/cc/#compile-time-requirements)
+*can* be quite annoying.
+
+On Linux, several distributions are available, just download one and add them to your
+`PATH`. On Windows, this is a bit more complicated because it depends on your build
+environment. To check, run `echo $MSYSTEM`:
+- If it doesn't print anything, your system needs the `msvc` compiler. This will require
+    Visual Studio :(.
+- Otherwise, install the `mingw` compiler.
+Based on this, just follow the installation guide for the correponding environment.
+
+If your Windows uses the `msvc` compiler, you MUST install parsers within the Visual Studio's
+Developer Command Prompt. This is because Visual Studio does not add the compiler to your
+`PATH` by default (you probably shouldn't add it yourself either); this then cause
+`treesitter-nvim` to throw errors when running `:TSInstall` (or `:TSUpdate`) because it can't
+find the C compiler.
+
+After this, installing `mason.nvim` should be prioritized. This plugin needs the following
+[requirements](https://github.com/mason-org/mason.nvim?tab=readme-ov-file#requirements).
+Furthermore, if you intend to use `pyright` as a Python LSP server, then you also need to install
+`node` and `npm`.
+
+Other than that, the rest should be relatively straight-forward.
+
 ## Plugins Used
 These are listed in the order of dependency and usability. 
 

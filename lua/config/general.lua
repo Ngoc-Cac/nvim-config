@@ -58,4 +58,3 @@ vim.opt.foldcolumn = "2"
 vim.diagnostic.config({
     virtual_lines = true
 })
-
