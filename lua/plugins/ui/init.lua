@@ -9,7 +9,7 @@ local which_key_spec = {
     { "gr", group = "LSP actions" }
 }
 local notify_config = {
-    fps=1, timeout = 100,
+    fps=1, timeout = 2000,
     max_width = 60,
     top_down = false,
     render = "wrapped-default",
