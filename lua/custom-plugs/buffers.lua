@@ -1,8 +1,3 @@
--- for some reason, treesitter parses vim.cmd("whatever")
--- as ERROR, so doing this as alternative 
-local tab_cmd = "tabn"
-local buf_cmd = "bn"
-
 local function buf_del()
     local cur_buf = vim.api.nvim_get_current_buf()
     local cur_win = vim.api.nvim_get_current_win()
@@ -22,11 +17,14 @@ local function buf_del()
         local is_valid = vim.api.nvim_buf_is_valid(alt_buf)
 
         if alt_buf == -1 then
-            vim.cmd(tab_cmd)  -- see above for why
+            vim.notify(
+                "No previous buffer to switch to!",
+                vim.log.levels.INFO,
+                { title = "No previous buffer!", timeout = 3000 }
+            )
+            return
         elseif is_valid and alt_buf ~= cur_buf then
             vim.api.nvim_set_current_buf(alt_buf)
-        else
-            vim.cmd(buf_cmd)
         end
     end
 
