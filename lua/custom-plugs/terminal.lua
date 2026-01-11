@@ -1,6 +1,9 @@
 -- Functions for toggling terminal
 -- keep track of the win and buffer
-local term = {buf = nil, win = nil, is_float = false}
+local term = {
+    buf = nil, win = nil, is_float = false,
+    width_ratio = 0.45, float_ratio = 0.85
+}
 
 local function is_valid_win(win)
     return win and vim.api.nvim_win_is_valid(win)
@@ -12,7 +15,7 @@ end
 
 local function create_split(dim)
     local width = dim and dim.width
-    or math.floor(vim.o.columns / 2.5)
+    or math.floor(vim.o.columns * term.width_ratio)
 
     vim.cmd.vnew()
     vim.cmd.wincmd("L")
@@ -26,8 +29,8 @@ end
 local function create_float()
     local ui = vim.api.nvim_list_uis()[1]
 
-    local width  = math.floor(ui.width  * 0.85)
-    local height = math.floor(ui.height * 0.85)
+    local width  = math.floor(ui.width  * term.float_ratio)
+    local height = math.floor(ui.height * term.float_ratio)
 
     local row = math.floor((ui.height - height) / 2)
     local col = math.floor((ui.width  - width)  / 2)
@@ -62,9 +65,7 @@ local function toggle_term(opts)
     if not is_valid_buf(term.buf) then
         term.buf = vim.api.nvim_create_buf(false, true)
         vim.bo[term.buf].bufhidden = "hide"
-        vim.api.nvim_buf_call(term.buf, function()
-            vim.cmd.term()
-        end)
+        vim.api.nvim_buf_call(term.buf, vim.cmd.term)
     end
 
     if split then create_split(dim) else create_float() end
