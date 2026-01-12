@@ -1,3 +1,14 @@
+local function ft_detect()
+    local detect_ft = "filetype detect"
+    vim.schedule(function()
+        for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+            if vim.api.nvim_buf_is_loaded(buf) then
+                vim.api.nvim_buf_call(buf, function() vim.cmd(detect_ft) end)
+            end
+        end
+    end)
+end
+
 return {
     "Shatur/neovim-session-manager",
     dependencies = { "nvim-lua/plenary.nvim" },
@@ -12,6 +23,14 @@ return {
                 sess_config.AutoloadMode.Disabled
             }
         })
+
+        local group = vim.api.nvim_create_augroup("SessionManagerPost", { clear = true })
+        vim.api.nvim_create_autocmd("User", {
+            pattern = "SessionLoadPost",
+            group = group,
+            callback = ft_detect
+        })
+
         vim.keymap.set(
             "n", "<localleader>ss", ":SessionManager load_session<cr>",
             { desc = "Load saved sessions" }
