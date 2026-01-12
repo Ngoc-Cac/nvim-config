@@ -18,8 +18,8 @@ local notify_config = {
 }
 
 return {
-    { "morhetz/gruvbox", priority = 1000 },
-    { "mechatroner/rainbow_csv" },
+    { "morhetz/gruvbox", priority = 1000, enabled = false },
+    { "mechatroner/rainbow_csv", ft="csv" },
     {
         "bling/vim-bufferline",
         init = function()
@@ -40,6 +40,7 @@ return {
     -- notification plugin
     {
         "rcarriga/nvim-notify",
+        event = "VeryLazy",
         config = function()
             vim.notify = require("notify")
             vim.notify.setup(notify_config)

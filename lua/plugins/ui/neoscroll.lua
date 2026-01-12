@@ -17,6 +17,6 @@ end
 
 return {
     "karb94/neoscroll.nvim",
-    opts = {},
+    keys = { "<C-u>", "<C-d>", "<C-y>", "<C-e>", "zt", "zz", "zb" },
     config = set_keymap
 }

@@ -40,7 +40,7 @@ local textobj_config = {
 return {
     {
         'nvim-treesitter/nvim-treesitter',
-        lazy = false,
+        event = { "BufReadPost", "BufNewFile", "VeryLazy" },
         build = ':TSUpdate',
         config = function()
             -- enable syntax highlighting with treesitter
@@ -53,6 +53,7 @@ return {
     {
         "nvim-treesitter/nvim-treesitter-textobjects",
         branch = "main",
+        event = "VeryLazy",
         config = function()
             -- configuration
             require("nvim-treesitter-textobjects").setup {

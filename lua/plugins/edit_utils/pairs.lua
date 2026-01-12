@@ -3,6 +3,10 @@ return {
     {
         "nvim-mini/mini.surround",
         version = false,
+        keys = {
+            { "cs", mode = { "n", "x" } },
+            "ds", "gs", "rs"
+        },
         opts = {
             mappings = {
                 add = "cs", delete = "ds",

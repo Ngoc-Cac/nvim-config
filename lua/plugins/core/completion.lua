@@ -43,6 +43,7 @@ return {
         "saghen/blink.cmp",
         dependencies = { "rafamadriz/friendly-snippets" },
         version = "1.*",
+        event = { "InsertEnter", "CmdwinEnter" },
         opts = blink_opts,
         opts_extend = { "sources.default" }
     }

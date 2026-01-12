@@ -2,6 +2,7 @@
 return {
     "Wansmer/treesj",
     dependencies = { "nvim-treesitter/nvim-treesitter" },
+    keys = { "<leader>sm", "<leader>sj", "<leader>ss" },
     config = function()
         local sj = require("treesj")
         sj.setup({ use_default_keymaps = false })

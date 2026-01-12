@@ -19,6 +19,7 @@ return {
     -- color previewer
     {
         "norcalli/nvim-colorizer.lua",
+        event = "BufReadPost",
         opts = {
             vim = { mode = "foreground" },
             lua = { mode = "foreground" }
