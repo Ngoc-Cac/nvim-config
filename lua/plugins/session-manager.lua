@@ -1,12 +1,6 @@
 local function ft_detect()
     local detect_ft = "filetype detect"
-    vim.schedule(function()
-        for _, buf in ipairs(vim.api.nvim_list_bufs()) do
-            if vim.api.nvim_buf_is_loaded(buf) then
-                vim.api.nvim_buf_call(buf, function() vim.cmd(detect_ft) end)
-            end
-        end
-    end)
+    vim.schedule(function() vim.cmd(detect_ft) end)
 end
 
 return {
