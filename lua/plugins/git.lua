@@ -1,7 +1,10 @@
 local glog = "G log --graph --oneline"
 
 return {
-    { "lewis6991/gitsigns.nvim" },
+    {
+        "lewis6991/gitsigns.nvim",
+        event = { "BufReadPost", "BufNewFile", "VeryLazy" }
+    },
     {
         "tpope/vim-fugitive",
         keys = {
@@ -11,28 +14,5 @@ return {
             { "<leader>gll", ":tab " .. glog .. "<cr>", desc = "Open Git Log in new tab." },
             { "<leader>gp", ":G push", desc = "Populate the command-line with git push" }
         }
-    },
-    -- has nice ui stuff 
-    -- {
-    --     "NeogitOrg/neogit",
-    --     lazy = true,
-    --     dependencies = {
-    --         "nvim-lua/plenary.nvim", "sindrets/diffview.nvim",
-    --         "nvim-telescope/telescope.nvim",
-    --     },
-    --     cmd = "Neogit",
-    --     opts = {
-    --         graph_style = "unicode",
-    --     },
-    --     keys = {
-    --         {
-    --             "<leader>gs",
-    --             function() require("neogit").open({ kind = "floating" }) end,
-    --             desc = "Git Status"
-    --         },
-    --         { "<leader>gb", ":Neogit branch<cr>", desc = "Git Branch" },
-    --         { "<leader>gc", ":Neogit commit<cr>", desc = "Git Commit" },
-    --         { "<leader>gl", ":Neogit log<cr>", desc = "Git Log" }
-    --     },
-    -- }
+    }
 }
