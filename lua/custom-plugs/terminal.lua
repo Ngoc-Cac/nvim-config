@@ -1,9 +1,7 @@
 -- Functions for toggling terminal
 -- keep track of the win and buffer
-local term = {
-    buf = nil, win = nil, is_float = false,
-    width_ratio = 0.45, float_ratio = 0.85
-}
+local config = { width_ratio = 0.45, float_ratio = 0.85 }
+local term = { buf = nil, win = nil, is_float = false }
 
 local function is_valid_win(win)
     return win and vim.api.nvim_win_is_valid(win)
@@ -15,7 +13,7 @@ end
 
 local function create_split(dim)
     local width = dim and dim.width
-    or math.floor(vim.o.columns * term.width_ratio)
+        or math.floor(vim.o.columns * config.width_ratio)
 
     vim.cmd.vnew()
     vim.cmd.wincmd("L")
@@ -29,8 +27,8 @@ end
 local function create_float()
     local ui = vim.api.nvim_list_uis()[1]
 
-    local width  = math.floor(ui.width  * term.float_ratio)
-    local height = math.floor(ui.height * term.float_ratio)
+    local width  = math.floor(ui.width  * config.float_ratio)
+    local height = math.floor(ui.height * config.float_ratio)
 
     local row = math.floor((ui.height - height) / 2)
     local col = math.floor((ui.width  - width)  / 2)
@@ -72,6 +70,11 @@ local function toggle_term(opts)
     vim.cmd.startinsert()
 end
 
+local function setup(opts)
+    opts = opts or {}
+    config = vim.tbl_deep_extend("keep", config, opts)
+end
+
 -- automatically close the tab if 'exit' is called 
 vim.api.nvim_create_autocmd("TermClose", {
     callback = function(args)
@@ -90,3 +93,8 @@ vim.keymap.set(
     "n", "<LocalLeader>tf", function() toggle_term({split = false}) end,
     { desc = "Toggle terminal in float window." }
 )
+
+return {
+    setup = setup,
+    toggle_termm = toggle_term
+}
