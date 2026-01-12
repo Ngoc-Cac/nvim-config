@@ -7,10 +7,6 @@ local function is_valid_win(win)
     return win and vim.api.nvim_win_is_valid(win)
 end
 
-local function is_valid_buf(buf)
-    return buf and vim.api.nvim_buf_is_valid(buf)
-end
-
 local function create_split(dim)
     local width = dim and dim.width
         or math.floor(vim.o.columns * config.width_ratio)
@@ -45,26 +41,34 @@ local function create_float()
     term.is_float = true
 end
 
+local function close_win_if_exists()
+    local is_open = is_valid_win(term.win)
+    if is_open then
+        vim.api.nvim_win_close(term.win, true)
+        term.win = nil
+    end
+    return is_open
+end
+
+local function create_buf_if_needed()
+    local valid_buf = term.buf and vim.api.nvim_buf_is_valid(term.buf)
+    if not valid_buf then
+        term.buf = vim.api.nvim_create_buf(false, true)
+        vim.bo[term.buf].bufhidden = "hide"
+        vim.api.nvim_buf_call(term.buf, vim.cmd.term)
+    end
+    return not valid_buf
+end
+
 local function toggle_term(opts)
     opts = opts or {}
     local split = opts.split ~= false -- default: true
     local dim = opts.dim
 
-    -- If window exists, close it (toggle off)
-    if is_valid_win(term.win) then
-        vim.api.nvim_win_close(term.win, true)
-        term.win = nil
-        -- do not exit if we are switching between float and split
-        if term.is_float ~= split then return end
-    end
+    -- only returns if not switching view
+    if close_win_if_exists() and term.is_float ~= split then return end
 
-    -- Create buffer if needed
-    -- if not term.buf or not vim.api.nvim_buf_is_valid(term.buf) then
-    if not is_valid_buf(term.buf) then
-        term.buf = vim.api.nvim_create_buf(false, true)
-        vim.bo[term.buf].bufhidden = "hide"
-        vim.api.nvim_buf_call(term.buf, vim.cmd.term)
-    end
+    create_buf_if_needed()
 
     if split then create_split(dim) else create_float() end
     vim.cmd.startinsert()
