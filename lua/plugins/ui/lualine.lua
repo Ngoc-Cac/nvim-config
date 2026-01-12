@@ -9,32 +9,39 @@ local function diff_source()
     end
 end
 
+local sections = {
+    lualine_a = { "mode", "branch" },
+    lualine_b = {
+        { "diff", source = diff_source },
+        {
+            "diagnostics",
+            always_visible = true,
+            sections = { "error", "warn", "hint" },
+        },
+    },
+    lualine_c = { "buffers" },
+    lualine_x = {
+        "encoding", "filetype",
+        {
+            "fileformat",
+            icons_enabled = true,
+            symbols = { unix = "LF", dos = "CRLF", mac = "CR" },
+        }
+    },
+}
+
 return {
-    'nvim-lualine/lualine.nvim',
-    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    "nvim-lualine/lualine.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
     event = "VeryLazy",
     opts = {
         options = {
             theme = "gruvbox-material"
         },
-        sections = {
-            lualine_a = { "mode", "branch" },
-            lualine_b = { { "diff", source = diff_source }, "diagnostics" },
-            lualine_c = { "buffers" },
-            lualine_x = {
-                "encoding", "filetype",
-                {
-                    "fileformat",
-                    icons_enabled = true,
-                    symbols = { unix = "LF", dos = "CRLF", mac = "CR" },
-                }
-           },
-        },
+        sections = sections,
         tabline = {
-            lualine_a = {{ "tabs", mode = 1, path = 1 }},
-            lualine_x = {{
-                "buffers"
-            }}
+            lualine_a = {{ "tabs", mode = 1, tabs_max_length = vim.o.columns / 2 }},
+            lualine_x = {{ "buffers" }}
         }
     }
 }
