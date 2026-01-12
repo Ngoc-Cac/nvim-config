@@ -97,8 +97,4 @@ vim.keymap.set(
     "n", "<LocalLeader>tf", function() toggle_term({split = false}) end,
     { desc = "Toggle terminal in float window." }
 )
-
-return {
-    setup = setup,
-    toggle_termm = toggle_term
-}
+return { setup = setup, toggle_term = toggle_term }
