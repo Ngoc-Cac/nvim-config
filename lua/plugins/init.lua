@@ -11,7 +11,5 @@ return {
             }
         },
     },
-    { "Weyaaron/nvim-training", pin= true, opts = {}, enabled = false },
-    -- progress report for lsps
-    { "j-hui/fidget.nvim", opts = {} },
+    { "Weyaaron/nvim-training", pin= true, opts = {}, enabled = false }
 }
