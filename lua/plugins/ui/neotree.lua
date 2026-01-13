@@ -7,7 +7,7 @@ return {
         "nvim-tree/nvim-web-devicons",
     },
     lazy = false, -- neo-tree will lazily load itself
-    enabled=false,
+    enabled=true,
     ---@module 'neo-tree'
     ---@type neotree.Config
     opts = {
