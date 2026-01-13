@@ -1,30 +1,17 @@
 local function bind_textobj_keymaps(select_module)
     local keyset = vim.keymap.set
+    local select = select_module.select_textobject
 
-    keyset({"x", "o"}, "av", function()
-        select_module.select_textobject("@container.outer", "textobjects")
-    end)
-    keyset({"x", "o"}, "iv", function()
-        select_module.select_textobject("@container.inner", "textobjects")
-    end)
+    keyset({"x", "o"}, "av", function() select("@container.outer", "textobjects") end)
+    keyset({"x", "o"}, "iv", function() select("@container.inner", "textobjects") end)
 
-    keyset({ "x", "o" }, "af", function()
-        select_module.select_textobject("@function.outer", "textobjects")
-    end)
-    keyset({ "x", "o" }, "if", function()
-        select_module.select_textobject("@function.inner", "textobjects")
-    end)
+    keyset({ "x", "o" }, "af", function() select("@function.outer", "textobjects") end)
+    keyset({ "x", "o" }, "if", function() select("@function.inner", "textobjects") end)
 
-    keyset({ "x", "o" }, "ac", function()
-        select_module.select_textobject("@class.outer", "textobjects")
-    end)
-    keyset({ "x", "o" }, "ic", function()
-        select_module.select_textobject("@class.inner", "textobjects")
-    end)
+    keyset({ "x", "o" }, "ac", function() select("@class.outer", "textobjects") end)
+    keyset({ "x", "o" }, "ic", function() select("@class.inner", "textobjects") end)
 
-    keyset({ "x", "o" }, "as", function()
-        select_module.select_textobject("@local.scope", "locals")
-    end)
+    keyset({ "x", "o" }, "as", function() select("@local.scope", "locals") end)
 end
 
 local textobj_config = {
@@ -34,7 +21,6 @@ local textobj_config = {
         ['@parameter.outer'] = 'v', -- charwise
         ['@function.outer'] = 'v', -- linewise
     },
-    -- include_surrounding_whitespace = true,
 }
 
 return {
@@ -45,7 +31,11 @@ return {
         config = function()
             -- enable syntax highlighting with treesitter
             vim.api.nvim_create_autocmd("FileType", {
-                pattern = { "python", "json" , "markdown"},
+                pattern = {
+                    "python",
+                    "markdown",
+                    "json", "yaml", "toml",
+                },
                 callback = function() vim.treesitter.start() end,
             })
         end
