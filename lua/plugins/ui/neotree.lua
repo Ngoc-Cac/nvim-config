@@ -19,6 +19,17 @@ return {
         filesystem = {
             -- hidden files
             filtered_items = {visible = true}
+        },
+        default_component_configs = {
+            git_status = { symbols = {
+                added = "A",
+                modified = "M",
+                untracked = "U",
+                ignored = "",
+                unstaged = "",
+                staged = "A",
+                conflict = "C"
+            }}
         }
     },
     keys = {
