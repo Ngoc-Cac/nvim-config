@@ -1,6 +1,11 @@
-local function ft_detect()
+-- session_manager does not detect the first buffer for some reason
+local function redetect_first_buf()
     local detect_ft = "filetype detect"
-    vim.schedule(function() vim.cmd(detect_ft) end)
+    local buffers = vim.api.nvim_list_bufs()
+    if #buffers > 0 and vim.api.nvim_buf_is_loaded(buffers[1]) then
+        vim.api.nvim_buf_call(buffers[1], function() vim.cmd(detect_ft) end)
+    end
+    vim.cmd(detect_ft)
 end
 
 return {
@@ -22,7 +27,7 @@ return {
         vim.api.nvim_create_autocmd("User", {
             pattern = "SessionLoadPost",
             group = group,
-            callback = ft_detect
+            callback = function() vim.schedule(redetect_first_buf) end
         })
 
         vim.keymap.set(
