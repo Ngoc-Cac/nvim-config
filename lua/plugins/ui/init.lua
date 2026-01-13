@@ -4,6 +4,7 @@ local which_key_spec = {
     { "<localleader>s", group = "SessionManager features" },
     { "<leader>f", group = "Telescope find and list" },
     { "<leader>g", group = "Git Utilities" },
+    { "<leader>gl", group = "Git Log" },
     { "<leader>m", group = "Markdown preview" },
     { "<leader>s", group = "Treesj features" },
     { "gr", group = "LSP actions" }
