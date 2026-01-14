@@ -5,14 +5,11 @@ local config = { width_ratio = 0.45, float_ratio = 0.85 }
 local term = { buf = nil, win = nil, is_float = false }
 
 local function create_split()
-    local width = math.floor(vim.o.columns * config.width_ratio)
-
-    vim.cmd.vnew()
-    vim.cmd.wincmd("L")
-
-    term.win = vim.api.nvim_get_current_win()
-    vim.api.nvim_win_set_width(term.win, width)
-    vim.api.nvim_win_set_buf(term.win, term.buf)
+    term.win = vim.api.nvim_open_win(term.buf, true, {
+        win = 0, -- create adjacent to cur win
+        split = "right",
+        width = math.floor(vim.o.columns * config.width_ratio)
+    })
 end
 
 local function create_float()
