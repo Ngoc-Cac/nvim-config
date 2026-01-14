@@ -5,7 +5,7 @@ local config = { width_ratio = 0.45, float_ratio = 0.85 }
 local term = {
     buf = nil,
     win = nil,
-    is_float = false,
+    split_kind = "vertical",
 }
 
 local function close_win_if_exists()
@@ -17,36 +17,35 @@ local function close_win_if_exists()
     return is_open
 end
 
-local function toggle_term(opts)
-    opts = opts or {}
-    local float = opts.float == true -- create split by default
+local function toggle_term(split_kind)
+    split_kind = split_kind or "right" -- vertical split by default
 
     -- only returns if not switching view
-    if close_win_if_exists() and term.is_float == float then return end
+    if close_win_if_exists() and term.split_kind == split_kind then return end
 
     -- create buf if no buffer
     if not utils.is_valid_buf(term.buf) then term.buf = utils.create_term_buf() end
 
     local width = nil
     local height = nil
-    if float then
+    if split_kind == "float" then
         local ui = vim.api.nvim_list_uis()[1]
         width = math.floor(ui.width * config.float_ratio)
         height = math.floor(ui.height * config.float_ratio)
     else
         width = math.floor(vim.o.columns * config.width_ratio)
     end
+
     term.win = utils.create_win(term.buf, {
-        split = float and "float" or "right",
-        width = width, height = height
+        split = split_kind, width = width, height = height
     })
-    term.is_float = float
+    term.split_kind = split_kind
 
     vim.keymap.set(
         { "n", "i", "t" },
         "<esc>q", function()
             vim.cmd.stopinsert()
-            toggle_term({ float = term.is_float })
+            toggle_term(term.split_kind)
         end,
         { buffer = term.buf, desc = "Toggle current terminal off" }
     )
@@ -62,7 +61,7 @@ vim.keymap.set(
     { desc = "Toggle terminal in split view." }
 )
 vim.keymap.set(
-    "n", "<LocalLeader>tf", function() toggle_term({float = true}) end,
+    "n", "<LocalLeader>tf", function() toggle_term("float") end,
     { desc = "Toggle terminal in float window." }
 )
 return { setup = setup, toggle_term = toggle_term }
