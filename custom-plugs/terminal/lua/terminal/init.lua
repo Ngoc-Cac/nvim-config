@@ -98,3 +98,8 @@ vim.keymap.set(
     { desc = "Toggle terminal in float window." }
 )
 return { setup = setup, toggle_term = toggle_term }
+        -- vim.keymap.set(
+        --     { "n", "i", "t" },
+        --     "<esc>q", function() toggle_term(not term.is_float) end,
+        --     { buffer = term.buf, desc = "Toggle terminal off" }
+        -- )

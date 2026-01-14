@@ -39,3 +39,5 @@ vim.keymap.set(
 vim.api.nvim_create_user_command("R", function(opts)
     vim.cmd("e " .. opts.args .. " | bd#")
 end, { nargs = 1, complete = "file" })
+
+return { setup = function(opts) end }

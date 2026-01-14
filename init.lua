@@ -8,9 +8,6 @@ require("config.general")
 -- some common shortcuts I'm used to
 require("key-mappings")
 
--- custom plugins
-require("custom-plugs")
-
 -- do not load the plugins if this file is
 -- being called from the vscode extension
 if vim.g.vscode then return end
