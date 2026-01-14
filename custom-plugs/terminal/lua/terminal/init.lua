@@ -56,11 +56,15 @@ local function toggle_term(opts)
 
     if float then create_float() else create_split() end
     term.is_float = float
-    -- vim.keymap.set(
-    --     { "n", "i", "t" },
-    --     "<esc>q", function() toggle_term(not term.is_float) end,
-    --     { buffer = term.buf, desc = "Toggle terminal off" }
-    -- )
+
+    vim.keymap.set(
+        { "n", "i", "t" },
+        "<esc>q", function()
+            vim.cmd.stopinsert()
+            toggle_term({ float = term.is_float })
+        end,
+        { buffer = term.buf, desc = "Toggle current terminal off" }
+    )
 end
 
 local function setup(opts)
