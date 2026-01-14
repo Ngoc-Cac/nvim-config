@@ -2,39 +2,11 @@
 -- keep track of the win and buffer
 local utils = require("terminal.utils")
 local config = { width_ratio = 0.45, float_ratio = 0.85 }
-local term = { buf = nil, win = nil, is_float = false }
-
-local function create_split_win(buffer, opts)
-    opts = opts or {}
-    local split = opts.split or "right"
-
-    return vim.api.nvim_open_win(buffer, true, {
-        win = 0, -- create adjacent to cur win
-        split = split,
-        width = opts.width,
-        height = opts.height
-    })
-end
-
-local function create_float_win(buffer, opts)
-    opts = opts or {}
-    local width = opts.width
-    local height = opts.height
-
-    local ui = vim.api.nvim_list_uis()[1]
-    local row = math.floor((ui.height - height) / 2)
-    local col = math.floor((ui.width  - width)  / 2)
-
-    return vim.api.nvim_open_win(buffer, true, {
-        relative = "editor",
-        row = row - 2,
-        col = col,
-        width = width,
-        height = height,
-        style = "minimal",
-        border = "rounded",
-    })
-end
+local term = {
+    buf = nil,
+    win = nil,
+    is_float = false,
+}
 
 local function close_win_if_exists()
     local is_open = utils.is_valid_win(term.win)
@@ -55,22 +27,19 @@ local function toggle_term(opts)
     -- create buf if no buffer
     if not utils.is_valid_buf(term.buf) then term.buf = utils.create_term_buf() end
 
-    local create_win = nil
-    local dim = nil
+    local width = nil
+    local height = nil
     if float then
-        create_win = create_float_win
         local ui = vim.api.nvim_list_uis()[1]
-        dim = {
-            width = math.floor(ui.width * config.float_ratio),
-            height = math.floor(ui.height * config.float_ratio)
-        }
+        width = math.floor(ui.width * config.float_ratio)
+        height = math.floor(ui.height * config.float_ratio)
     else
-        create_win = create_split_win
-        dim = {
-            width = math.floor(vim.o.columns * config.width_ratio)
-        }
+        width = math.floor(vim.o.columns * config.width_ratio)
     end
-    term.win = create_win(term.buf, dim)
+    term.win = utils.create_win(term.buf, {
+        split = float and "float" or "right",
+        width = width, height = height
+    })
     term.is_float = float
 
     vim.keymap.set(
