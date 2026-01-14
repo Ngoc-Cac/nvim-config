@@ -7,9 +7,8 @@ local function is_valid_win(win)
     return win and vim.api.nvim_win_is_valid(win)
 end
 
-local function create_split(dim)
-    local width = dim and dim.width
-        or math.floor(vim.o.columns * config.width_ratio)
+local function create_split()
+    local width = math.floor(vim.o.columns * config.width_ratio)
 
     vim.cmd.vnew()
     vim.cmd.wincmd("L")
@@ -17,7 +16,6 @@ local function create_split(dim)
     term.win = vim.api.nvim_get_current_win()
     vim.api.nvim_win_set_width(term.win, width)
     vim.api.nvim_win_set_buf(term.win, term.buf)
-    term.is_float = false
 end
 
 local function create_float()
@@ -38,7 +36,6 @@ local function create_float()
         style = "minimal",
         border = "rounded",
     })
-    term.is_float = true
 end
 
 local function close_win_if_exists()
@@ -62,16 +59,20 @@ end
 
 local function toggle_term(opts)
     opts = opts or {}
-    local split = opts.split ~= false -- default: true
-    local dim = opts.dim
+    local float = opts.float == true -- create split by default
 
     -- only returns if not switching view
-    if close_win_if_exists() and term.is_float ~= split then return end
+    if close_win_if_exists() and term.is_float == float then return end
 
     create_buf_if_needed()
 
-    if split then create_split(dim) else create_float() end
-    vim.cmd.startinsert()
+    if float then create_float() else create_split() end
+    term.is_float = float
+    -- vim.keymap.set(
+    --     { "n", "i", "t" },
+    --     "<esc>q", function() toggle_term(not term.is_float) end,
+    --     { buffer = term.buf, desc = "Toggle terminal off" }
+    -- )
 end
 
 local function setup(opts)
@@ -94,12 +95,7 @@ vim.keymap.set(
     { desc = "Toggle terminal in split view." }
 )
 vim.keymap.set(
-    "n", "<LocalLeader>tf", function() toggle_term({split = false}) end,
+    "n", "<LocalLeader>tf", function() toggle_term({float = true}) end,
     { desc = "Toggle terminal in float window." }
 )
 return { setup = setup, toggle_term = toggle_term }
-        -- vim.keymap.set(
-        --     { "n", "i", "t" },
-        --     "<esc>q", function() toggle_term(not term.is_float) end,
-        --     { buffer = term.buf, desc = "Toggle terminal off" }
-        -- )
