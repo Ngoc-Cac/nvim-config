@@ -1,12 +1,20 @@
 -- Functions for toggling terminal
 -- keep track of the win and buffer
 local utils = require("terminal.utils")
-local config = { width_ratio = 0.45, float_ratio = 0.85 }
-local term = {
-    buf = nil,
-    win = nil,
-    split_kind = "vertical",
+local config = {
+    split = {
+        width_ratio = 0.3,
+        height_ratio = 0.3,
+        width = nil,
+        height = nil
+    },
+    float = {
+        float_ratio = 0.8,
+        width = nil,
+        height = nil
+    },
 }
+local term = { buf = nil, win = nil, split_kind = "vertical" }
 
 local function close_win_if_exists()
     local is_open = utils.is_valid_win(term.win)
@@ -30,10 +38,11 @@ local function toggle_term(split_kind)
     local height = nil
     if split_kind == "float" then
         local ui = vim.api.nvim_list_uis()[1]
-        width = math.floor(ui.width * config.float_ratio)
-        height = math.floor(ui.height * config.float_ratio)
+        width = config.float.width or math.floor(ui.width * config.float.float_ratio)
+        height = config.float.height or math.floor(ui.height * config.float.float_ratio)
     else
-        width = math.floor(vim.o.columns * config.width_ratio)
+        width = config.split.width or math.floor(vim.o.columns * config.split.width_ratio)
+        height = config.split.height or math.floor(vim.o.columns * config.split.height_ratio)
     end
 
     term.win = utils.create_win(term.buf, {
@@ -53,7 +62,7 @@ end
 
 local function setup(opts)
     opts = opts or {}
-    config = vim.tbl_deep_extend("keep", config, opts)
+    config = vim.tbl_deep_extend("force", config, opts)
 end
 
 vim.keymap.set(
