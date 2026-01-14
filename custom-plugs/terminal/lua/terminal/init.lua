@@ -25,15 +25,7 @@ local function close_win_if_exists()
     return is_open
 end
 
-local function toggle_term(split_kind)
-    split_kind = split_kind or "right" -- vertical split by default
-
-    -- only returns if not switching view
-    if close_win_if_exists() and term.split_kind == split_kind then return end
-
-    -- create buf if no buffer
-    if not utils.is_valid_buf(term.buf) then term.buf = utils.create_term_buf() end
-
+local function get_win_wh(split_kind)
     local width = nil
     local height = nil
     if split_kind == "float" then
@@ -44,11 +36,21 @@ local function toggle_term(split_kind)
         width = config.split.width or math.floor(vim.o.columns * config.split.width_ratio)
         height = config.split.height or math.floor(vim.o.columns * config.split.height_ratio)
     end
+    return width, height
+end
 
-    term.win = utils.create_win(term.buf, {
-        split = split_kind, width = width, height = height
-    })
-    term.split_kind = split_kind
+local function toggle_term(split)
+    split = split or "right" -- vertical split by default
+
+    -- only returns if not switching view
+    if close_win_if_exists() and term.split_kind == split then return end
+
+    -- create buf if no buffer
+    if not utils.is_valid_buf(term.buf) then term.buf = utils.create_term_buf() end
+
+    local w, h = get_win_wh(split)
+    term.win = utils.create_win(term.buf, { split = split, width = w, height = h })
+    term.split_kind = split
 
     vim.keymap.set(
         { "n", "i", "t" },
@@ -66,7 +68,7 @@ local function setup(opts)
 end
 
 vim.keymap.set(
-    "n", "<LocalLeader>tv", function() toggle_term() end,
+    "n", "<LocalLeader>tv", toggle_term,
     { desc = "Toggle terminal in split view." }
 )
 vim.keymap.set(
