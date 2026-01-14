@@ -8,6 +8,12 @@ return {
     },
     lazy = false, -- neo-tree will lazily load itself
     enabled=true,
+    keys = {
+        {
+            "<C-b>", ":Neotree show toggle<cr>",
+            mode = { "n", "i" }, desc = "Toggle Neotree."
+        }
+    },
     ---@module 'neo-tree'
     ---@type neotree.Config
     opts = {
@@ -30,12 +36,6 @@ return {
                 staged = "A",
                 conflict = "C"
             }}
-        }
-    },
-    keys = {
-        {
-            "<C-b>", ":Neotree show toggle<cr>",
-            mode = { "n", "i" }, desc = "Toggle Neotree."
         }
     }
 }
