@@ -14,9 +14,9 @@ local function buf_del()
         vim.api.nvim_set_current_win(next_win)
     else
         local alt_buf = vim.fn.bufnr("#")
-        local is_valid = vim.api.nvim_buf_is_valid(alt_buf)
+        local is_valid = vim.api.nvim_buf_is_loaded(alt_buf)
 
-        if alt_buf == -1 then
+        if alt_buf == -1 or not is_valid then
             vim.notify(
                 "No previous buffer to switch to!",
                 vim.log.levels.INFO,
@@ -32,12 +32,8 @@ local function buf_del()
 end
 
 vim.keymap.set("n", "<localleader>bd", buf_del, { desc = "Delete the current buffer." })
-vim.keymap.set(
-    "n", "<localleader>bb", ":%bd|e#|b#",
-    { desc = "Delete all buffers except the current one." }
-)
 vim.api.nvim_create_user_command("R", function(opts)
     vim.cmd("e " .. opts.args .. " | bd#")
 end, { nargs = 1, complete = "file" })
 
-return { setup = function(opts) end, del_cur_buf = buf_del }
+return { setup = function(_) end, del_cur_buf = buf_del }

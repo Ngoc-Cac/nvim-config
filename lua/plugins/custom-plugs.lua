@@ -24,7 +24,10 @@ return {
         cmd = "R",
         keys = {
             { "<localleader>bd", desc = "Delete the current buffer." },
-            { "<localleader>bb", desc = "Delete all buffers except the current one." }
+            {
+                "<localleader>bb", ":%bd|e#|b#",
+                desc = "Delete all buffers except the current one."
+            }
         },
         opts = {}
     }
