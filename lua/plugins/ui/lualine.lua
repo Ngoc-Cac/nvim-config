@@ -15,7 +15,6 @@ local sections = {
         { "diff", source = diff_source },
         {
             "diagnostics",
-            always_visible = true,
             sections = { "error", "warn", "hint" },
         },
     },
