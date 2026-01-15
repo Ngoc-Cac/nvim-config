@@ -10,13 +10,34 @@ end
 
 return {
     "Shatur/neovim-session-manager",
-    dependencies = { "nvim-lua/plenary.nvim" },
+    dependencies = {
+        "nvim-lua/plenary.nvim",
+        -- use telescope to pick session, remember to configure
+        -- this to use the telescope-ui-select module. 
+        "nvim-telescope/telescope.nvim"
+    },
+    lazy = true, -- consider false if you want to auto-load session on startup
+    cmd = "SessionManager",
+    keys = {
+        {
+            "<localleader>ss", ":SessionManager load_session<cr>",
+            desc = "Load saved sessions"
+        },
+        {
+            "<localleader>sg", ":SessionManager load_git_session<cr>",
+            desc = "Load saved git sessions"
+        },
+        {
+            "<localleader>sl", ":SessionManager load_last_session<cr>",
+            desc = "Load last saved sessions"
+        }
+    },
     config = function()
         local sess_config = require("session_manager.config")
         require("session_manager").setup({
             autosave_ignore_buftypes = { "terminal" }, -- don't save terminal buffers
             autosave_only_in_session = true,
-            autoload_mode = {
+            autoload_mode = { -- only works when not lazy-loaded 
                 sess_config.AutoloadMode.GitSession,
                 sess_config.AutoloadMode.LastSession,
                 sess_config.AutoloadMode.Disabled
@@ -29,18 +50,5 @@ return {
             group = group,
             callback = function() vim.schedule(redetect_first_buf) end
         })
-
-        vim.keymap.set(
-            "n", "<localleader>ss", ":SessionManager load_session<cr>",
-            { desc = "Load saved sessions" }
-        )
-        vim.keymap.set(
-            "n", "<localleader>sg", ":SessionManager load_git_session<cr>",
-            { desc = "Load saved git sessions" }
-        )
-        vim.keymap.set(
-            "n", "<localleader>sl", ":SessionManager load_last_session<cr>",
-            { desc = "Load last saved sessions" }
-        )
     end
 }

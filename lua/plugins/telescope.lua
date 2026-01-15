@@ -22,18 +22,23 @@ local function set_telescope_hl(event)
 end
 
 local function config()
-    require("telescope").setup({
+    local telescope = require("telescope")
+    telescope.setup({
         pickers = {
             colorscheme = {
                 enable_preview = true
             }
         }
     })
+    telescope.load_extension("ui-select")
 end
 
 return {
     "nvim-telescope/telescope.nvim", tag = "v0.2.0",
-    dependencies = { "nvim-lua/plenary.nvim" },
+    dependencies = {
+        "nvim-lua/plenary.nvim",
+        "nvim-telescope/telescope-ui-select.nvim"
+    },
     cmd = "Telescope",
     keys = {
         { "<leader>ff", ":Telescope find_files<cr>", desc = "Telescope find files" },
