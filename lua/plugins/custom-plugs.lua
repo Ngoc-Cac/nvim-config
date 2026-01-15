@@ -1,9 +1,8 @@
-local config_path = vim.fn.stdpath("config")
+local custom_plugins = vim.fn.stdpath("config") .. "/custom-plugs/"
 
 return {
     {
-        dir = config_path .. "/custom-plugs/terminal",
-        name = "toggle-terminal",
+        dir = custom_plugins .. "toggle-terminal",
         cmd = "ToggleTerm",
         keys = {
             {
@@ -21,8 +20,7 @@ return {
         }
     },
     {
-        dir = config_path .. "/custom-plugs/buffers",
-        name = "buffers",
+        dir = custom_plugins .. "buffer-utils",
         cmd = "R",
         keys = {
             { "<localleader>bd", desc = "Delete the current buffer." },

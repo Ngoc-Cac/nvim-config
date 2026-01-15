@@ -31,13 +31,13 @@ local function buf_del()
     vim.api.nvim_buf_delete(cur_buf, { force = false })
 end
 
-vim.keymap.set("n", "<localleader>bd", buf_del, { desc = "Delete the current buffer."})
+vim.keymap.set("n", "<localleader>bd", buf_del, { desc = "Delete the current buffer." })
 vim.keymap.set(
     "n", "<localleader>bb", ":%bd|e#|b#",
-    { desc = "Delete all buffers except the current one."}
+    { desc = "Delete all buffers except the current one." }
 )
 vim.api.nvim_create_user_command("R", function(opts)
     vim.cmd("e " .. opts.args .. " | bd#")
 end, { nargs = 1, complete = "file" })
 
-return { setup = function(opts) end }
+return { setup = function(opts) end, del_cur_buf = buf_del }

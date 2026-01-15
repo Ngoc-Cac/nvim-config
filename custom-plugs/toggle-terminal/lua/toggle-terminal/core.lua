@@ -1,6 +1,6 @@
 -- Functions for toggling terminal
 -- keep track of the win and buffer
-local utils = require("terminal.utils")
+local utils = require("toggle-terminal.utils")
 local M = {}
 M.config = {
     split = {

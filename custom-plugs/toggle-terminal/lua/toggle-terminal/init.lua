@@ -1,4 +1,4 @@
-local terminal_core = require("terminal.core")
+local terminal_core = require("toggle-terminal.core")
 
 local function cmdline_complete(ArgLead, _, _)
     local directions = { 'float', 'above', 'below', 'left', 'right' }
