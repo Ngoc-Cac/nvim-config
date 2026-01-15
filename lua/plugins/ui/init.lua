@@ -39,5 +39,16 @@ return {
             vim.notify = require("notify")
             vim.notify.setup(notify_config)
         end
+    },
+    -- indentation guide
+    {
+        "lukas-reineke/indent-blankline.nvim",
+        main = "ibl",
+        event = { "BufReadPost", "BufNewFile", "VeryLazy" },
+        ---@module "ibl"
+        ---@type ibl.config
+        opts = {
+            scope = { show_start = false, show_end = false }
+        },
     }
 }
