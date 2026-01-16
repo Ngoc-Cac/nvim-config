@@ -17,7 +17,9 @@ local function create_term_buf()
         buffer = buf,
         once = true,
         callback = function()
-            vim.api.nvim_buf_delete(buf, { force = false })
+            if vim.api.nvim_buf_is_loaded(buf) then
+                vim.api.nvim_buf_delete(buf, { force = true })
+            end
         end,
     })
     return buf
