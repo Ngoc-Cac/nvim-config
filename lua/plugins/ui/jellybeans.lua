@@ -1,4 +1,4 @@
-local function config_hl_group(hl, c)
+local function config_hl_group(hl, _)
     hl.Type = { italic = false, fg = "#36db80" }
     hl["@module.python"] = { italic = false }
 

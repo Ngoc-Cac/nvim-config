@@ -7,7 +7,7 @@ return {
         "nvim-tree/nvim-web-devicons",
     },
     lazy = false, -- neo-tree will lazily load itself
-    enabled=true,
+    enabled=false,
     keys = {
         {
             "<C-b>", ":Neotree show toggle<cr>",

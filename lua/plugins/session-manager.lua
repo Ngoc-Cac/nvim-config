@@ -16,8 +16,7 @@ return {
         -- this to use the telescope-ui-select module. 
         "nvim-telescope/telescope.nvim"
     },
-    lazy = true, -- consider false if you want to auto-load session on startup
-    cmd = "SessionManager",
+    lazy = false,
     keys = {
         {
             "<localleader>ss", ":SessionManager load_session<cr>",
@@ -35,9 +34,9 @@ return {
     config = function()
         local sess_config = require("session_manager.config")
         require("session_manager").setup({
-            autosave_ignore_buftypes = { "terminal" }, -- don't save terminal buffers
+            autosave_ignore_buftypes = { "terminal", "netrw" }, -- don't save terminal buffers
             autosave_only_in_session = true,
-            autoload_mode = { -- only works when not lazy-loaded 
+            autoload_mode = {
                 sess_config.AutoloadMode.GitSession,
                 sess_config.AutoloadMode.LastSession,
                 sess_config.AutoloadMode.Disabled
