@@ -2,6 +2,8 @@ local keyset = vim.keymap.set
 
 -- escape key
 keyset("i", "jj", "<esc>")
+keyset("i", "jk", "<esc>")
+keyset("i", "kj", "<esc>")
 keyset("c", "jj", "<c-c>")
 keyset(
     "t", "<esc><esc>", "<C-\\><C-n>",
@@ -16,6 +18,7 @@ keyset(
 
 -- quick command mode
 keyset({ "n", "v" }, ";", ":", { desc = "Enter command-line mode" })
+keyset("n", "<localleader>l", ":nohl<cr>", { desc = "Quickly clear the highlighting" })
 
 -- quick undo and redo in insert mode
 keyset("i", "<c-r>", "<c-o><c-r>")
@@ -36,5 +39,5 @@ keyset("n", "X", ":%d_<cr>")
 -- alt + motion to move line up and down
 keyset("n", "<m-j>", ":m+<cr>==")
 keyset("n", "<m-k>", ":m-2<cr>==")
-keyset("v", "<m-j>", ":m'>+1<cr>gv=gv")
-keyset("v", "<m-k>", ":m'<-2<cr>gv=gv")
+keyset("v", "J", ":m'>+1<cr>gv=gv")
+keyset("v", "K", ":m'<-2<cr>gv=gv")
