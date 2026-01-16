@@ -6,6 +6,7 @@ local which_key_spec = {
     { "<leader>g", group = "Git Utilities" },
     { "<leader>gl", group = "Git Log" },
     { "<leader>m", group = "Markdown preview" },
+    { "<leader>o", group = "Oil.nvim key-mappings" },
     { "<leader>s", group = "Treesj features" },
     { "gr", group = "LSP actions" }
 }
