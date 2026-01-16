@@ -5,8 +5,8 @@ vim.g.maplocalleader = "\\"
 -- General Config
 require("config.general")
 
--- some common shortcuts I'm used to
 require("key-mappings")
+require("autocmds")
 
 -- do not load the plugins if this file is
 -- being called from the vscode extension
