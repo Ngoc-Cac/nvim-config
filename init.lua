@@ -14,6 +14,3 @@ if vim.g.vscode then return end
 
 -- setup lazy.nvim and plugins 
 require("config.lazy")
-
-vim.cmd.colorscheme("jellybeans")
--- vim.cmd.colorscheme("gruvbox")
