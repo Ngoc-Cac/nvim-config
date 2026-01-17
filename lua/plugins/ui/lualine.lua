@@ -10,17 +10,11 @@ local function diff_source()
 end
 
 local sections = {
-    lualine_a = { "mode", "branch" },
-    lualine_b = {
-        { "diff", source = diff_source },
-        {
-            "diagnostics",
-            sections = { "error", "warn", "hint" },
-        },
-    },
-    lualine_c = { "buffers" },
+    lualine_a = {},
+    lualine_b = { "filetype" },
+    lualine_c = {{ "filename", path = 1 }},
     lualine_x = {
-        "encoding", "filetype",
+        "encoding",
         {
             "fileformat",
             icons_enabled = true,
@@ -28,19 +22,30 @@ local sections = {
         }
     },
 }
+local tabline = {
+    lualine_a = { "mode", "branch" },
+    lualine_b = {
+        {
+            "diagnostics",
+            sections = { "error", "warn", "hint", "info" },
+            always_visible = true
+        },
+        { "diff", source = diff_source },
+    },
+    lualine_x = {{ "buffers", max_length = vim.o.columns * 2 / 3 }},
+    lualine_c = {}, lualine_y = {}, lualine_z = {}
+}
 
 return {
     "nvim-lualine/lualine.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
     event = "VeryLazy",
     opts = {
-        options = {
-            theme = "gruvbox-material"
-        },
+        options = { theme = "gruvbox-material" },
         sections = sections,
-        tabline = {
-            lualine_a = {{ "tabs", mode = 1, tabs_max_length = vim.o.columns / 2 }},
-            lualine_x = {{ "buffers" }}
+        tabline = tabline,
+        winbar = {
+            lualine_b = {{ "tabs", mode = 2, max_length = vim.o.columns }}
         }
     }
 }
