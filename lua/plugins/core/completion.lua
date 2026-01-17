@@ -43,7 +43,7 @@ return {
         "saghen/blink.cmp",
         dependencies = { "rafamadriz/friendly-snippets" },
         version = "1.*",
-        event = { "InsertEnter", "CmdwinEnter" },
+        event = { "InsertEnter", }, -- add "CmdwinEnter" if cmdline completion is enabled
         opts = blink_opts,
         opts_extend = { "sources.default" }
     }

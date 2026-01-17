@@ -18,8 +18,8 @@ local textobj_config = {
     -- Automatically jump forward to textobj, similar to targets.vim
     lookahead = true,
     selection_modes = {
-        ['@parameter.outer'] = 'v', -- charwise
-        ['@function.outer'] = 'v', -- linewise
+        ['@parameter.outer'] = 'v',
+        ['@function.outer'] = 'v',
     },
 }
 
@@ -32,8 +32,7 @@ return {
             -- enable syntax highlighting with treesitter
             vim.api.nvim_create_autocmd("FileType", {
                 pattern = {
-                    "python",
-                    "markdown",
+                    "lua", "python", "markdown",
                     "json", "yaml", "toml",
                 },
                 callback = function() vim.treesitter.start() end,
@@ -44,12 +43,13 @@ return {
         "nvim-treesitter/nvim-treesitter-textobjects",
         branch = "main",
         event = "VeryLazy",
-        config = function()
+        opts = {
+            select = textobj_config,
+            move = { enable = true }
+        },
+        config = function(_, opts)
             -- configuration
-            require("nvim-treesitter-textobjects").setup {
-                select = textobj_config,
-                move = { enable = true }
-            }
+            require("nvim-treesitter-textobjects").setup(opts)
             bind_textobj_keymaps(require("nvim-treesitter-textobjects.select"))
         end
     }

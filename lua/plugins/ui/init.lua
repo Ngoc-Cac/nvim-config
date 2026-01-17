@@ -10,14 +10,6 @@ local which_key_spec = {
     { "<leader>s", group = "Treesj features" },
     { "gr", group = "LSP actions" }
 }
-local notify_config = {
-    fps=1, timeout = 2000,
-    max_width = 60,
-    top_down = false,
-    render = "wrapped-default",
-    stages = "static",
-    merge_duplicates = true,
-}
 
 return {
     { "morhetz/gruvbox", priority = 1000, enabled = false },
@@ -36,9 +28,17 @@ return {
     {
         "rcarriga/nvim-notify",
         event = "VeryLazy",
-        config = function()
+        opts = {
+            fps=1, timeout = 2000,
+            max_width = 60,
+            top_down = false,
+            render = "wrapped-default",
+            stages = "static",
+            merge_duplicates = true,
+        },
+        config = function(_, opts)
             vim.notify = require("notify")
-            vim.notify.setup(notify_config)
+            vim.notify.setup(opts)
         end
     },
     -- indentation guide
