@@ -41,12 +41,14 @@ return {
     },
     cmd = "Telescope",
     keys = {
-        { "<leader>ff", ":Telescope find_files<cr>", desc = "Telescope find files" },
-        { "<leader>fg", ":Telescope live_grep<cr>", desc = "Telescope live grep" },
-        { "<leader>fb", ":Telescope buffers<cr>", desc = "Telescope buffers" },
-        { "<leader>fm", ":Telescope marks<cr>", desc = "Telescope list marks" },
-        { "<leader>fc", ":Telescope colorscheme<cr>", desc = "Telescope list colorscheme" },
-        { "<leader>fn", ":Telescope notify<CR>", desc = "Telescope list notify" },
+        { "<leader>fb", ":Telescope buffers<cr>", desc = "Buffers" },
+        { "<leader>ff", ":Telescope find_files<cr>", desc = "Files" },
+        { "<leader>fr", ":Telescope registers<cr>", desc = "Registers" },
+        { "<leader>fm", ":Telescope marks<cr>", desc = "Marks" },
+        { "<leader>fd", ":Telescope diagnostics<cr>", desc = "Diagnostics" },
+        { "<leader>fg", ":Telescope live_grep<cr>", desc = "Live grep" },
+        { "<leader>fn", ":Telescope notify<CR>", desc = "Notification" },
+
         { "grd", ":Telescope lsp_definitions<cr>", desc = "Jump to definition"},
         {
             "grv", function()
