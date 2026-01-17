@@ -8,13 +8,42 @@ local function redetect_first_buf()
     vim.cmd(detect_ft)
 end
 
+local function config()
+    -- wizardry lazy-loading for the nice ui. This will lazy-load telescope
+    local original_ui_sel = vim.ui.select
+    vim.ui.select = function(...)
+        vim.ui.select = original_ui_sel
+        require("telescope") -- make telescope load the ui-select extension 
+        vim.ui.select(...)
+    end
+
+    local sess_config = require("session_manager.config")
+    require("session_manager").setup({
+        autosave_ignore_buftypes = { "terminal", "netrw" }, -- don't save terminal buffers
+        autosave_only_in_session = true,
+        autoload_mode = {
+            sess_config.AutoloadMode.GitSession,
+            sess_config.AutoloadMode.LastSession,
+            sess_config.AutoloadMode.Disabled
+        }
+    })
+
+    local group = vim.api.nvim_create_augroup("SessionManagerPost", { clear = true })
+    vim.api.nvim_create_autocmd("User", {
+        pattern = "SessionLoadPost",
+        group = group,
+        callback = function() vim.schedule(redetect_first_buf) end
+    })
+end
+
 return {
     "Shatur/neovim-session-manager",
     dependencies = {
         "nvim-lua/plenary.nvim",
         -- use telescope to pick session, remember to configure
         -- this to use the telescope-ui-select module. 
-        "nvim-telescope/telescope.nvim"
+        -- This is also lazy-loaded manually so don't uncomment this. 
+        -- "nvim-telescope/telescope.nvim"
     },
     lazy = false,
     keys = {
@@ -31,23 +60,5 @@ return {
             desc = "Load last saved sessions"
         }
     },
-    config = function()
-        local sess_config = require("session_manager.config")
-        require("session_manager").setup({
-            autosave_ignore_buftypes = { "terminal", "netrw" }, -- don't save terminal buffers
-            autosave_only_in_session = true,
-            autoload_mode = {
-                sess_config.AutoloadMode.GitSession,
-                sess_config.AutoloadMode.LastSession,
-                sess_config.AutoloadMode.Disabled
-            }
-        })
-
-        local group = vim.api.nvim_create_augroup("SessionManagerPost", { clear = true })
-        vim.api.nvim_create_autocmd("User", {
-            pattern = "SessionLoadPost",
-            group = group,
-            callback = function() vim.schedule(redetect_first_buf) end
-        })
-    end
+    config = config
 }
