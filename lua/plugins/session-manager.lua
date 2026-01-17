@@ -9,14 +9,6 @@ local function redetect_first_buf()
 end
 
 local function config()
-    -- wizardry lazy-loading for the nice ui. This will lazy-load telescope
-    local original_ui_sel = vim.ui.select
-    vim.ui.select = function(...)
-        vim.ui.select = original_ui_sel
-        require("telescope") -- make telescope load the ui-select extension 
-        vim.ui.select(...)
-    end
-
     local sess_config = require("session_manager.config")
     require("session_manager").setup({
         autosave_ignore_buftypes = { "terminal", "netrw" }, -- don't save terminal buffers
@@ -38,13 +30,7 @@ end
 
 return {
     "Shatur/neovim-session-manager",
-    dependencies = {
-        "nvim-lua/plenary.nvim",
-        -- use telescope to pick session, remember to configure
-        -- this to use the telescope-ui-select module. 
-        -- This is also lazy-loaded manually so don't uncomment this. 
-        -- "nvim-telescope/telescope.nvim"
-    },
+    dependencies = { "nvim-lua/plenary.nvim" },
     lazy = false,
     keys = {
         {

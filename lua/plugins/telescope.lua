@@ -57,6 +57,15 @@ return {
         },
     },
     init = function()
+        -- wizardry lazy-loading for the nice ui.
+        -- This will lazy-load telescope on vim.ui.select
+        local original_ui_sel = vim.ui.select
+        vim.ui.select = function(...)
+            vim.ui.select = original_ui_sel
+            require("telescope") -- make telescope load the ui-select extension 
+            vim.ui.select(...)
+        end
+
         vim.api.nvim_create_autocmd({ "User", "ColorScheme" }, {
             callback = set_telescope_hl
         })
