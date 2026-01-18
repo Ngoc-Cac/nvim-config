@@ -27,7 +27,7 @@ return {
     -- notification plugin
     {
         "rcarriga/nvim-notify",
-        event = "VeryLazy",
+        lazy = true,
         opts = {
             fps=1, timeout = 2000,
             max_width = 60,
@@ -36,9 +36,11 @@ return {
             stages = "static",
             merge_duplicates = true,
         },
-        config = function(_, opts)
-            vim.notify = require("notify")
-            vim.notify.setup(opts)
+        init = function()
+            vim.notify = function(...)
+                vim.notify = require("notify")
+                vim.notify(...)
+            end
         end
     },
     -- indentation guide
