@@ -1,20 +1,22 @@
-local function set_telescope_hl(event)
-    if event.event ~= "ColorScheme"
-        and event.data ~= "telescope.nvim" then
-        return
-    end
-
-    local tel_bg = "#231c1c"
+local tel_bg = "#231c1c"
+local tel_fg = {
+    prompt = "#3fb75b",
+    preview = "#d68d46",
+    results = "#536ee4"
+}
+local function set_telescope_hl()
     local TelescopePrompt = {
-        TelescopePromptBorder = { bg = tel_bg },
-        TelescopePreviewBorder = { bg = tel_bg },
-        TelescopeResultsBorder = { bg = tel_bg },
-        TelescopePromptNormal = { bg = tel_bg },
+        TelescopePromptBorder  = { bg = tel_bg, fg = tel_fg["prompt"] },
+        TelescopePreviewBorder = { bg = tel_bg, fg = tel_fg["preview"] },
+        TelescopeResultsBorder = { bg = tel_bg, fg = tel_fg["results"] },
+
+        TelescopePromptNormal  = { bg = tel_bg },
         TelescopePreviewNormal = { bg = tel_bg },
         TelescopeResultsNormal = { bg = tel_bg },
-        TelescopePromptTitle = { bg = tel_bg },
-        TelescopePreviewTitle = { bg = tel_bg },
-        TelescopeResultsTitle = { bg = tel_bg },
+
+        TelescopePromptTitle  = { bold = true, bg = tel_bg, fg = tel_fg["prompt"] },
+        TelescopePreviewTitle = { bold = true, bg = tel_bg, fg = tel_fg["preview"] },
+        TelescopeResultsTitle = { bold = true, bg = tel_bg, fg = tel_fg["results"] },
     }
     for hl, col in pairs(TelescopePrompt) do
         vim.api.nvim_set_hl(0, hl, col)
@@ -22,11 +24,19 @@ local function set_telescope_hl(event)
 end
 
 local function config()
+    set_telescope_hl()
+
     local telescope = require("telescope")
     telescope.setup({
+        defaults = { initial_mode = "normal" },
         pickers = {
             colorscheme = {
                 enable_preview = true
+            }
+        },
+        extensions = {
+            ["ui-select"] = {
+                require("telescope.themes").get_dropdown({})
             }
         }
     })
@@ -34,7 +44,8 @@ local function config()
 end
 
 return {
-    "nvim-telescope/telescope.nvim", tag = "v0.2.0",
+    "nvim-telescope/telescope.nvim", -- tag = "*",
+    branch = "master",
     dependencies = {
         "nvim-lua/plenary.nvim",
         "nvim-telescope/telescope-ui-select.nvim"
@@ -65,10 +76,6 @@ return {
             require("telescope") -- make telescope load the ui-select extension 
             vim.ui.select(...)
         end
-
-        vim.api.nvim_create_autocmd({ "User", "ColorScheme" }, {
-            callback = set_telescope_hl
-        })
     end,
     config = config
 }
