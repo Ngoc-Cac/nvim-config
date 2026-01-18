@@ -47,11 +47,9 @@ return {
     {
         "lukas-reineke/indent-blankline.nvim",
         main = "ibl",
-        event = { "BufReadPost", "BufNewFile", "VeryLazy" },
+        event = { "BufReadPost", "BufNewFile" },
         ---@module "ibl"
         ---@type ibl.config
-        opts = {
-            scope = { show_start = false, show_end = false }
-        },
+        opts = { scope = { show_start = false, show_end = false } },
     }
 }
