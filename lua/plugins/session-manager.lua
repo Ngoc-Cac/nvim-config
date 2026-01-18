@@ -1,11 +1,12 @@
 -- session_manager does not detect the first buffer for some reason
 local function redetect_first_buf()
-    local detect_ft = "filetype detect"
-    local buffers = vim.api.nvim_list_bufs()
-    if #buffers > 0 and vim.api.nvim_buf_is_loaded(buffers[1]) then
-        vim.api.nvim_buf_call(buffers[1], function() vim.cmd(detect_ft) end)
+    local redetect = function() vim.cmd("filetype detect") end
+
+    for _, tab in ipairs(vim.api.nvim_list_tabpages()) do
+        for _, win in ipairs(vim.api.nvim_tabpage_list_wins(tab)) do
+            vim.api.nvim_buf_call(vim.api.nvim_win_get_buf(win), redetect)
+        end
     end
-    vim.cmd(detect_ft)
 end
 
 local function config()
