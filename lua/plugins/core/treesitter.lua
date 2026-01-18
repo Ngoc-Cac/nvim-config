@@ -26,8 +26,9 @@ local textobj_config = {
 return {
     {
         'nvim-treesitter/nvim-treesitter',
-        event = { "BufReadPost", "BufNewFile", "VeryLazy" },
         build = ':TSUpdate',
+        dependencies = { "nvim-treesitter/nvim-treesitter-textobjects" },
+        event = { "BufReadPost", "BufNewFile" },
         config = function()
             -- enable syntax highlighting with treesitter
             vim.api.nvim_create_autocmd("FileType", {
@@ -42,7 +43,7 @@ return {
     {
         "nvim-treesitter/nvim-treesitter-textobjects",
         branch = "main",
-        event = "VeryLazy",
+        lazy = true,
         opts = {
             select = textobj_config,
             move = { enable = true }
