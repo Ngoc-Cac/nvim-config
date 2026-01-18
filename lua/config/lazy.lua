@@ -19,7 +19,7 @@ vim.keymap.set("n", "<leader>l", ":Lazy<CR>", { desc = "Open the lazy.nvim menu"
 
 -- make lazy set up the plugins
 require("lazy").setup({
-    defaults = { cond = vim.g.vscode }, -- do not load being called from vscode
+    defaults = { cond = not vim.g.vscode }, -- do not load being called from vscode
     spec = {
         { import = "plugins" },
         { import = "plugins.core" },
