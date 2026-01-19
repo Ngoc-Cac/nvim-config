@@ -15,9 +15,8 @@ local function config()
         autosave_ignore_buftypes = { "terminal", "netrw" }, -- don't save terminal buffers
         autosave_only_in_session = true,
         autoload_mode = {
-            sess_config.AutoloadMode.GitSession,
             sess_config.AutoloadMode.LastSession,
-            sess_config.AutoloadMode.Disabled
+            -- sess_config.AutoloadMode.Disabled
         }
     })
 

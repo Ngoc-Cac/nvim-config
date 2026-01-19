@@ -12,8 +12,10 @@ local which_key_spec = {
 }
 
 return {
-    { "morhetz/gruvbox", priority = 1000, enabled = false },
-    { "mechatroner/rainbow_csv", ft="csv" },
+    {
+        "mechatroner/rainbow_csv",
+        ft = { "csv", "tsv" }
+    },
     -- key mappings hint
     {
         "folke/which-key.nvim",

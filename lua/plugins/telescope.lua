@@ -58,6 +58,7 @@ return {
         { "<leader>fm", ":Telescope marks<cr>", desc = "Marks" },
         { "<leader>fd", ":Telescope diagnostics<cr>", desc = "Diagnostics" },
         { "<leader>fg", ":Telescope live_grep<cr>", desc = "Live grep" },
+        { "<leader>fh", ":Telescope help_tags<cr>", desc = "Pick help tags" },
         { "<leader>fn", ":Telescope notify<CR>", desc = "Notification" },
 
         { "grd", ":Telescope lsp_definitions<cr>", desc = "Jump to definition"},
