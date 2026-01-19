@@ -1,16 +1,16 @@
 local blink_opts = {
-    cmdline = { enabled = false },
     keymap = {
         preset = "super-tab",
         ["<Esc>"] = { "hide", "hide_documentation", "hide_signature", "fallback" },
-        ["<CR>"] = { "select_and_accept", "fallback" }
+        -- ["<CR>"] = { "select_and_accept", "fallback" }
     },
     appearance = { nerd_font_variant = "normal" },
+    cmdline = { enabled = false },
     completion = {
         documentation = {
             auto_show = true,
             auto_show_delay_ms = 300,
-            treesitter_highlighting = false
+            treesitter_highlighting = true
         },
     },
     signature = {
