@@ -4,7 +4,8 @@ return {
     {
         "tpope/vim-commentary",
         keys = {
-            "gcc", { "gc", mode = { "n", "x", "o" } },
+            { "gcc", desc = "Comment the current line" },
+            { "gc", mode = { "n", "x", "o" }, desc = "Comment selection" },
             { "<C-_>", "<C-o>gcc", mode = "i", remap = true, desc = "Comment selected code." },
         }
     },
