@@ -30,5 +30,14 @@ return {
             }
         },
         opts = {}
+    },
+    {
+        dir = custom_plugins .. "keymaps-extend",
+        keys = {
+            { "<c-h>", mode = { "i" } },
+            { "<leader>c", mode = { "n", "x", "o" }, desc = "Del trailing whitespaces" },
+            { "<leader>cc", desc = "Del trailing whitespaces for the current line" }
+        },
+        opts = {}
     }
 }

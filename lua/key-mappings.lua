@@ -1,9 +1,3 @@
-local function backpsace_del()
-    -- if at end of line: space -> normal -> "_cb
-    -- else move right once, enter normal mode and replace backwards
-    return (vim.fn.col(".") == vim.fn.col("$") and " " or "<right>") .. '<esc>"_cb'
-end
-
 local keyset = vim.keymap.set
 
 -- escape key
@@ -24,8 +18,6 @@ keyset("i", "<c-r>", "<c-o><c-r>")
 keyset("n", "<c-s>", ":w<cr>", { desc = ":w" })
 keyset("i", "<c-s>", "<c-o>:w<cr>", { desc = ":w" })
 
--- ctrl-backspace in insert mode
-keyset("i", "<c-h>", backpsace_del, { expr = true, desc = "Delete word backwards in insert mode" })
 -- delete everything in file
 keyset("n", "X", ":%d_<cr>", { desc = "Delete everything in the current buffer" })
 
