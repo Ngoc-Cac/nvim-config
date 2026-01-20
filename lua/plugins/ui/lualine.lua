@@ -11,7 +11,7 @@ end
 
 local sections = {
     lualine_a = {},
-    lualine_b = { "filetype" },
+    lualine_b = { "filetype", "lsp_status" },
     lualine_c = {{ "filename", path = 1 }},
     lualine_x = {
         "encoding",
@@ -30,10 +30,10 @@ local tabline = {
             sections = { "error", "warn", "hint", "info" },
             always_visible = true
         },
-        { "diff", source = diff_source },
+        { "diff", draw_empty = true, source = diff_source },
     },
-    lualine_x = {{ "buffers", max_length = vim.o.columns * 2 / 3 }},
-    lualine_c = {}, lualine_y = {}, lualine_z = {}
+    lualine_z = {{ "tabs", mode = 2, max_length = vim.o.columns }},
+    lualine_c = {}, lualine_y = {}, lualine_x = {}
 }
 
 return {
@@ -45,7 +45,8 @@ return {
         sections = sections,
         tabline = tabline,
         winbar = {
-            lualine_b = {{ "tabs", mode = 2, max_length = vim.o.columns }}
+            lualine_b = { "searchcount", "selectioncount" },
+            lualine_x = {{ "buffers", max_length = vim.o.columns * 2 / 3 }},
         }
     }
 }
