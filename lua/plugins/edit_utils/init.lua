@@ -2,12 +2,13 @@ return {
     { "Vimjas/vim-python-pep8-indent", ft="python" },
     -- commenting code
     {
-        "tpope/vim-commentary",
+        'numToStr/Comment.nvim',
         keys = {
-            { "gcc", desc = "Comment the current line" },
-            { "gc", mode = { "n", "x", "o" }, desc = "Comment selection" },
-            { "<C-_>", "<C-o>gcc", mode = "i", remap = true, desc = "Comment selected code." },
-        }
+            { "gc", mode = { "n", "x", "o" }, desc = "Comment toggle linewise" },
+            { "gb", mode = { "n", "x", "o" }, desc = "Comment toggle blockwise" },
+            { "<C-_>", "<C-o>gcc", mode = "i", remap = true, desc = "Comment selected code." }
+        },
+        opts = {}
     },
     {
         "jake-stewart/multicursor.nvim",
