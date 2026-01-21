@@ -7,6 +7,8 @@ local function config_hl_group(hl, _)
     -- hl["@variable.member"] = { fg = "#a3a377" }
     -- hl["@variable.member"] = { fg = "#b8b864" }
 
+    hl["@lsp.mod.static.python"] = { fg = "#7e83ce" }
+
     hl["@lsp.type.property.python"] = { fg = "#b690ce" }
     hl["@lsp.type.namespace.python"] = { fg = "#cd2d49" }
 end
