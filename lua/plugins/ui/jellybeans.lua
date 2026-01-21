@@ -3,9 +3,6 @@ local function config_hl_group(hl, _)
     hl["@module.python"] = { italic = false }
 
     hl["@variable.parameter"] = { italic = false }
-    -- hl["@variable.member"] = { fg = "#8c8c70" }
-    -- hl["@variable.member"] = { fg = "#a3a377" }
-    -- hl["@variable.member"] = { fg = "#b8b864" }
 
     hl["@lsp.mod.static.python"] = { fg = "#7e83ce" }
 
