@@ -6,7 +6,7 @@ return {
     keys = {
         { "-", ":Oil<cr>", desc = "Open Oil" },
         { "<leader>ol", ":topleft 30vsplit | Oil .<cr>", desc = "Open Oil to the left" },
-        { "<leader>ot", ":tab Oil .<cr>", desc = "Open Oil in new tab" },
+        { "<leader>ot", ":tab Oil<cr>", desc = "Open Oil in new tab" },
         { "<leader>of", ":Oil --float .<cr>", desc = "Open Oil in float window"}
     },
     ---@module 'oil'
