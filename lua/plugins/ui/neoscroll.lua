@@ -1,5 +1,7 @@
 local function set_keymap()
     local neoscroll = require("neoscroll")
+    neoscroll.setup({ easing = "cubic" })
+
     local keymap = {
         ["<C-u>"] = function() neoscroll.ctrl_u({ duration = 125 }) end;
         ["<C-d>"] = function() neoscroll.ctrl_d({ duration = 125 }) end;
