@@ -40,7 +40,6 @@ return {
         config = function()
             -- show lsp diagnostics as virtual line
             vim.diagnostic.config({ virtual_lines = true })
-            vim.lsp.inlay_hint.enable(true)
 
             for _, server in ipairs(lsp_servers) do
                 vim.lsp.config(server, lsp_capabilities)
