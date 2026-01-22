@@ -2,8 +2,13 @@ return {
     "kevinhwang91/nvim-ufo",
     dependencies = { "kevinhwang91/promise-async" },
     event = "BufReadPost",
-    config = function()
+    opts = {
+        provider_selector = function() return { "lsp", "indent" } end
+    },
+    config = function(opts)
         local ufo = require("ufo")
+        ufo.setup(opts)
+
         -- open and close all
         vim.keymap.set(
             "n", "zR", ufo.openAllFolds, { desc = "Open all folds." }
@@ -20,6 +25,5 @@ return {
             end,
             { desc = "Peek into the current fold." }
         )
-        ufo.setup()
     end
 }

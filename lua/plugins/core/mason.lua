@@ -1,3 +1,13 @@
+local lsp_capabilities = {
+    capabilities = {
+        textDocument = {
+            foldingRange = {
+                dynamicRegistration = false,
+                lineFoldingOnly = true
+            }
+        }
+    }
+}
 local lsp_servers = {
     "bashls", "jsonls", "yamlls",
 
@@ -32,6 +42,9 @@ return {
             vim.diagnostic.config({ virtual_lines = true })
             vim.lsp.inlay_hint.enable(true)
 
+            for _, server in ipairs(lsp_servers) do
+                vim.lsp.config(server, lsp_capabilities)
+            end
         end
     }
 }
