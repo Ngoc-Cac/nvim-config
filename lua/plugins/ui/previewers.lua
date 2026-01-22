@@ -4,19 +4,15 @@ return {
         "OXY2DEV/markview.nvim",
         dependencies = { "nvim-tree/nvim-web-devicons" },
         enabled = false,
-        lazy = true,
-        cmd = "Markview",
-        keys = {
-            {
-                "<leader>mm", ":Markview toggle<cr>",
-                desc = "Toggle Markdown preview for current buffer"
-            },
-            {
-                "<leader>mv", ":Markview splitToggle<cr>",
-                desc = "Toggle Markdown split preview for current buffer"
-            }
-        },
         opts = { preview = { enable = false } },
+    },
+    { -- a web-based version, which is nice to test stuff out, but requires npm 
+        "iamcco/markdown-preview.nvim",
+        build = "cd app && npm install && git restore .", -- npm modifies lock for some reason 
+        cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+        init = function()
+            vim.g.mkdp_filetypes = { "markdown" }
+        end,
     },
     -- color previewer
     {
