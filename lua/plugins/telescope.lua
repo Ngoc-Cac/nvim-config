@@ -28,7 +28,15 @@ local function config()
 
     local telescope = require("telescope")
     telescope.setup({
-        defaults = { initial_mode = "normal" },
+        defaults = {
+            initial_mode = "normal",
+            results_title = false,
+            sorting_strategy = "ascending",
+            layout_config = {
+                prompt_position = "top",
+                width = .85
+            }
+        },
         pickers = {
             colorscheme = {
                 enable_preview = true
