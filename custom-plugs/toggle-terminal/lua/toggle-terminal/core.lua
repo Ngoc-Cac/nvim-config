@@ -54,11 +54,14 @@ function M.toggle_term(split)
     term.split_kind = split
 
     vim.keymap.set(
-        { "n", "t" },
-        "<esc>q", function()
+        "t", "<esc>q", function()
             vim.cmd.stopinsert()
             M.toggle_term(term.split_kind)
         end,
+        { buffer = term.buf, desc = "Toggle current terminal off" }
+    )
+    vim.keymap.set(
+        "n", "q", function() M.toggle_term(term.split_kind) end,
         { buffer = term.buf, desc = "Toggle current terminal off" }
     )
 end
