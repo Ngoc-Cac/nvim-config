@@ -20,6 +20,7 @@ keyset("i", "<c-s>", "<c-o>:w<cr>", { desc = ":w" })
 
 -- delete everything in file
 keyset("n", "X", ":%d_<cr>", { desc = "Delete everything in the current buffer" })
+keyset({ "n", "i" }, "<c-a>", ":%y<cr>", { desc = "Yank the whole file" })
 
 -- alt + motion to move line up and down
 keyset("n", "<m-j>", ":m+<cr>==", { desc = "Move the current line up" })
