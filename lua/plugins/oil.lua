@@ -1,5 +1,5 @@
 return {
-    'stevearc/oil.nvim',
+    "stevearc/oil.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
     lazy = true,
     cmd = "Oil",
@@ -9,7 +9,7 @@ return {
         { "<leader>ot", ":tab Oil<cr>", desc = "Open Oil in new tab" },
         { "<leader>of", ":Oil --float .<cr>", desc = "Open Oil in float window"}
     },
-    ---@module 'oil'
+    ---@module "oil"
     ---@type oil.SetupOpts
     opts = {
         buf_options = { bufhidden = "delete" },
@@ -18,8 +18,8 @@ return {
         float = {
             border = "rounded",
             override = function(defaults)
-                defaults['title'] = ''
-                defaults['title_pos'] = 'center'
+                defaults["title"] = ""
+                defaults["title_pos"] = "center"
                 return defaults
             end
         },
