@@ -31,10 +31,15 @@ local function config()
         defaults = {
             initial_mode = "normal",
             results_title = false,
+            scroll_strategy = "limit",
             sorting_strategy = "ascending",
+            dynamic_preview_title = true,
             layout_config = {
                 prompt_position = "top",
                 width = .85
+            },
+            mappings = {
+                n = { ["<esc>"] = require("telescope.actions").close }
             }
         },
         pickers = {
@@ -52,8 +57,8 @@ local function config()
 end
 
 return {
-    "nvim-telescope/telescope.nvim", -- tag = "*",
-    branch = "master",
+    "nvim-telescope/telescope.nvim",
+    version = "*",
     dependencies = {
         "nvim-lua/plenary.nvim",
         "nvim-telescope/telescope-ui-select.nvim"
