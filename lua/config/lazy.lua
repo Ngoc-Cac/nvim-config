@@ -1,17 +1,17 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
-    local lazyrepo = "https://github.com/folke/lazy.nvim.git"
-    local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
-    if vim.v.shell_error ~= 0 then
-        vim.api.nvim_echo({
-            { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
-            { out, "WarningMsg" },
-            { "\nPress any key to exit..." },
-        }, true, {})
-        vim.fn.getchar()
-        os.exit(1)
-    end
+  local lazyrepo = "https://github.com/folke/lazy.nvim.git"
+  local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
+  if vim.v.shell_error ~= 0 then
+    vim.api.nvim_echo({
+      { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
+      { out, "WarningMsg" },
+      { "\nPress any key to exit..." },
+    }, true, {})
+    vim.fn.getchar()
+    os.exit(1)
+  end
 end
 vim.opt.rtp:prepend(lazypath)
 
@@ -19,11 +19,11 @@ vim.keymap.set("n", "<leader>l", ":Lazy<CR>", { desc = "Open the lazy.nvim menu"
 
 -- make lazy set up the plugins
 require("lazy").setup({
-    defaults = { cond = not vim.g.vscode }, -- do not load being called from vscode
-    spec = {
-        { import = "plugins" },
-        { import = "plugins.core" },
-        { import = "plugins.ui" },
-        { import = "plugins.edit_utils" }
-    },
+  defaults = { cond = not vim.g.vscode }, -- do not load being called from vscode
+  spec = {
+    { import = "plugins" },
+    { import = "plugins.core" },
+    { import = "plugins.ui" },
+    { import = "plugins.edit_utils" }
+  },
 })
