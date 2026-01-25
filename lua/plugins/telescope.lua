@@ -1,10 +1,10 @@
-local tel_bg = "#231c1c"
-local tel_fg = {
-    prompt = "#3fb75b",
-    preview = "#d68d46",
-    results = "#536ee4"
-}
 local function set_telescope_hl()
+    local tel_bg = "#231c1c"
+    local tel_fg = {
+        prompt = "#3fb75b",
+        preview = "#d68d46",
+        results = "#536ee4"
+    }
     local TelescopePrompt = {
         TelescopePromptBorder  = { bg = tel_bg, fg = tel_fg["prompt"] },
         TelescopePreviewBorder = { bg = tel_bg, fg = tel_fg["preview"] },
@@ -30,27 +30,24 @@ local function config()
     telescope.setup({
         defaults = {
             initial_mode = "normal",
-            results_title = false,
             scroll_strategy = "limit",
             sorting_strategy = "ascending",
+            results_title = false,
             dynamic_preview_title = true,
+            prompt_prefix = "🔎  ",
             layout_config = {
                 prompt_position = "top",
                 width = .85
             },
             mappings = {
-                n = { ["<esc>"] = require("telescope.actions").close }
+                n = { ["q"] = require("telescope.actions").close }
             }
         },
         pickers = {
-            colorscheme = {
-                enable_preview = true
-            }
+            colorscheme = { enable_preview = true }
         },
         extensions = {
-            ["ui-select"] = {
-                require("telescope.themes").get_dropdown({})
-            }
+            ["ui-select"] = { require("telescope.themes").get_dropdown({}) }
         }
     })
     telescope.load_extension("ui-select")
