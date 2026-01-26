@@ -66,6 +66,7 @@ function M.toggle_term(split)
   local w, h = get_win_wh(split)
   term.win = utils.create_win(term.buf, { split = split, width = w, height = h })
   term.split_kind = split
+  vim.cmd.startinsert()
 end
 
 return M
