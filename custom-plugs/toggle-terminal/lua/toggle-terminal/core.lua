@@ -47,23 +47,25 @@ function M.toggle_term(split)
   if close_win_if_exists() and term.split_kind == split then return end
 
   -- create buf if no buffer
-  if not utils.is_valid_buf(term.buf) then term.buf = utils.create_term_buf() end
+  if not utils.is_valid_buf(term.buf) then
+    term.buf = utils.create_term_buf()
+
+    vim.keymap.set(
+      "t", "<esc>q", function()
+        vim.cmd.stopinsert()
+        M.toggle_term(term.split_kind)
+      end,
+      { buffer = term.buf, desc = "Toggle current terminal off" }
+    )
+    vim.keymap.set(
+      "n", "q", function() M.toggle_term(term.split_kind) end,
+      { buffer = term.buf, desc = "Toggle current terminal off" }
+    )
+  end
 
   local w, h = get_win_wh(split)
   term.win = utils.create_win(term.buf, { split = split, width = w, height = h })
   term.split_kind = split
-
-  vim.keymap.set(
-    "t", "<esc>q", function()
-      vim.cmd.stopinsert()
-      M.toggle_term(term.split_kind)
-    end,
-    { buffer = term.buf, desc = "Toggle current terminal off" }
-  )
-  vim.keymap.set(
-    "n", "q", function() M.toggle_term(term.split_kind) end,
-    { buffer = term.buf, desc = "Toggle current terminal off" }
-  )
 end
 
 return M
