@@ -1,3 +1,25 @@
+-- show lsp diagnostic
+vim.diagnostic.config({
+  severity_sort = true,  -- sort the severity in the statuscol
+  virtual_text = false,
+  virtual_lines = false,
+  signs = {
+    text = {
+      [vim.diagnostic.severity.ERROR] = "❌",
+      [vim.diagnostic.severity.WARN] = "⚠️",
+      [vim.diagnostic.severity.INFO] = "I",
+      [vim.diagnostic.severity.HINT] = "",
+    },
+  },
+  float = {
+    source = true,
+    header = "Diagnostics:",
+    border = "rounded",
+    max_width = 80,
+    close_events = { "CursorMoved", "BufLeave", "WinLeave", "InsertEnter" },
+  },
+})
+
 local lsp_capabilities = {
   capabilities = {
     textDocument = {
@@ -38,9 +60,6 @@ return {
       { "j-hui/fidget.nvim", opts = {} }
     },
     config = function()
-      -- show lsp diagnostics as virtual line
-      vim.diagnostic.config({ virtual_lines = true })
-
       for _, server in ipairs(lsp_servers) do
         vim.lsp.config(server, lsp_capabilities)
       end
