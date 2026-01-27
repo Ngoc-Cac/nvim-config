@@ -38,7 +38,15 @@ local blink_opts = {
 
 return {
   -- extends the base lua LSP to recognize my neovim configurations
-  { "folke/lazydev.nvim", ft = "lua", opts = {} },
+  {
+    "folke/lazydev.nvim",
+    ft = "lua",
+    opts = {
+      library = {
+        { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+      }
+    }
+  },
   {
     "saghen/blink.cmp",
     dependencies = { "rafamadriz/friendly-snippets" },
