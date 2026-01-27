@@ -3,8 +3,7 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
 -- General Config
-require("config.general")
-
+require("options")
 require("key-mappings")
 require("autocmds")
 
