@@ -1,6 +1,7 @@
 vim.opt.encoding = "utf-8"
 vim.opt.ignorecase = true -- ignore the case on tab complete, search, etc.
 vim.opt.smartcase = true -- if pattern has uppercase char, respect it
+vim.opt.updatetime = 500
 
 vim.opt.termguicolors = true -- not set by default for some reason
 vim.opt.errorbells = false
@@ -37,16 +38,9 @@ vim.opt.clipboard = "unnamedplus"
 vim.opt.inccommand = "split"
 
 vim.opt.fillchars = {
-    horiz = "━",
-    horizup = "┻",
-    horizdown = "┳",
-    vert = "┃",
-    vertleft = "┫",
-    vertright = "┣",
-    verthoriz = "╋",
-    fold = " ",
-    foldopen = "˅",
-    foldclose = ">",
+    horiz = "━", horizup = "┻", horizdown = "┳",
+    vert = "┃", vertleft = "┫", vertright = "┣", verthoriz = "╋",
+    fold = " ", foldopen = "˅", foldclose = ">",
 }
 
 vim.opt.foldlevel = 99
