@@ -46,7 +46,7 @@ return {
     tabline = tabline,
     winbar = {
       lualine_b = { "searchcount", "selectioncount" },
-      lualine_x = {{ "buffers", max_length = vim.o.columns * 0.9 }},
+      lualine_x = {{ "buffers", mode = 4, max_length = vim.o.columns * 0.9 }},
     }
   }
 }
