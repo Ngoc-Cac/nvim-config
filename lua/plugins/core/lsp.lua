@@ -42,7 +42,10 @@ return {
     "mason-org/mason-lspconfig.nvim",
     dependencies = { "mason-org/mason.nvim" },
     lazy = true, -- we manually load it in nvim-lspconfig
-    opts = { automatic_enable = lsp_servers }
+    opts = {
+      ensure_installed = lsp_servers,
+      automatic_enable = lsp_servers,
+    }
   },
   {
     "neovim/nvim-lspconfig",
