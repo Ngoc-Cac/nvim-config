@@ -3,20 +3,20 @@ This repository is where I keep track of my Neovim configuration,
 in case if I make any oopsies, I can restore the previous history. 
 
 ## Installation note for future-self
-### Getting Neovim
-It's easy, just use a package manager or download one of the releases.
-See [here](https://neovim.io/doc/install/) for more information.
-
-Now, running `nvim` before installing any plugins will **definitely throw errors**,
-because some plugins in this configuration requires some external configuration first.
-
 ### Terminal Configuration
-First, you need to install a Nerd Font. Some plugins use glyphs that
+Firstly, you need to install a Nerd Font. Some plugins use glyphs that
 is only provided by Nerd Fonts. See [here](https://www.nerdfonts.com/font-downloads)
 for some fonts. 
 
 Secondly, make sure your terminal supports 256-color. It might be fine if your terminal
 doesn't support this, won't look nice though.
+
+### Getting Neovim
+It's easy, just use a package manager or manually download one of the releases.
+See [here](https://neovim.io/doc/install/) for more information.
+
+Now, running `nvim` before installing any plugins will **definitely throw errors**,
+because some plugins in this configuration requires some external configuration first.
 
 ### Configuration and Setting Up Plugins
 Depends on the machine, clone this repository to the appropriate location. On Linux,
