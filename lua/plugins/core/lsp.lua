@@ -3,14 +3,7 @@ vim.diagnostic.config({
   severity_sort = true,  -- sort the severity in the statuscol
   virtual_text = false,
   virtual_lines = false,
-  signs = {
-    text = {
-      [vim.diagnostic.severity.ERROR] = "❌",
-      [vim.diagnostic.severity.WARN] = "⚠️",
-      [vim.diagnostic.severity.INFO] = "I",
-      [vim.diagnostic.severity.HINT] = "",
-    },
-  },
+  signs = { text = { [vim.diagnostic.severity.HINT] = "" } },
   float = {
     source = true,
     header = "Diagnostics:",
