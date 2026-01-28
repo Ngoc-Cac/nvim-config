@@ -1,27 +1,26 @@
 local function bind_textobj_keymaps(select_module)
-  local keyset = vim.keymap.set
+  local keyset = function(lhs, rhs, desc)
+    vim.keymap.set({ "x", "o" }, lhs, rhs, { desc = desc })
+  end
   local select = select_module.select_textobject
 
-  keyset({"x", "o"}, "av", function() select("@container.outer", "textobjects") end)
-  keyset({"x", "o"}, "iv", function() select("@container.inner", "textobjects") end)
+  keyset("ap", function() select("@parameter.outer", "textobjects") end, "Parameter")
+  keyset("ip", function() select("@parameter.inner", "textobjects") end, "Parameter")
 
-  keyset({ "x", "o" }, "af", function() select("@function.outer", "textobjects") end)
-  keyset({ "x", "o" }, "if", function() select("@function.inner", "textobjects") end)
+  keyset("al", function() select("@loop.outer", "textobjects") end, "Loop")
+  keyset("il", function() select("@loop.inner", "textobjects") end, "Loop")
 
-  keyset({ "x", "o" }, "ac", function() select("@class.outer", "textobjects") end)
-  keyset({ "x", "o" }, "ic", function() select("@class.inner", "textobjects") end)
+  keyset("ai", function() select("@conditional.outer", "textobjects") end, "Conditional")
+  keyset("ii", function() select("@conditional.inner", "textobjects") end, "Conditional")
 
-  keyset({ "x", "o" }, "as", function() select("@local.scope", "locals") end)
+  keyset("af", function() select("@function.outer", "textobjects") end, "Function")
+  keyset("if", function() select("@function.inner", "textobjects") end, "Function")
+
+  keyset("ac", function() select("@class.outer", "textobjects") end, "Class")
+  keyset("ic", function() select("@class.inner", "textobjects") end, "Class")
+
+  keyset("as", function() select("@local.scope", "locals") end, "Scope Local")
 end
-
-local textobj_config = {
-  -- Automatically jump forward to textobj, similar to targets.vim
-  lookahead = true,
-  selection_modes = {
-    ['@parameter.outer'] = 'v',
-    ['@function.outer'] = 'v',
-  },
-}
 
 return {
   {
@@ -37,7 +36,7 @@ return {
     branch = "main",
     lazy = true,
     opts = {
-      select = textobj_config,
+      select = { lookahead = true },
       move = { enable = true }
     },
     config = function(_, opts)
