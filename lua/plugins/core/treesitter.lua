@@ -30,16 +30,7 @@ return {
     dependencies = { "nvim-treesitter/nvim-treesitter-textobjects" },
     event = { "BufReadPost", "BufNewFile" },
     cmd = { "TSInstall", "TSUpdate", "TSUninstall", "TSLog" },
-    config = function()
-      -- enable syntax highlighting with treesitter
-      vim.api.nvim_create_autocmd("FileType", {
-        pattern = {
-          "lua", "python", "markdown",
-          "json", "yaml", "toml",
-        },
-        callback = function() vim.treesitter.start() end,
-      })
-    end
+    opts = {}
   },
   {
     "nvim-treesitter/nvim-treesitter-textobjects",
