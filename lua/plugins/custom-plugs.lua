@@ -5,14 +5,8 @@ return {
     dir = custom_plugins .. "toggle-terminal",
     cmd = "ToggleTerm",
     keys = {
-      {
-        "<localleader>tv", ":ToggleTerm right<cr>",
-        desc = "Toggle terminal in split view.",
-      },
-      {
-        "<localleader>tf", ":ToggleTerm float<cr>",
-        desc = "Toggle terminal in float window.",
-      },
+      { "<localleader>tv", ":ToggleTerm right<cr>", desc = "Toggle split terminal" },
+      { "<localleader>tf", ":ToggleTerm float<cr>", desc = "Toggle floating terminal" }
     },
     opts = {
       split = { width_ratio = 0.45 },
