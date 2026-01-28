@@ -23,11 +23,7 @@ return {
     dir = custom_plugins .. "buffer-utils",
     cmd = "R",
     keys = {
-      { "<localleader>bd", desc = "Delete the current buffer." },
-      {
-        "<localleader>bb", ":%bd|e#|b#",
-        desc = "Delete all buffers except the current one."
-      }
+      { "<localleader>bd", desc = "Delete the current buffer." }
     },
     opts = {}
   },

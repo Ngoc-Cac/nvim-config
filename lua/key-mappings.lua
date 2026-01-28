@@ -27,3 +27,8 @@ keyset("n", "<m-j>", ":m+<cr>==", { desc = "Move the current line up" })
 keyset("n", "<m-k>", ":m-2<cr>==", { desc = "Move the current line down" })
 keyset("v", "J", ":m'>+1<cr>gv=gv", { desc = "Move select block up" })
 keyset("v", "K", ":m'<-2<cr>gv=gv", { desc = "Move selected block down" })
+
+keyset(
+  "n", "<localleader>bb", ":%bd|e#|bd#",
+  { desc = "Delete all buffers except the current one." }
+)
