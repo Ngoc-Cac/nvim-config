@@ -29,7 +29,6 @@ local function config()
   local telescope = require("telescope")
   telescope.setup({
     defaults = {
-      initial_mode = "normal",
       scroll_strategy = "limit",
       sorting_strategy = "ascending",
       results_title = false,
@@ -44,10 +43,16 @@ local function config()
       }
     },
     pickers = {
-      colorscheme = { enable_preview = true }
+      colorscheme = { enable_preview = true },
+      buffers = { initial_mode = "normal" },
+      diagnostics = { initial_mode = "normal" },
+      marks = { initial_mode = "normal" },
+      registers = { initial_mode = "normal" },
     },
     extensions = {
-      ["ui-select"] = { require("telescope.themes").get_dropdown({}) }
+      ["ui-select"] = { require("telescope.themes").get_dropdown({
+        initial_mode = "normal",
+      })}
     }
   })
   telescope.load_extension("ui-select")
