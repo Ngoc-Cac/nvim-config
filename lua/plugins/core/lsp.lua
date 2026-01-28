@@ -31,7 +31,7 @@ local lsp_capabilities = {
   }
 }
 local lsp_servers = {
-  "bashls", "jsonls", "yamlls",
+  "bashls", "jsonls", "yamlls", "tombi",
 
   "lua_ls",
   "markdown_oxide",
