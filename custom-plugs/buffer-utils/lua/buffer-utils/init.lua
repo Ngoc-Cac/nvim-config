@@ -9,7 +9,7 @@ local function buf_del()
     local win_closed = pcall(vim.api.nvim_win_close, cur_win, false)
     if not win_closed then
       vim.notify(
-        "No previous buffer to switch to!",
+        "No next buffer to switch to!",
         vim.log.levels.INFO,
         { title = "No previous buffer!", timeout = 3000 }
       )
@@ -21,11 +21,6 @@ local function buf_del()
 
   vim.api.nvim_buf_delete(cur_buf, { force = false })
 end
-
-vim.keymap.set("n", "<localleader>bd", buf_del, { desc = "Delete the current buffer." })
-vim.api.nvim_create_user_command("R", function(opts)
-  vim.cmd("e " .. opts.args .. " | bd#")
-end, { nargs = 1, complete = "file" })
 
 vim.api.nvim_create_augroup("BufExtendDel", {clear = true})
 vim.api.nvim_create_autocmd("BufLeave", {
@@ -62,6 +57,11 @@ vim.api.nvim_create_autocmd("WinClosed", {
   desc = "Remove the closd window from the history tracker",
   callback = function(ev) hist_tracker.close_win(tonumber(ev.match)) end
 })
+
+vim.keymap.set("n", "<localleader>bd", buf_del, { desc = "Delete the current buffer." })
+vim.api.nvim_create_user_command("R", function(opts)
+  vim.cmd("e " .. opts.args .. " | bd#")
+end, { nargs = 1, complete = "file" })
 
 return {
   setup = function(_) end,
