@@ -1,11 +1,11 @@
 local function config_hl_group(hl, _)
   hl.Type = { italic = false, fg = "#36db80" }
   hl["@module.python"] = { italic = false }
-
   hl["@variable.parameter"] = { italic = false }
 
   hl["@lsp.mod.static.python"] = { fg = "#7e83ce" }
 
+  hl["@lsp.type.decorator.python"] = { fg = "#ff8944" } -- #e26d2a
   hl["@lsp.type.property.python"] = { fg = "#b690ce" }
   hl["@lsp.type.namespace.python"] = { fg = "#cd2d49" }
 end
