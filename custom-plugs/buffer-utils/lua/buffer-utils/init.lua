@@ -40,8 +40,8 @@ vim.api.nvim_create_augroup("BufExtendDel", {clear = true})
 vim.api.nvim_create_autocmd("BufLeave", {
   group = "BufExtendDel",
   desc = "Add the current buffer to the history tracker",
-  callback = function(args)
-    local cur_buf = args.buf
+  callback = function(ev)
+    local cur_buf = ev.buf
     local buf_opts = vim.bo[cur_buf]
     if not buf_opts.buflisted or not buf_opts.modifiable then
       return
@@ -54,8 +54,8 @@ vim.api.nvim_create_autocmd("BufLeave", {
 vim.api.nvim_create_autocmd({ "BufDelete", "BufWipeout" }, {
   group = "BufExtendDel",
   desc = "Delete the deleted buffer from history tracker",
-  callback = function (args)
-    hist_tracker.untrack_buf(args.buf)
+  callback = function(ev)
+    hist_tracker.untrack_buf(ev.buf)
 
     -- remove the current buffer from the history of the current window
     local cur_buf = vim.api.nvim_get_current_buf()
@@ -64,6 +64,12 @@ vim.api.nvim_create_autocmd({ "BufDelete", "BufWipeout" }, {
       table.remove(history)
     end
   end
+})
+
+vim.api.nvim_create_autocmd("WinClosed", {
+  group = "BufExtendDel",
+  desc = "Remove the closd window from the history tracker",
+  callback = function(ev) hist_tracker.close_win(tonumber(ev.match)) end
 })
 
 return {
