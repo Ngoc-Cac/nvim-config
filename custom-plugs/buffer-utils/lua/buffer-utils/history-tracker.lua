@@ -3,6 +3,11 @@ local M = {
 }
 
 local function delete_buf(hist, buf)
+  if hist[#hist] == buf then
+    table.remove(hist)
+    return
+  end
+
   for i, buffer in ipairs(hist) do
     if buf == buffer then
       table.remove(hist, i)
