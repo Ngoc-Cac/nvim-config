@@ -17,10 +17,8 @@ local function buf_del()
     return
   else
     vim.api.nvim_set_current_buf(history[#history])
-    table.remove(history)
+    vim.api.nvim_buf_delete(cur_buf, { force = false })
   end
-
-  vim.api.nvim_buf_delete(cur_buf, { force = false })
 end
 
 vim.api.nvim_create_augroup("BufExtendDel", {clear = true})
