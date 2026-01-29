@@ -14,6 +14,7 @@ local function buf_del()
         { title = "No previous buffer!", timeout = 3000 }
       )
     end
+    return
   else
     vim.api.nvim_set_current_buf(history[#history])
     table.remove(history)
@@ -39,7 +40,7 @@ vim.api.nvim_create_autocmd("BufLeave", {
 
 vim.api.nvim_create_autocmd({ "BufDelete", "BufWipeout" }, {
   group = "BufExtendDel",
-  desc = "Delete the deleted buffer from history tracker",
+  desc = "Delete the deleted buffer from the history tracker",
   callback = function(ev)
     hist_tracker.untrack_buf(ev.buf)
 
