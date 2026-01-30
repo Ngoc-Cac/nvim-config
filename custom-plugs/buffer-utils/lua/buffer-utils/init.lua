@@ -3,11 +3,13 @@ local hist_tracker = require("buffer-utils.history-tracker")
 local function buf_del()
   local cur_buf = vim.api.nvim_get_current_buf()
   local cur_win = vim.api.nvim_get_current_win()
-
   local history = hist_tracker.buffer_history[cur_win]
-  if #history == 0 then
+
+  if not history or #history == 0 then
     local win_closed = pcall(vim.api.nvim_win_close, cur_win, false)
-    if not win_closed then
+    if win_closed then
+      vim.api.nvim_buf_delete(cur_buf, { force = false })
+    else
       vim.notify(
         "No next buffer to switch to!",
         vim.log.levels.INFO,
