@@ -16,7 +16,7 @@ return {
   {
     dir = custom_plugins .. "buffer-utils",
     cmd = "R",
-    event = "BufLeave",
+    event = { "BufWinLeave", "BufDelete", "BufWipeout", "WinClosed" },
     keys = {
       { "<localleader>bd", desc = "Delete the current buffer." }
     },
