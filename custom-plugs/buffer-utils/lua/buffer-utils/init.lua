@@ -1,6 +1,7 @@
 local hist_tracker = require("buffer-utils.history-tracker")
+local M = { history_tracker = hist_tracker }
 
-local function buf_del()
+function M.buf_del()
   local cur_buf = vim.api.nvim_get_current_buf()
   local cur_win = vim.api.nvim_get_current_win()
   local history = hist_tracker.buffer_history[cur_win]
@@ -66,13 +67,11 @@ vim.api.nvim_create_autocmd("WinClosed", {
   callback = function(ev) hist_tracker.close_win(tonumber(ev.match)) end
 })
 
-vim.keymap.set("n", "<localleader>bd", buf_del, { desc = "Delete the current buffer." })
-vim.api.nvim_create_user_command("R", function(opts)
-  vim.cmd("e " .. opts.args .. " | bd#")
-end, { nargs = 1, complete = "file" })
+function M.setup()
+  vim.keymap.set("n", "<localleader>bd", M.buf_del, { desc = "Delete the current buffer." })
+  vim.api.nvim_create_user_command("R", function(opts)
+    vim.cmd("e " .. opts.args .. " | bd#")
+  end, { nargs = 1, complete = "file" })
+end
 
-return {
-  setup = function(_) end,
-  del_cur_buf = buf_del,
-  history_tracker = hist_tracker
-}
+return M
