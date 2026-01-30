@@ -1,6 +1,7 @@
 local hist_tracker = require("buffer-utils.history-tracker")
 local prev_closed_win = nil
-vim.api.nvim_create_augroup("BufExtendDel", {clear = true})
+local augrp = "BufExtendDel"
+vim.api.nvim_create_augroup(augrp, {clear = true})
 
 local function should_track(buf)
   local buf_opts = vim.bo[buf]
@@ -8,7 +9,7 @@ local function should_track(buf)
 end
 
 vim.api.nvim_create_autocmd("BufWinLeave", {
-  group = "BufExtendDel",
+  group = augrp,
   desc = "Add the current buffer to the history tracker",
   callback = function(ev)
     local cur_buf, cur_win = ev.buf, vim.api.nvim_get_current_win()
@@ -20,7 +21,7 @@ vim.api.nvim_create_autocmd("BufWinLeave", {
 })
 
 vim.api.nvim_create_autocmd({ "BufDelete", "BufWipeout" }, {
-  group = "BufExtendDel",
+  group = augrp,
   desc = "Delete the deleted buffer from the history tracker",
   callback = function(ev)
     hist_tracker.untrack_buf(ev.buf)
@@ -35,7 +36,7 @@ vim.api.nvim_create_autocmd({ "BufDelete", "BufWipeout" }, {
 })
 
 vim.api.nvim_create_autocmd("WinClosed", {
-  group = "BufExtendDel",
+  group = augrp,
   desc = "Remove the closed window from the history tracker",
   callback = function(ev)
     prev_closed_win = tonumber(ev.match)
