@@ -29,8 +29,15 @@ vim.api.nvim_create_autocmd("BufLeave", {
   desc = "Add the current buffer to the history tracker",
   callback = function(ev)
     local cur_buf = ev.buf
+    local cur_win = vim.api.nvim_get_current_win()
     local buf_opts = vim.bo[cur_buf]
+
     if not buf_opts.buflisted or not buf_opts.modifiable then
+      return
+    elseif not hist_tracker.buffer_history[cur_win] then
+      -- vs and sp commands re-use the current buffer and switch to new buffer
+      -- we only want to track the new buffer, so skip this one. 
+      hist_tracker.buffer_history[cur_win] = {}
       return
     end
 
