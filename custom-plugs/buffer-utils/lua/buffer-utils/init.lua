@@ -2,6 +2,11 @@ local hist_tracker = require("buffer-utils.history-tracker")
 local prev_closed_win = nil
 local M = { history_tracker = hist_tracker }
 
+local function should_track(buf)
+  local buf_opts = vim.bo[buf]
+  return not buf_opts.buflisted or not buf_opts.modifiable
+end
+
 function M.buf_del()
   local cur_buf = vim.api.nvim_get_current_buf()
   local cur_win = vim.api.nvim_get_current_win()
@@ -30,15 +35,11 @@ vim.api.nvim_create_autocmd("BufWinLeave", {
   group = "BufExtendDel",
   desc = "Add the current buffer to the history tracker",
   callback = function(ev)
-    local cur_buf = ev.buf
-    local cur_win = vim.api.nvim_get_current_win()
-    local buf_opts = vim.bo[cur_buf]
+    local cur_buf, cur_win = ev.buf, vim.api.nvim_get_current_win()
 
-    if not buf_opts.buflisted or not buf_opts.modifiable or cur_win == prev_closed_win then
-      return
+    if cur_win ~= prev_closed_win and should_track(cur_buf) then
+      hist_tracker.track_buf(cur_win, cur_buf)
     end
-
-    hist_tracker.track_buf(vim.api.nvim_get_current_win(), cur_buf)
   end
 })
 
@@ -67,11 +68,6 @@ vim.api.nvim_create_autocmd("WinClosed", {
 })
 
 function M.setup()
-  -- initialize a history tracker for all windows at startup
-  for _, win in ipairs(vim.api.nvim_list_wins()) do
-    hist_tracker.buffer_history[win] = {}
-  end
-
   vim.keymap.set("n", "<localleader>bd", M.buf_del, { desc = "Delete the current buffer." })
   vim.api.nvim_create_user_command("R", function(opts)
     vim.cmd("e " .. opts.args .. " | bd#")
