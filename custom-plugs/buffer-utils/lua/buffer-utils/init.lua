@@ -68,6 +68,11 @@ vim.api.nvim_create_autocmd("WinClosed", {
 })
 
 function M.setup()
+  -- initialize a history tracker for all windows at startup
+  for _, win in ipairs(vim.api.nvim_list_wins()) do
+    hist_tracker.buffer_history[win] = {}
+  end
+
   vim.keymap.set("n", "<localleader>bd", M.buf_del, { desc = "Delete the current buffer." })
   vim.api.nvim_create_user_command("R", function(opts)
     vim.cmd("e " .. opts.args .. " | bd#")
