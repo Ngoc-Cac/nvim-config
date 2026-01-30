@@ -60,7 +60,7 @@ vim.api.nvim_create_autocmd({ "BufDelete", "BufWipeout" }, {
 
 vim.api.nvim_create_autocmd("WinClosed", {
   group = "BufExtendDel",
-  desc = "Remove the closd window from the history tracker",
+  desc = "Remove the closed window from the history tracker",
   callback = function(ev)
     prev_closed_win = tonumber(ev.match)
     hist_tracker.close_win(prev_closed_win)
