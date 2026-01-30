@@ -1,6 +1,4 @@
-local M = {
-  buffer_history = {}
-}
+local M = { buffer_history = {} }
 
 local function delete_buf(hist, buf)
   if hist[#hist] == buf then
