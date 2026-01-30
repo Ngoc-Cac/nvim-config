@@ -1,4 +1,5 @@
 local hist_tracker = require("buffer-utils.history-tracker")
+local prev_closed_win = nil
 local M = { history_tracker = hist_tracker }
 
 function M.buf_del()
@@ -25,7 +26,7 @@ function M.buf_del()
 end
 
 vim.api.nvim_create_augroup("BufExtendDel", {clear = true})
-vim.api.nvim_create_autocmd("BufLeave", {
+vim.api.nvim_create_autocmd("BufWinLeave", {
   group = "BufExtendDel",
   desc = "Add the current buffer to the history tracker",
   callback = function(ev)
@@ -33,12 +34,7 @@ vim.api.nvim_create_autocmd("BufLeave", {
     local cur_win = vim.api.nvim_get_current_win()
     local buf_opts = vim.bo[cur_buf]
 
-    if not buf_opts.buflisted or not buf_opts.modifiable then
-      return
-    elseif not hist_tracker.buffer_history[cur_win] then
-      -- vs and sp commands re-use the current buffer and switch to new buffer
-      -- we only want to track the new buffer, so skip this one. 
-      hist_tracker.buffer_history[cur_win] = {}
+    if not buf_opts.buflisted or not buf_opts.modifiable or cur_win == prev_closed_win then
       return
     end
 
@@ -64,7 +60,10 @@ vim.api.nvim_create_autocmd({ "BufDelete", "BufWipeout" }, {
 vim.api.nvim_create_autocmd("WinClosed", {
   group = "BufExtendDel",
   desc = "Remove the closd window from the history tracker",
-  callback = function(ev) hist_tracker.close_win(tonumber(ev.match)) end
+  callback = function(ev)
+    prev_closed_win = tonumber(ev.match)
+    hist_tracker.close_win(prev_closed_win)
+  end
 })
 
 function M.setup()
