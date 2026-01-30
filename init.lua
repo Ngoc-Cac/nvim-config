@@ -7,6 +7,10 @@ require("options")
 require("key-mappings")
 require("autocmds")
 
+vim.api.nvim_create_user_command("R", function(opts)
+  vim.cmd("e " .. opts.args .. " | bd#")
+end, { nargs = 1, complete = "file" })
+
 -- setup lazy.nvim and plugins 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 

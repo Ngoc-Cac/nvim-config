@@ -69,9 +69,6 @@ vim.api.nvim_create_autocmd("WinClosed", {
 
 function M.setup()
   vim.keymap.set("n", "<localleader>bd", M.buf_del, { desc = "Delete the current buffer." })
-  vim.api.nvim_create_user_command("R", function(opts)
-    vim.cmd("e " .. opts.args .. " | bd#")
-  end, { nargs = 1, complete = "file" })
 end
 
 return M
