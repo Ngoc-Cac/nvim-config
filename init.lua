@@ -46,3 +46,6 @@ require("lazy").setup({
     { import = "plugins.edit_utils" }
   },
 })
+
+vim.cmd.colorscheme("monokai-pro")
+-- vim.cmd.colorscheme("jellybeans")
