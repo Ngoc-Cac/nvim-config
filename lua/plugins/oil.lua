@@ -12,6 +12,7 @@ return {
   ---@module "oil"
   ---@type oil.SetupOpts
   opts = {
+    default_file_explorer = true,
     buf_options = { bufhidden = "delete" },
     skip_confirm_for_simple_edits = true, -- no del, at most one cp/mv and five adds
     view_options = { show_hidden = true },
