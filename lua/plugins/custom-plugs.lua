@@ -14,7 +14,7 @@ return {
     }
   },
   {
-    dir = custom_plugins .. "buffer-utils",
+    dir = custom_plugins .. "extended-buf-del",
     event = { "BufWinLeave", "BufDelete", "BufWipeout", "WinClosed" },
     keys = {
       { "<localleader>bd", desc = "Delete the current buffer." }

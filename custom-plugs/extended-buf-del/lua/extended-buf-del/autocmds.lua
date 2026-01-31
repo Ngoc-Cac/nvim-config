@@ -1,4 +1,4 @@
-local hist_tracker = require("buffer-utils.history-tracker")
+local hist_tracker = require("extended-buf-del.history-tracker")
 local prev_closed_win = nil
 local augrp = "BufExtendDel"
 vim.api.nvim_create_augroup(augrp, {clear = true})

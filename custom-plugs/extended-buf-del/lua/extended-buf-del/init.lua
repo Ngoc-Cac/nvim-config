@@ -1,6 +1,9 @@
-local hist_tracker = require("buffer-utils.history-tracker")
+local hist_tracker = require("extended-buf-del.history-tracker")
 local M = { history_tracker = hist_tracker }
-local config = { del_keymap = "<localleader>bd" }
+local config = {
+  switch_next = false,
+  del_keymap = "<localleader>bd"
+}
 
 function M.buf_del()
   local cur_buf = vim.api.nvim_get_current_buf()
@@ -27,7 +30,7 @@ end
 
 function M.setup(opts)
   -- load the autocmds to track buffers
-  require("buffer-utils.autocmds")
+  require("extended-buf-del.autocmds")
 
   config = vim.tbl_deep_extend('force', config, opts or {})
 
