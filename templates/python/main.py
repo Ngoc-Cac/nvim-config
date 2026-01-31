@@ -92,6 +92,7 @@ results = np_array ** 2 - np.cos(np_array)
 
 expr = "5!*sin(pi /2) + 2^2 - 5cos(tan(2))"
 expr_result = evaluate(expr)  # should register as int | float 
+evaluator.constants
 evaluator.cannot_access
 evaluator.cannot_assign = 2  # this is because MathEvaluator registers attributes using __slots__
 
