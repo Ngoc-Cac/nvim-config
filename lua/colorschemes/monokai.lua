@@ -1,8 +1,8 @@
 local function override_hl_grp(c)
   return {
     PythonModule = { fg = "#cd2d49" },  -- lsp overrides the token
-    Property = { fg = "#b690ce" },
     Type = { fg = "#8bff3a", italic = true },
+    Identifier = { fg = "none" },
 
     ["@punctuation.delimiter"] = { fg = "#8fbfdc" },
 
@@ -14,14 +14,13 @@ local function override_hl_grp(c)
     ["@function.call"] = { link = "@function" },
     ["@variable.parameter"] = { fg = "#00e4b8" },
     ["@variable.builtin"] = { italic = false, fg = "#c6b6ee" },
+    ["@variable.member"] = { fg = "#b690ce" },
 
-    ["@lsp.type.property.lua"] = { link = "Property" },
+    ["@lsp.type.parameter"] = { fg = c.base.green },
 
     ["@lsp.mod.static.python"] = { fg = "#7e83ce" },
 
-    ["@lsp.type.parameter.python"] = { fg = c.base.green },
     ["@lsp.type.decorator.python"] = { fg = "#ff8944" }, -- #e26d2a
-    ["@lsp.type.property.python"] = { link = "Property" },
     ["@lsp.type.namespace.python"] = { link = "PythonModule" }
   }
 end
