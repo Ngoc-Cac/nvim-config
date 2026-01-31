@@ -1,4 +1,8 @@
 local set = vim.keymap.set
+local config = {
+  trailing_whitespace_del = true,
+  ctrl_backspace_del = true
+}
 
 local function ws_del_setup()
   _G.trail_whitesp_del = require("keymaps-extend.trail-whitesp").trail_whitesp_del
@@ -15,17 +19,17 @@ local function ws_del_setup()
 end
 
 local function setup(opts)
-  opts = opts or {}
+  config = vim.tbl_deep_extend("force", config, opts or {})
 
-  ws_del_setup()
+  if config.trailing_whitespace_del then ws_del_setup() end
 
-  -- ctrl-backspace in insert mode
-  set(
-    "i", "<c-h>",
-    require("keymaps-extend.ctrl-backspace").backspace_del,
-    { expr = true, desc = "Delete word backwards in insert mode" }
-  )
-
+  if config.ctrl_backspace_del then
+    set(
+      "i", "<c-h>",
+      require("keymaps-extend.ctrl-backspace").backspace_del,
+      { expr = true, desc = "Delete word backwards in insert mode" }
+    )
+  end
 end
 
 return { setup = setup }
