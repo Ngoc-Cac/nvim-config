@@ -20,7 +20,9 @@ return {
     event = "BufReadPost",
     opts = {
       vim = { mode = "foreground" },
-      lua = { mode = "foreground" }
+      lua = { mode = "foreground" },
+      css = { css = true, css_fn = true },
+      html = { css = true, css_fn = true }
     }
   },
 }
