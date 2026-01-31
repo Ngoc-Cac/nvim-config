@@ -21,8 +21,4 @@ return {
     end,
     on_highlights = config_hl_group
   },
-  config = function (_, opts)
-    require("jellybeans").setup(opts)
-    vim.cmd.colorscheme("jellybeans")
-  end
 }
