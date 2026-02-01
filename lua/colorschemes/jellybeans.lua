@@ -1,4 +1,5 @@
-local function config_hl_group(hl, _)
+local function config_hl_group(hl, c)
+  hl.IblScope = { fg = c.green_smoke }
   hl.Property = { fg = "none" }
   hl.Type = { italic = false, fg = "#36db80" }
 
