@@ -1,6 +1,6 @@
 # My Neovim Configuration
 This repository is where I keep track of my Neovim configuration,
-in case if I make any oopsies, I can restore the previous history. 
+in case if I make any oopsies; I can restore the previous history. 
 
 ## Installation note for future-self
 ### Terminal Configuration
@@ -71,6 +71,11 @@ First and necessary plugin is of course:
 
 - [`lazy.nvim`](https://github.com/folke/lazy.nvim): Plugin manager with lazy-loading support.
 **Must install before any other plugins.**
+
+And, this is the colorscheme used:
+
+- [jellybeans.nvim](https://github.com/WTFox/jellybeans.nvim): A jellybeans theme with treesitter
+  support.
 
 <details><summary>&#10071<b>Must Have</b></summary>
   <ul>
@@ -198,10 +203,6 @@ First and necessary plugin is of course:
 
 <details><summary><b>UI Plugins</b></summary>
   <ul>
-    <li>
-      <a href="https://github.com/WTFox/jellybeans.nvim"><code>jellybeans.nvim</code></a>:
-      A jellybeans theme with treesitter support.
-    </li>
     <li>
       <a href="https://github.com/vim-airline/vim-airline"><code>vim-airline</code></a>:
       A nice status bar to look at.
