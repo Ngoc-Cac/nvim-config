@@ -38,6 +38,7 @@ vim.keymap.set("n", "<leader>l", ":Lazy<CR>", { desc = "Open the lazy.nvim menu"
 -- make lazy set up the plugins
 require("lazy").setup({
   defaults = { cond = not vim.g.vscode }, -- do not load being called from vscode
+  profiling = { loader = true },
   spec = {
     { import = "colorschemes" },
     { import = "plugins" },
@@ -47,5 +48,5 @@ require("lazy").setup({
   },
 })
 
-vim.cmd.colorscheme("monokai-pro")
--- vim.cmd.colorscheme("jellybeans")
+-- vim.cmd.colorscheme("monokai-pro")
+vim.cmd.colorscheme("jellybeans")
