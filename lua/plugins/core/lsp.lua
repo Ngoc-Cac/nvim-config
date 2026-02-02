@@ -27,7 +27,7 @@ local lsp_servers = {
   "jsonls", "yamlls", "tombi", "cssls", "html",
 
   "bashls", "lua_ls",
-  "markdown_oxide",
+  "markdown_oxide", "ts_ls",
   "basedpyright", -- NOTE: pyrightconfig.json will override ls conf
 }
 return {
