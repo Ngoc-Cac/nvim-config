@@ -4,9 +4,8 @@ return {
   {
     "numToStr/Comment.nvim",
     keys = {
-      { "gc", mode = { "n", "x", "o" }, desc = "Comment toggle linewise" },
-      { "gb", mode = { "n", "x", "o" }, desc = "Comment toggle blockwise" },
-      { "<C-_>", "<C-o>gcc", mode = "i", remap = true, desc = "Comment selected code." }
+      { "gc", mode = { "n", "x", "o" }, desc = "Comment linewise" },
+      { "gb", mode = { "n", "x", "o" }, desc = "Comment blockwise" },
     },
     opts = {}
   },
