@@ -36,15 +36,16 @@ vim.opt.rtp:prepend(lazypath)
 vim.keymap.set("n", "<leader>l", ":Lazy<CR>", { desc = "Open the lazy.nvim menu" })
 
 -- make lazy set up the plugins
+local not_vscode = not vim.g.vscode
 require("lazy").setup({
-  defaults = { cond = not vim.g.vscode }, -- do not load being called from vscode
+  -- defaults = {}, -- do not load being called from vscode
   profiling = { loader = true },
   spec = {
     { import = "colorschemes" },
-    { import = "plugins" },
-    { import = "plugins.core" },
-    { import = "plugins.ui" },
-    { import = "plugins.edit_utils" }
+    { import = "plugins", cond = not_vscode },
+    { import = "plugins.core", cond = not_vscode },
+    { import = "plugins.ui", cond = not_vscode },
+    { import = "plugins.edit_utils", cond = not_vscode }
   },
 })
 
