@@ -5,7 +5,7 @@ return {
     { "f", mode = { "n", "v" } }, { "F", mode = { "n", "v" } },
     { "t", mode = { "n", "v" } }, { "T", mode = { "n", "v" } },
 
-    { "/", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash Jump" },
+    { "?", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash Jump" },
     -- { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
     { "S", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
     { "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
