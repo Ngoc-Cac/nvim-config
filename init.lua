@@ -1,8 +1,8 @@
 -- doing this for lazy vim
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
+-- define a default clipboard provider so nvim doesn't source clipboard.vim 
 if vim.fn.has("win32") == 1 then
-  -- define a default clipboard provider so nvim doesn't source clipboard.vim 
   vim.g.clipboard = {
     name = 'win32yank',
     copy = {
@@ -48,12 +48,9 @@ if not vim.uv.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-vim.keymap.set("n", "<leader>l", ":Lazy<CR>", { desc = "Open the lazy.nvim menu" })
-
 -- make lazy set up the plugins
 local not_vscode = not vim.g.vscode
 require("lazy").setup({
-  -- defaults = {}, -- do not load being called from vscode
   profiling = { loader = true },
   spec = {
     { import = "colorschemes" },
@@ -63,6 +60,8 @@ require("lazy").setup({
     { import = "plugins.edit_utils", cond = not_vscode }
   },
 })
+
+vim.keymap.set("n", "<leader>l", ":Lazy<CR>", { desc = "Open the lazy.nvim menu" })
 
 -- vim.cmd.colorscheme("monokai-pro")
 vim.cmd.colorscheme("jellybeans")
