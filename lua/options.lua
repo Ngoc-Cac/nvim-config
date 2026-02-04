@@ -1,49 +1,51 @@
-vim.opt.encoding = "utf-8"
-vim.opt.ignorecase = true -- ignore the case on tab complete, search, etc.
-vim.opt.smartcase = true -- if pattern has uppercase char, respect it
-vim.opt.updatetime = 500
+local opt = vim.opt
 
-vim.opt.termguicolors = true -- not set by default for some reason
-vim.opt.errorbells = false
-vim.opt.wrap = false
+opt.encoding = "utf-8"
+opt.ignorecase = true -- ignore the case on tab complete, search, etc.
+opt.smartcase = true -- if pattern has uppercase char, respect it
+opt.updatetime = 500
 
-vim.opt.number = true
-vim.opt.relativenumber = true
-vim.opt.cursorline = true
-vim.opt.cursorlineopt = "number"
+opt.termguicolors = true -- not set by default for some reason
+opt.errorbells = false
+opt.wrap = false
 
-vim.opt.splitbelow = true
-vim.opt.splitright = true
+opt.number = true
+opt.relativenumber = true
+opt.cursorline = true
+opt.cursorlineopt = "number"
 
-vim.opt.scrolloff = 5 -- num lines above/below cursor
-vim.opt.whichwrap = "<,>,[,]" -- wraps around the previous and next line
+opt.splitbelow = true
+opt.splitright = true
 
-vim.opt.mouse = "a"
+opt.scrolloff = 5 -- num lines above/below cursor
+opt.whichwrap = "<,>,[,]" -- wraps around the previous and next line
+
+opt.mouse = "a"
 
 -- softtab allows deleting tab char as a whole
 -- shiftwidth is the num space to do autoindent (>> and <<) 
-vim.opt.tabstop = 4
-vim.opt.softtabstop = 4
-vim.opt.shiftwidth = 4
-vim.opt.smartindent = true
-vim.opt.expandtab = true -- make tab char becomes space
+opt.tabstop = 4
+opt.softtabstop = 4
+opt.shiftwidth = 4
+opt.smartindent = true
+opt.expandtab = true -- make tab char becomes space
 
 -- delete over autoindent, eol and start of insert
-vim.opt.backspace = "indent,eol,start"
+opt.backspace = "indent,eol,start"
 
 -- allow copy to clipboard (+ reg)
-vim.opt.clipboard = "unnamedplus"
+opt.clipboard = "unnamedplus"
 
 -- a preview window when doing %s
-vim.opt.inccommand = "split"
+opt.inccommand = "split"
 
-vim.opt.fillchars = {
+opt.fillchars = {
     horiz = "━", horizup = "┻", horizdown = "┳",
     vert = "┃", vertleft = "┫", vertright = "┣", verthoriz = "╋",
     fold = " ", foldopen = "˅", foldclose = ">",
 }
 
-vim.opt.foldlevel = 99
-vim.opt.foldlevelstart = 99
-vim.opt.foldenable = true
-vim.opt.foldcolumn = "2"
+opt.foldlevel = 99
+opt.foldlevelstart = 99
+opt.foldenable = true
+opt.foldcolumn = "2"
