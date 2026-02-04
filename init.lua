@@ -1,6 +1,21 @@
 -- doing this for lazy vim
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
+if vim.fn.has("win32") == 1 then
+  -- define a default clipboard provider so nvim doesn't source clipboard.vim 
+  vim.g.clipboard = {
+    name = 'win32yank',
+    copy = {
+      ["+"] = 'win32yank.exe -i --crlf',
+      ["*"] = 'win32yank.exe -i --crlf',
+    },
+    paste = {
+      ["+"] = 'win32yank.exe -o --lf',
+      ["*"] = 'win32yank.exe -o --lf',
+    },
+    cache_enabled = 0,
+  }
+end
 
 -- General Config
 require("options")
