@@ -1,31 +1,4 @@
-local function set_telescope_hl()
-  local tel_bg = "#231c1c"
-  local tel_fg = {
-    prompt = "#3fb75b",
-    preview = "#d68d46",
-    results = "#536ee4"
-  }
-  local TelescopePrompt = {
-    TelescopePromptBorder  = { bg = tel_bg, fg = tel_fg["prompt"] },
-    TelescopePreviewBorder = { bg = tel_bg, fg = tel_fg["preview"] },
-    TelescopeResultsBorder = { bg = tel_bg, fg = tel_fg["results"] },
-
-    TelescopePromptNormal  = { bg = tel_bg },
-    TelescopePreviewNormal = { bg = tel_bg },
-    TelescopeResultsNormal = { bg = tel_bg },
-
-    TelescopePromptTitle  = { bold = true, bg = tel_bg, fg = tel_fg["prompt"] },
-    TelescopePreviewTitle = { bold = true, bg = tel_bg, fg = tel_fg["preview"] },
-    TelescopeResultsTitle = { bold = true, bg = tel_bg, fg = tel_fg["results"] },
-  }
-  for hl, col in pairs(TelescopePrompt) do
-    vim.api.nvim_set_hl(0, hl, col)
-  end
-end
-
 local function config()
-  set_telescope_hl()
-
   local telescope = require("telescope")
   telescope.setup({
     defaults = {
