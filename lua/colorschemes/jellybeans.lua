@@ -17,6 +17,8 @@ local function config_hl_group(hl, c)
   hl.TelescopePreviewNormal = { bg = tel_bg }
   hl.TelescopeResultsNormal = { bg = tel_bg }
 
+  hl.WhichKeyBorder = { fg = "White" }
+
   hl.IblScope = { fg = c.green_smoke }
   hl.Property = { fg = "none" }
   hl.Type = { italic = false, fg = "#36db80" }

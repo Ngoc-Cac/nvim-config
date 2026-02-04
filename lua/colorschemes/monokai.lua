@@ -35,9 +35,6 @@ return {
       keyword = false,
       parameter = false,
     },
-    plugins = {
-      indent_blankline = { context_highlight = "pro" },
-    },
     disabled_plugins = {
       "hrsh7th/nvim-cmp", "SmiteshP/nvim-navic",
       "neoclide/coc.nvim", "nvim-mini/mini.nvim",
