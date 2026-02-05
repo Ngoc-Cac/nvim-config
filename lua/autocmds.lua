@@ -4,9 +4,9 @@ vim.api.nvim_create_augroup("UtilAutoCmd", {clear = true})
 -- enable syntax highlighting with treesitter
 vim.api.nvim_create_autocmd("FileType", {
   pattern = {
-    "lua", "python", "markdown",
     "json", "yaml", "toml",
-    "html", "css", "javascript"
+    "markdown", "html", "css",
+    "sh", "lua", "python", "javascript",
   },
   callback = function() vim.treesitter.start() end,
 })
