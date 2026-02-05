@@ -22,6 +22,16 @@ local function bind_textobj_keymaps(select_module)
   keyset("as", function() select("@local.scope", "locals") end, "Scope Local")
 end
 
+-- enable syntax highlighting with treesitter
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = {
+    "json", "yaml", "toml",
+    "markdown", "html", "css",
+    "sh", "lua", "python", "javascript",
+  },
+  callback = function() vim.treesitter.start() end,
+})
+
 return {
   {
     'nvim-treesitter/nvim-treesitter',

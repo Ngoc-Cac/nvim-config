@@ -1,16 +1,6 @@
 vim.api.nvim_set_hl(0, "HighlightYank", { bg = "#466973" })
 vim.api.nvim_create_augroup("UtilAutoCmd", {clear = true})
 
--- enable syntax highlighting with treesitter
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = {
-    "json", "yaml", "toml",
-    "markdown", "html", "css",
-    "sh", "lua", "python", "javascript",
-  },
-  callback = function() vim.treesitter.start() end,
-})
-
 vim.api.nvim_create_autocmd("TextYankPost", {
   group = "UtilAutoCmd",
   desc = "Highlight the yanked text briefly",
