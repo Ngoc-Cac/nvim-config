@@ -2,7 +2,6 @@ local blink_opts = {
   keymap = {
     preset = "super-tab",
     ["<Esc>"] = { "hide", "hide_documentation", "hide_signature", "fallback" },
-    -- ["<CR>"] = { "select_and_accept", "fallback" }
   },
   appearance = { nerd_font_variant = "normal" },
   cmdline = { enabled = false },
@@ -12,6 +11,7 @@ local blink_opts = {
       auto_show_delay_ms = 300,
       treesitter_highlighting = true
     },
+    ghost_text = { enabled = true }
   },
   signature = {
     enabled = true,
@@ -20,9 +20,11 @@ local blink_opts = {
       show_documentation = true,
     }
   },
-
   sources = {
-    default = { "lazydev", "lsp", "path", "snippets", "buffer" },
+    default = { "lsp", "snippets", "path", "buffer" },
+    per_filetype = {
+      lua = { inherit_defaults = true, "lazydev" }
+    },
     providers = {
       -- setting up a provider for lazydev
       lazydev = {
