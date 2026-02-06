@@ -56,6 +56,7 @@ return {
       { "j-hui/fidget.nvim", opts = {} }
     },
     config = function()
+      vim.lsp.inlay_hint.enable(true)
       for _, server in ipairs(lsp_servers) do
         vim.lsp.config(server, lsp_capabilities)
       end
