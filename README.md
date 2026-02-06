@@ -232,7 +232,7 @@ And, this is the colorscheme used:
       identation guide. 
     </li>
     <li>
-      <a href="https://github.com/norcalli/nvim-colorizer.lua"><code>nvim-colorizer.lua</code></a>:
+      <a href="https://github.com/catgoose/nvim-colorizer.lua"><code>nvim-colorizer.lua</code></a>:
       Basically a CSS color previewer. This is nice when doing a lot of colour configuration,
       e.g., configuring your colorscheme.
     </li>

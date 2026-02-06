@@ -16,13 +16,17 @@ return {
   },
   -- color previewer
   {
-    "norcalli/nvim-colorizer.lua",
+    "catgoose/nvim-colorizer.lua",
     event = "BufReadPost",
     opts = {
-      vim = { mode = "foreground" },
-      lua = { mode = "foreground" },
-      css = { css = true, css_fn = true },
-      html = { css = true, css_fn = true }
+      filetypes = {
+        "*",
+        vim = { mode = "foreground" },
+        lua = { mode = "foreground" },
+        css = { css = true, css_fn = true },
+        html = { css = true, css_fn = true },
+      },
+      user_default_options = { xterm = true }
     }
   },
 }
