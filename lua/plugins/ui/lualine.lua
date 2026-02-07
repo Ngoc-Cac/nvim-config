@@ -25,6 +25,11 @@ local sections = {
 local tabline = {
   lualine_a = { "mode", "branch" },
   lualine_b = {
+    function()
+      return require("auto-session.lib").current_session_name(true)
+    end,
+  },
+  lualine_c = {
     {
       "diagnostics",
       sections = { "error", "warn", "hint", "info" },
@@ -33,7 +38,7 @@ local tabline = {
     { "diff", draw_empty = true, source = diff_source },
   },
   lualine_z = {{ "tabs", mode = 2, max_length = vim.o.columns }},
-  lualine_c = {}, lualine_y = {}, lualine_x = {}
+  lualine_y = {}, lualine_x = {}
 }
 
 return {
