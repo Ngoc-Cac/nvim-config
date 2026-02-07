@@ -14,6 +14,8 @@ opt.relativenumber = true
 opt.cursorline = true
 opt.cursorlineopt = "number"
 
+opt.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,localoptions"
+
 opt.splitbelow = true
 opt.splitright = true
 
