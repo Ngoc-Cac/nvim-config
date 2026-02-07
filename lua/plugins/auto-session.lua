@@ -14,5 +14,10 @@ return {
     auto_save = true,
     auto_restore_last_session = true,
     bypass_save_filetypes = { "terminal", "netrw" },
+    session_lens = {
+      picker = "telescope",
+      picker_opts = { previewer = true },
+      previewer = "summary"
+    }
 	},
 }
