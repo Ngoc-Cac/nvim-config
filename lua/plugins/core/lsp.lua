@@ -31,6 +31,8 @@ local lsp_servers = {
   "basedpyright", -- NOTE: pyrightconfig.json will override ls conf
 }
 return {
+  -- progress report for lsps
+  { "j-hui/fidget.nvim", opts = {} },
   {
     "mason-org/mason.nvim",
     cmd = "Mason",
@@ -40,26 +42,21 @@ return {
   },
   {
     "mason-org/mason-lspconfig.nvim",
-    dependencies = { "mason-org/mason.nvim" },
-    lazy = true, -- we manually load it in nvim-lspconfig
+    dependencies = {
+      "mason-org/mason.nvim", "neovim/nvim-lspconfig", "j-hui/fidget.nvim",
+    },
+    event = { "BufReadPost", "BufNewFile" },
     opts = {
       ensure_installed = lsp_servers,
       automatic_enable = lsp_servers,
-    }
-  },
-  {
-    "neovim/nvim-lspconfig",
-    event = { "BufReadPost", "BufNewFile" },
-    dependencies = {
-      "mason-org/mason-lspconfig.nvim",
-      -- progress report for lsps
-      { "j-hui/fidget.nvim", opts = {} }
     },
-    config = function()
+    config = function(opts)
       vim.lsp.inlay_hint.enable(true)
       for _, server in ipairs(lsp_servers) do
         vim.lsp.config(server, lsp_capabilities)
       end
+
+      require("mason-lspconfig").setup(opts)
     end
   }
 }
