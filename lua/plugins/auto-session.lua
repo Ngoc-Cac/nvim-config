@@ -2,9 +2,9 @@ return {
 	"rmagatti/auto-session",
 	lazy = false,
   keys = {
-    { "<localleader>ss", "<cmd>AutoSession search<CR>", desc = "Session search" },
-    { "<localleader>sd", "<cmd>AutoSession deletePicker<CR>", desc = "Session delete" },
-    { "<localleader>sc", "<cmd>AutoSession save ", desc = "Session save" },
+    { "<localleader>ss", ":AutoSession search<CR>", desc = "Session search" },
+    { "<localleader>sd", ":AutoSession deletePicker<CR>", desc = "Session delete" },
+    { "<localleader>sc", ":AutoSession save ", desc = "Session save" },
   },
 	---@module "auto-session"
 	---@type AutoSession.Config
