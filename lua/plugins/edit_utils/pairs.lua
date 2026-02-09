@@ -20,7 +20,16 @@ return {
   {
     "windwp/nvim-autopairs",
     event = "InsertEnter",
-    config = true,
     opts = {},
+    config = function(opts)
+      local npairs = require("nvim-autopairs")
+      local Rule = require("nvim-autopairs.rule")
+      npairs.setup(opts)
+
+      npairs.add_rules({
+        Rule("$", "$",{ "tex", "latex" }),
+        Rule("\\[", "\\]", {"tex", "latex" })
+      })
+    end
   },
 }
