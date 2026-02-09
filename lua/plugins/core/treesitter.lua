@@ -26,7 +26,7 @@ end
 vim.api.nvim_create_autocmd("FileType", {
   pattern = {
     "json", "yaml", "toml",
-    "markdown", "html", "css",
+    "markdown", "tex", "html", "css",
     "sh", "lua", "python", "javascript",
   },
   callback = function() vim.treesitter.start() end,
