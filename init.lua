@@ -1,6 +1,8 @@
 -- doing this for lazy vim
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
+-- registering all tex file as tex, so treesitter can parse it
+vim.g.tex_flavor = "tex"
 -- define a default clipboard provider so nvim doesn't source clipboard.vim 
 if vim.fn.has("win32") == 1 then
   vim.g.clipboard = {
