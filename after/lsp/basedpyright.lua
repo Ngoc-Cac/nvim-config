@@ -7,6 +7,7 @@ local diagnostic_overrides = {
   reportPrivateImportUsage = false,
 
   reportGeneralTypeIssues = false,
+  reportOperatorIssue = false,
 
   reportArgumentType = false,
   reportAssignmentType = false,
