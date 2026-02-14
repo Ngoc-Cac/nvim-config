@@ -1,8 +1,8 @@
-local function bind_textobj_keymaps(select_module)
+local function bind_textobj_keymaps()
   local keyset = function(lhs, rhs, desc)
     vim.keymap.set({ "x", "o" }, lhs, rhs, { desc = desc })
   end
-  local select = select_module.select_textobject
+  local select = require("nvim-treesitter-textobjects.select").select_textobject
 
   keyset("ap", function() select("@parameter.outer", "textobjects") end, "Parameter")
   keyset("ip", function() select("@parameter.inner", "textobjects") end, "Parameter")
@@ -13,8 +13,14 @@ local function bind_textobj_keymaps(select_module)
   keyset("ai", function() select("@conditional.outer", "textobjects") end, "Conditional")
   keyset("ii", function() select("@conditional.inner", "textobjects") end, "Conditional")
 
-  keyset("af", function() select("@function.outer", "textobjects") end, "Function")
-  keyset("if", function() select("@function.inner", "textobjects") end, "Function")
+  keyset("af", function() select(
+    vim.bo.filetype == "tex" and "@block.outer" or "@function.outer",
+    "textobjects"
+  ) end, "Function")
+  keyset("if", function() select(
+    vim.bo.filetype == "tex" and "@block.inner" or "@function.inner",
+    "textobjects"
+  ) end, "Function")
 
   keyset("ac", function() select("@class.outer", "textobjects") end, "Class")
   keyset("ic", function() select("@class.inner", "textobjects") end, "Class")
@@ -50,9 +56,8 @@ return {
       move = { enable = true }
     },
     config = function(_, opts)
-      -- configuration
       require("nvim-treesitter-textobjects").setup(opts)
-      bind_textobj_keymaps(require("nvim-treesitter-textobjects.select"))
+      bind_textobj_keymaps()
     end
   }
 }
