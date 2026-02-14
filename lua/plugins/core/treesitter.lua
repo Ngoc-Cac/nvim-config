@@ -21,6 +21,8 @@ local function bind_textobj_keymaps()
     vim.bo.filetype == "tex" and "@block.inner" or "@function.inner",
     "textobjects"
   ) end, "Function")
+  keyset("aF", function() select("@call.outer", "textobjects") end, "Call")
+  keyset("iF", function() select("@call.inner", "textobjects") end, "Call")
 
   keyset("ac", function() select("@class.outer", "textobjects") end, "Class")
   keyset("ic", function() select("@class.inner", "textobjects") end, "Class")
