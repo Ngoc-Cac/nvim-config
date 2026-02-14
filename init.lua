@@ -59,7 +59,7 @@ require("lazy").setup({
     { import = "plugins", cond = not_vscode },
     { import = "plugins.core", cond = not_vscode },
     { import = "plugins.ui", cond = not_vscode },
-    { import = "plugins.edit_utils", cond = not_vscode }
+    { import = "plugins.edit_utils" }
   },
 })
 
