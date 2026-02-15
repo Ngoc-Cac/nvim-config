@@ -12,7 +12,6 @@ local which_key_spec = {
 }
 
 return {
-  { "mechatroner/rainbow_csv", ft = { "csv", "tsv" } },
   -- key mappings hint
   {
     "folke/which-key.nvim",
