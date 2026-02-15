@@ -1,7 +1,6 @@
 local keyset = vim.keymap.set
 
 -- escape key
-keyset("i", "jj", "<esc>")
 keyset("i", "jk", "<esc>")
 keyset("i", "kj", "<esc>")
 keyset("c", "jj", "<c-c>")
