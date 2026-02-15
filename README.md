@@ -107,10 +107,6 @@ And, this is the colorscheme used:
       highlighting and enhanced text-objects.
     </li>
     <li>
-      <a href="https://github.com/numToStr/Comment.nvim"><code>Comment.nvim</code></a>:
-      Code commenting with <code>gcc</code> and <code>gc[motion]</code> key mappings.
-    </li>
-    <li>
       <a href="https://github.com/windwp/nvim-autopairs"><code>nvim-autopairs</code></a>:
       Auto-pairing when editing. This pretty much just speeds up the rest of the configuration
       for other plugins, so definitely needs to be installed right of the bat.
@@ -121,13 +117,13 @@ And, this is the colorscheme used:
 <details><summary>&#127775<b>Highly Recommended</b></summary>
   <ul>
     <li>
-      <a href="https://github.com/nvim-treesitter/nvim-treesitter-textobjects">
-        <code>nvim-treesitter-textobjects</code></a>: Plugin for amazing syntactical text-objects.
+      <a
+        href="https://github.com/nvim-treesitter/nvim-treesitter-textobjects"
+      ><code>nvim-treesitter-textobjects</code></a>: Plugin for amazing syntactical text-objects.
     </li>
     <li>
-      <a href="https://github.com/Shatur/neovim-session-manager"><code>neovim-session-manager</code></a>:
-      This plugins builds upon Neovim's builtin <code>:mksession</code> and handles all of the session saving
-      and loading in an <b>organised</b> fashion (it saves to one directory that is).
+      <a href="https://github.com/rmagatti/auto-session"><code>auto-session</code></a>:
+      Just a super awesome plugins for managing workspaces.
     </li>
     <li>
       <a href="https://github.com/kevinhwang91/nvim-ufo"><code>nvim-ufo</code></a>:
@@ -165,11 +161,6 @@ And, this is the colorscheme used:
 <details><summary><b>Nice Utilities</b></summary>
   <ul>
     <li>
-      <a href="https://github.com/Vimjas/vim-python-pep8-indent">
-        <code>vim-python-pep8-indent</code></a>: This is a plugin that correctly indents
-      code on newlines (pressing <code>&lt;CR&gt;</code>).
-    </li>
-    <li>
       <a href="https://github.com/stevearc/oil.nvim"><code>oil.nvim</code></a>:
       Editable buffer for interacting with your file system. This is a very versatile plugin. 
       <b>NerdFonts</b> for your terminal is needed to load file icons.
@@ -177,6 +168,20 @@ And, this is the colorscheme used:
     <li>
       <a href="https://github.com/nvim-telescope/telescope.nvim"><code>telescope.nvim</code></a>:
       A fuzzy finder which allow for quick search of pretty much everything. 
+    </li>
+    <li>
+      <a href="https://github.com/Vimjas/vim-python-pep8-indent">
+        <code>vim-python-pep8-indent</code></a>: This is a plugin that correctly indents
+      code on newlines (pressing <code>&lt;CR&gt;</code>).
+    </li>
+    <li>
+      <a href="https://github.com/j-hui/fidget.nvim"><code>fidget.nvim</code></a>:
+      This is a nice notification plugins that logs the progress of your LSPs,
+      in case something goes wrong. 
+    </li>
+    <li>
+      <a href="https://github.com/numToStr/Comment.nvim"><code>Comment.nvim</code></a>:
+      Code commenting with <code>gcc</code> and <code>gc[motion]</code> key mappings.
     </li>
     <li>
       <a href="https://github.com/OXY2DEV/markview.nvim"><code>markview.nvim</code></a>:
@@ -187,11 +192,6 @@ And, this is the colorscheme used:
         <code>markdown-preview.nvim</code></a>: A web-based Markdown preview plugin.
       This can be nice if you are testing some Markdown that is pushed to some remote
       source like GitHub.
-    </li>
-    <li>
-      <a href="https://github.com/j-hui/fidget.nvim"><code>fidget.nvim</code></a>:
-      This is a nice notification plugins that logs the progress of your LSPs,
-      in case something goes wrong. 
     </li>
     <li>
       <a href="https://github.com/jake-stewart/multicursor.nvim"><code>multicursor.nvim</code></a>:
@@ -222,6 +222,11 @@ And, this is the colorscheme used:
 <details><summary><b>Visual Guides</b></summary>
   <ul>
     <li>
+      <a href="https://github.com/hat0uma/csvview.nvim"><code>csvview.nvim</code></a>:
+      A plugin that that makes your csv files look like literal tables, with cells.
+      This also providees text-objects too! 
+    </li>
+    <li>
       <a href="https://github.com/folke/which-key.nvim"><code>which-key.nvim</code></a>:
       A plugin that shows you the available key-mappings as you type. A very nice thing to
       have if you don't remember things well.
@@ -235,11 +240,6 @@ And, this is the colorscheme used:
       <a href="https://github.com/catgoose/nvim-colorizer.lua"><code>nvim-colorizer.lua</code></a>:
       Basically a CSS color previewer. This is nice when doing a lot of colour configuration,
       e.g., configuring your colorscheme.
-    </li>
-    <li>
-      <a href="https://github.com/mechatroner/rainbow_csv"><code>rainbow-csv</code></a>:
-      VS Code inspired RainbowCSV plugin. Plugin provides a nice way to differentiate
-      between columns. 
     </li>
   </ul>
 </details> 
