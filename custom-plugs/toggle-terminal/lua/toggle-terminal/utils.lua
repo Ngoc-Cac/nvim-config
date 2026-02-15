@@ -8,7 +8,10 @@ end
 
 local function create_term_buf()
   local buf = vim.api.nvim_create_buf(false, true)
-  vim.api.nvim_buf_call(buf, vim.cmd.term)
+  vim.api.nvim_buf_call(
+    buf,
+    function() vim.cmd("term " .. vim.env.SHELL) end
+  )
 
   vim.bo[buf].bufhidden = "hide"
   vim.bo[buf].buflisted = false
