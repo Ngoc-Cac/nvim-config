@@ -1,53 +1,48 @@
-local opt = vim.opt
+local options = {
+  termguicolors = true, -- not set by default for some reason
+  errorbells = false,
+  updatetime = 500,
+  encoding = "utf-8",
+  clipboard = "unnamedplus",
+  mouse = "a",
 
-opt.encoding = "utf-8"
-opt.ignorecase = true -- ignore the case on tab complete, search, etc.
-opt.smartcase = true -- if pattern has uppercase char, respect it
-opt.updatetime = 500
+  number = true,
+  relativenumber = true,
+  ignorecase = true, -- ignore the case on tab complete, search, etc.
+  smartcase = true, -- if pattern has uppercase char, respect it
+  wrap = false,
 
-opt.termguicolors = true -- not set by default for some reason
-opt.errorbells = false
-opt.wrap = false
+  cursorline = true,
+  cursorlineopt = "number",
+  sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,localoptions",
+  splitbelow = true,
+  splitright = true,
 
-opt.number = true
-opt.relativenumber = true
-opt.cursorline = true
-opt.cursorlineopt = "number"
+  scrolloff = 5, -- num lines above/below cursor
+  whichwrap = "<,>,[,]", -- wraps around the previous and next line
 
-opt.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,localoptions"
+  tabstop = 4,
+  softtabstop = 4,
+  shiftwidth = 4,
+  smartindent = true,
+  expandtab = true, -- make tab char becomes space
 
-opt.splitbelow = true
-opt.splitright = true
+  backspace = "indent,eol,start",
+  -- a preview window when doing s
+  inccommand = "split",
 
-opt.scrolloff = 5 -- num lines above/below cursor
-opt.whichwrap = "<,>,[,]" -- wraps around the previous and next line
-
-opt.mouse = "a"
-
--- softtab allows deleting tab char as a whole
--- shiftwidth is the num space to do autoindent (>> and <<) 
-opt.tabstop = 4
-opt.softtabstop = 4
-opt.shiftwidth = 4
-opt.smartindent = true
-opt.expandtab = true -- make tab char becomes space
-
--- delete over autoindent, eol and start of insert
-opt.backspace = "indent,eol,start"
-
--- allow copy to clipboard (+ reg)
-opt.clipboard = "unnamedplus"
-
--- a preview window when doing %s
-opt.inccommand = "split"
-
-opt.fillchars = {
-    horiz = "━", horizup = "┻", horizdown = "┳",
-    vert = "┃", vertleft = "┫", vertright = "┣", verthoriz = "╋",
-    fold = " ", foldopen = "˅", foldclose = ">",
+  fillchars = {
+      horiz = "━", horizup = "┻", horizdown = "┳",
+      vert = "┃", vertleft = "┫", vertright = "┣", verthoriz = "╋",
+      fold = " ", foldopen = "˅", foldclose = ">",
+  },
+  foldlevel = 99,
+  foldlevelstart = 99,
+  foldenable = true,
+  foldcolumn = "2",
 }
 
-opt.foldlevel = 99
-opt.foldlevelstart = 99
-opt.foldenable = true
-opt.foldcolumn = "2"
+local vim_opts = vim.opt
+for opt, val in pairs(options) do
+  vim_opts[opt] = val
+end
