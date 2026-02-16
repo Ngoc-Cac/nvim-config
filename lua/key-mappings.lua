@@ -18,6 +18,13 @@ keyset("i", "<c-s>", "<c-o>:w<cr>", { desc = ":w" })
 keyset("n", "X", ":%d_<cr>", { desc = "Delete everything in the current buffer" })
 keyset({ "n", "i" }, "<c-a>", ":%y<cr>", { desc = "Yank the whole file" })
 
+-- make the p motion in visual not overwrite the " register
+keyset("v", "p", '"_dP')
+
+-- indenting without losing the selection 
+keyset("v", ">", ">gv")
+keyset("v", "<", "<gv")
+
 -- alt + motion to move line up and down
 keyset("n", "<m-j>", ":m+<cr>==", { desc = "Move the current line up" })
 keyset("n", "<m-k>", ":m-2<cr>==", { desc = "Move the current line down" })
@@ -28,3 +35,9 @@ keyset(
   "n", "<localleader>bb", ":%bd|e#|bd#",
   { desc = "Delete all buffers except the current one." }
 )
+
+-- quickly resize stuff 
+keyset("n", "<c-up>", ":resize +1<cr>", { desc = "Increase row" })
+keyset("n", "<c-down>", ":resize -1<cr>", { desc = "Decrease row" })
+keyset("n", "<c-left>", ":vertical resize -2<cr>", { desc = "Increase row" })
+keyset("n", "<c-right>", ":vertical resize +2<cr>", { desc = "Decrease row" })
