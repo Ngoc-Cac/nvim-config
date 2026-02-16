@@ -10,9 +10,6 @@ keyset("t", "<esc><esc>", "<c-\\><c-n>", { desc = "Exit terminal mode." })
 keyset({ "n", "v" }, ";", ":", { desc = "Enter command-line mode" })
 keyset("n", "<localleader>l", ":nohl<cr>", { desc = "Quickly clear the highlighting" })
 
--- quick undo and redo in insert mode
-keyset("i", "<c-r>", "<c-o><c-r>")
-
 -- saving with ctrl-s
 keyset("n", "<c-s>", ":w<cr>", { desc = ":w" })
 keyset("i", "<c-s>", "<c-o>:w<cr>", { desc = ":w" })
