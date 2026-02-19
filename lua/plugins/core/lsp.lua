@@ -32,7 +32,7 @@ local lsp_servers = {
 }
 return {
   -- progress report for lsps
-  { "j-hui/fidget.nvim", opts = {} },
+  { "j-hui/fidget.nvim", lazy = true, opts = {} },
   {
     "mason-org/mason.nvim",
     cmd = "Mason",
