@@ -1,24 +1,24 @@
 local options = {
-  termguicolors = true, -- not set by default for some reason
+  termguicolors = true,
   errorbells = false,
   updatetime = 500,
   encoding = "utf-8",
   clipboard = "unnamedplus",
   mouse = "a",
+  sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,localoptions",
 
   number = true,
   relativenumber = true,
   ignorecase = true, -- ignore the case on tab complete, search, etc.
   smartcase = true, -- if pattern has uppercase char, respect it
-  wrap = false,
 
   cursorline = true,
   cursorlineopt = "number",
-  sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,localoptions",
   splitbelow = true,
   splitright = true,
 
   scrolloff = 5, -- num lines above/below cursor
+  wrap = false, -- no line wrapping
   whichwrap = "<,>,[,]", -- wraps around the previous and next line
 
   tabstop = 4,
@@ -28,8 +28,7 @@ local options = {
   expandtab = true, -- make tab char becomes space
 
   backspace = "indent,eol,start",
-  -- a preview window when doing s
-  inccommand = "split",
+  inccommand = "split", -- a preview window when doing s
 
   fillchars = {
       horiz = "━", horizup = "┻", horizdown = "┳",
