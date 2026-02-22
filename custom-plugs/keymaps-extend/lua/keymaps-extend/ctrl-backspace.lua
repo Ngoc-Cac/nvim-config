@@ -1,3 +1,10 @@
+--- An extended operation for `cb`.
+--- This acts similar to how Ctrl-Backspace works in
+--- other editor.
+---
+--- This will return an expr representing the motion
+--- to execute. This should be used within a key mapping
+---@return string delete_expr The delete motion
 local function backspace_del()
   local col = vim.fn.col(".")
   local before_cur = vim.api.nvim_get_current_line():sub(1, col - 1)
