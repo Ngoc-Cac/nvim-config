@@ -5,6 +5,8 @@ local tel_fg = {
 }
 local tel_bg = "#231c1c"
 local function config_hl_group(hl, c)
+  hl.ColorColumn = { bg = "#3e3530" }
+
   hl.TelescopePromptTitle  = { bold = true, bg = tel_bg, fg = tel_fg["prompt"] }
   hl.TelescopePreviewTitle = { bold = true, bg = tel_bg, fg = tel_fg["preview"] }
   hl.TelescopeResultsTitle = { bold = true, bg = tel_bg, fg = tel_fg["results"] }
