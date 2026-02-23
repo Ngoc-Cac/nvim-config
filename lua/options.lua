@@ -6,6 +6,7 @@ local options = {
   clipboard = "unnamedplus",
   mouse = "a",
   sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,localoptions",
+  undofile = true, -- persistent undo history
 
   number = true,
   relativenumber = true,
@@ -14,12 +15,15 @@ local options = {
 
   cursorline = true,
   cursorlineopt = "number",
-  splitbelow = true,
-  splitright = true,
+  colorcolumn = "80", -- highlight columns with ColorColumn
 
   scrolloff = 5, -- num lines above/below cursor
+  sidescrolloff = 10, -- num chars to the left/right of cursor
   wrap = false, -- no line wrapping
   whichwrap = "<,>,[,]", -- wraps around the previous and next line
+
+  splitbelow = true,
+  splitright = true,
 
   tabstop = 4,
   softtabstop = 4,
