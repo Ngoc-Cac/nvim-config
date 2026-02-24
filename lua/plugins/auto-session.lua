@@ -12,8 +12,10 @@ return {
 		suppressed_dirs = { "~/Downloads", "/" },
     auto_create = false,
     auto_save = true,
+    auto_restore = true,
     auto_restore_last_session = true,
     bypass_save_filetypes = { "terminal", "netrw", "fugitive" },
+    close_filetypes_on_save = { "checkhealth", "terminal", "netrw", "fugitive" },
     session_lens = {
       picker = "telescope",
       picker_opts = { previewer = true },
