@@ -19,7 +19,7 @@ return {
     keys = {
       { "<localleader>bd", desc = "Delete the current buffer." }
     },
-    opts = {}
+    opts = { switch_next = true }
   },
   {
     dir = custom_plugins .. "keymaps-extend",
