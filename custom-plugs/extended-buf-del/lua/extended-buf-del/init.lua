@@ -14,6 +14,8 @@ function M.buf_del()
     local win_closed = pcall(vim.api.nvim_win_close, cur_win, false)
     if win_closed then
       vim.api.nvim_buf_delete(cur_buf, { force = false })
+    elseif config.switch_next then
+      vim.cmd("bd")
     else
       vim.notify(
         "No next buffer to switch to!",
