@@ -184,10 +184,6 @@ And, this is the colorscheme used:
       Code commenting with <code>gcc</code> and <code>gc[motion]</code> key mappings.
     </li>
     <li>
-      <a href="https://github.com/OXY2DEV/markview.nvim"><code>markview.nvim</code></a>:
-      A Markdown preview plugin. Great for quick testing.
-    </li>
-    <li>
       <a href="https://github.com/iamcco/markdown-preview.nvim">
         <code>markdown-preview.nvim</code></a>: A web-based Markdown preview plugin.
       This can be nice if you are testing some Markdown that is pushed to some remote
