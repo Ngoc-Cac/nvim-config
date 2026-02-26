@@ -55,6 +55,11 @@ return {
         require("telescope.builtin").lsp_definitions({ jump_type = "vsplit" })
       end, desc = "Jump to definition in vertical split",
     },
+    {
+      "grh", function()
+        require("telescope.builtin").lsp_definitions({ jump_type = "split" })
+      end, desc = "Jump to definition in horizontal split",
+    }
   },
   init = function()
     -- wizardry lazy-loading for the nice ui.
