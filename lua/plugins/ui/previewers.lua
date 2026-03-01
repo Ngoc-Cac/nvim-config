@@ -42,7 +42,16 @@ return {
         css = { css = true, css_fn = true },
         html = { css = true, css_fn = true },
       },
-      user_default_options = { xterm = true }
+      options = {
+        parsers = {
+          css = true,
+          xterm = { enable = true },
+        },
+        display = {
+          mode = "virtualtext",
+          virtualtext = { position = "before" }
+        },
+      }
     }
   },
 }
