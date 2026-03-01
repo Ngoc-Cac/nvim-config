@@ -39,8 +39,8 @@ return {
         "*",
         vim = { mode = "foreground" },
         lua = { mode = "foreground" },
-        css = { css = true, css_fn = true },
-        html = { css = true, css_fn = true },
+        css =  { mode = "background" },
+        html = { mode = "background" },
       },
       options = {
         parsers = {
