@@ -14,10 +14,11 @@ return {
     auto_save = true,
     auto_restore = true,
     auto_restore_last_session = true,
-    bypass_save_filetypes = { "terminal", "netrw", "fugitive" },
-    close_filetypes_on_save = { "checkhealth", "terminal", "netrw", "fugitive" },
+    bypass_save_filetypes = { "terminal", "netrw", "fugitive", "oil" },
+    close_filetypes_on_save = { "checkhealth", "terminal", "netrw", "fugitive", "oil" },
     session_lens = {
       picker = "telescope",
+      load_on_setup = false,  -- don't load telescope automatically on startup
       picker_opts = { previewer = true },
       previewer = "summary"
     }
