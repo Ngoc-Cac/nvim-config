@@ -13,6 +13,17 @@ vim.diagnostic.config({
   },
 })
 
+vim.api.nvim_create_autocmd("LspAttach", {
+  group = vim.api.nvim_create_augroup("UserLspAttach", { clear = true }),
+  callback = function()
+    vim.keymap.set(
+      "n", "K", function()
+        vim.lsp.buf.hover({ border = "rounded" })
+      end, { desc = "vim.lsp.buf.hover()", buffer = true }
+    )
+  end
+})
+
 local lsp_capabilities = {
   capabilities = {
     textDocument = {
