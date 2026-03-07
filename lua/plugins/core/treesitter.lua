@@ -66,6 +66,9 @@ end
 -- enable syntax highlighting with treesitter
 vim.api.nvim_create_autocmd("FileType", {
   pattern = {
+    "gitignore", "dockerfile", "requirements",
+    "readline",
+
     "json", "yaml", "toml",
     "markdown", "tex", "html", "css",
     "sh", "lua", "python", "javascript",
