@@ -49,5 +49,6 @@ return {
     ---@module "ibl"
     ---@type ibl.config
     opts = { scope = { show_start = false, show_end = false } },
-  }
+  },
+  { "fei6409/log-highlight.nvim", ft = "log" }
 }

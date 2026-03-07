@@ -237,5 +237,10 @@ And, this is the colorscheme used:
       Basically a CSS color previewer. This is nice when doing a lot of colour configuration,
       e.g., configuring your colorscheme.
     </li>
+    <li>
+      <a href="https://github.com/fei6409/log-highlight.nvim"><code>log-highlight.nvim</code></a>:
+      This plugin adds syntax-highlight for log files. Very visually-appealing whenever you need
+      to read one.
+    </li>
   </ul>
 </details> 
