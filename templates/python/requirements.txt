@@ -1,0 +1,4 @@
+# This is just a template file
+# Install at your own risk!!!
+
+numpy [security] >= 1.*.0
