@@ -24,11 +24,14 @@ return {
     config = function(opts)
       local npairs = require("nvim-autopairs")
       local Rule = require("nvim-autopairs.rule")
+      local cond = require('nvim-autopairs.conds')
       npairs.setup(opts)
 
       npairs.add_rules({
-        Rule("$", "$",{ "tex", "latex" }),
-        Rule("\\[", "\\]", {"tex", "latex" })
+        Rule("$", "$", { "tex", "latex" })
+          :with_pair(cond.not_before_regex("\\", 1)),
+        Rule("\\[", "\\]", {"tex", "latex" }),
+        Rule("\\{", "\\}", {"tex", "latex" })
       })
     end
   },
