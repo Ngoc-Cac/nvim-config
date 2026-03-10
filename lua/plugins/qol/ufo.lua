@@ -1,13 +1,18 @@
+local selector_map = {
+  python = { "treesitter", "indent" },
+}
+
 return {
   "kevinhwang91/nvim-ufo",
   dependencies = { "kevinhwang91/promise-async" },
   event = { "BufReadPost", "BufNewFile" },
-  opts = {
-    provider_selector = function() return { "lsp", "indent" } end
-  },
-  config = function(opts)
+  config = function()
     local ufo = require("ufo")
-    ufo.setup(opts)
+    ufo.setup({
+      provider_selector = function(_, ft, _)
+        return selector_map[ft]
+      end
+    })
 
     -- open and close all
     vim.keymap.set("n", "zR", ufo.openAllFolds, { desc = "Open all folds." })
