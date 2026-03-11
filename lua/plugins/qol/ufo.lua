@@ -1,5 +1,6 @@
 local selector_map = {
-  python = { "treesitter", "indent" },
+  markdown = { "treesitter", "indent" },
+  python = { "treesitter", "indent" }
 }
 
 return {
