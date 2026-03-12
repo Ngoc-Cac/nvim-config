@@ -28,36 +28,24 @@ local function bind_textobj_keymaps()
 end
 
 local function bind_move_keys()
-  local keyset = function(lhs, rhs, desc)
-    vim.keymap.set({ "n", "x", "o" }, lhs, rhs, { desc = desc })
+  local keyset = function(lhs, textobj, goto_func, desc)
+    vim.keymap.set(
+      { "n", "x", "o" }, lhs,
+      function() goto_func(textobj, "textobjects") end,
+      { desc = desc }
+    )
   end
   local move = require("nvim-treesitter-textobjects.move")
 
-  keyset("]f", function()
-    move.goto_next_start("@function.outer", "textobjects")
-  end, "Next function start")
-  keyset("]F", function()
-    move.goto_next_end("@function.outer", "textobjects")
-  end, "Next function end")
-  keyset("[f", function()
-    move.goto_previous_start("@function.outer", "textobjects")
-  end, "Next function start")
-  keyset("[F", function()
-    move.goto_previous_end("@function.outer", "textobjects")
-  end, "Next function end")
+  keyset("]f", "@function.outer", move.goto_next_start, "Next function start")
+  keyset("[f", "@function.outer", move.goto_previous_start, "Previous function start")
+  keyset("]F", "@function.outer", move.goto_next_end, "Next function end")
+  keyset("[F", "@function.outer", move.goto_previous_end, "Previous function end")
 
-  keyset("]c", function()
-    move.goto_next_start("@class.outer", "textobjects")
-  end, "Next class start")
-  keyset("]C", function()
-    move.goto_next_end("@class.outer", "textobjects")
-  end, "Next class end")
-  keyset("[c", function()
-    move.goto_previous_start("@function.outer", "textobjects")
-  end, "Next function start")
-  keyset("[C", function()
-    move.goto_previous_end("@function.outer", "textobjects")
-  end, "Next function end")
+  keyset("]c", "@class.outer", move.goto_next_start, "Next class start")
+  keyset("[c", "@class.outer", move.goto_previous_start, "Previous class start")
+  keyset("]C", "@class.outer", move.goto_next_end, "Next class end")
+  keyset("[C", "@class.outer", move.goto_previous_end, "Previous class end")
 end
 
 local ft_to_start = {
