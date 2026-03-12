@@ -60,18 +60,14 @@ local function bind_move_keys()
   end, "Next function end")
 end
 
--- enable syntax highlighting with treesitter
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = {
-    "gitignore", "dockerfile", "requirements",
-    "readline",
+local ft_to_start = {
+  "gitignore", "dockerfile", "requirements",
+  "readline",
 
-    "json", "yaml", "toml",
-    "markdown", "tex", "html", "css",
-    "sh", "lua", "python", "javascript",
-  },
-  callback = function() vim.treesitter.start() end,
-})
+  "json", "yaml", "toml",
+  "markdown", "tex", "html", "css",
+  "sh", "lua", "python", "javascript",
+}
 
 return {
   {
@@ -80,7 +76,18 @@ return {
     dependencies = { "nvim-treesitter/nvim-treesitter-textobjects" },
     event = { "BufReadPost", "BufNewFile" },
     cmd = { "TSInstall", "TSUpdate", "TSUninstall", "TSLog" },
-    opts = {}
+    opts = {},
+    config = function()
+      -- enable syntax highlighting with treesitter
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = ft_to_start,
+        group = vim.api.nvim_create_augroup(
+          "TreesitterAutoStart",
+          { clear = true }
+        ),
+        callback = function() vim.treesitter.start() end,
+      })
+    end
   },
   {
     "nvim-treesitter/nvim-treesitter-textobjects",
