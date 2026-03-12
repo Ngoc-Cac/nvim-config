@@ -30,8 +30,12 @@ return {
       npairs.add_rules({
         Rule("$", "$", { "tex", "latex" })
           :with_pair(cond.not_before_regex("\\", 1)),
-        Rule("\\[", "\\]", {"tex", "latex" }),
-        Rule("\\{", "\\}", {"tex", "latex" })
+        Rule("\\[", "\\]", { "tex", "latex" }),
+        Rule("\\{", "\\}", { "tex", "latex" }),
+        Rule("\\left(", "\\right)", { "tex", "latex" }),
+        Rule("\\left[", "\\right]", { "tex", "latex" }),
+        Rule("\\left\\{", "\\right\\}", { "tex", "latex" }),
+        Rule("\\lvert", "\\rvert", { "tex", "latex" }),
       })
     end
   },
