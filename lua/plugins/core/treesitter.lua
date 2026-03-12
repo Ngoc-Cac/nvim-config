@@ -1,33 +1,30 @@
 local function bind_textobj_keymaps()
-  local keyset = function(lhs, rhs, desc)
-    vim.keymap.set({ "x", "o" }, lhs, rhs, { desc = desc })
-  end
   local select = require("nvim-treesitter-textobjects.select").select_textobject
+  local keyset = function(lhs, textobj, desc)
+    vim.keymap.set({ "x", "o" }, lhs, function()
+      select(textobj, "textobjects")
+    end, { desc = desc })
+  end
 
-  keyset("ap", function() select("@parameter.outer", "textobjects") end, "Parameter")
-  keyset("ip", function() select("@parameter.inner", "textobjects") end, "Parameter")
+  keyset("ap", "@parameter.outer", "Parameter")
+  keyset("ip", "@parameter.inner", "Parameter")
 
-  keyset("al", function() select("@loop.outer", "textobjects") end, "Loop")
-  keyset("il", function() select("@loop.inner", "textobjects") end, "Loop")
+  keyset("al", "@loop.outer", "Loop")
+  keyset("il", "@loop.inner", "Loop")
 
-  keyset("ai", function() select("@conditional.outer", "textobjects") end, "Conditional")
-  keyset("ii", function() select("@conditional.inner", "textobjects") end, "Conditional")
+  keyset("ai", "@conditional.outer", "Conditional")
+  keyset("ii", "@conditional.inner", "Conditional")
 
-  keyset("af", function() select(
-    vim.bo.filetype == "tex" and "@block.outer" or "@function.outer",
-    "textobjects"
-  ) end, "Function")
-  keyset("if", function() select(
-    vim.bo.filetype == "tex" and "@block.inner" or "@function.inner",
-    "textobjects"
-  ) end, "Function")
-  keyset("aF", function() select("@call.outer", "textobjects") end, "Call")
-  keyset("iF", function() select("@call.inner", "textobjects") end, "Call")
+  keyset("af", "@function.outer", "Function" )
+  keyset("if", "@function.inner", "Function" )
 
-  keyset("ac", function() select("@class.outer", "textobjects") end, "Class")
-  keyset("ic", function() select("@class.inner", "textobjects") end, "Class")
+  keyset("aF", "@call.outer", "Call")
+  keyset("iF", "@call.inner", "Call")
 
-  keyset("as", function() select("@local.scope", "locals") end, "Scope Local")
+  keyset("ac", "@class.outer", "Class")
+  keyset("ic", "@class.inner", "Class")
+
+  keyset("as", "@local.scope", "Scope Local")
 end
 
 local function bind_move_keys()
