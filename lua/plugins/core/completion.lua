@@ -39,7 +39,7 @@ local blink_opts = {
 }
 
 return {
-  -- extends the base lua LSP to recognize my neovim configurations
+  -- extends the base lua LSP to recognize the neovim apis and plugins' apis.
   {
     "folke/lazydev.nvim",
     ft = "lua",

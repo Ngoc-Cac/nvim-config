@@ -18,6 +18,9 @@ local function ws_del_setup()
   end, { expr = true, desc = "Delete trailing whitespace for the current line" })
 end
 
+--- Configure the extended key-mappings
+---
+---@param opts table The configurations
 local function setup(opts)
   config = vim.tbl_deep_extend("force", config, opts or {})
 

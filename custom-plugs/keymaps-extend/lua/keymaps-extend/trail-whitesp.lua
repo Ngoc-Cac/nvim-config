@@ -1,5 +1,9 @@
 local normal_types = { char = true, line = true, block = true }
 
+--- Delete trailing whitespace.
+--- 
+--- This should be used as an `operatorfunc`
+---@param type string One of "char"|"line"|"block"
 local function trail_whitesp_del(type)
   local prev_reg = vim.fn.getreg("/")
   -- use '[ and '] in normal mode motions
