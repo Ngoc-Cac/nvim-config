@@ -26,10 +26,6 @@ local diagnostic_overrides = {
   reportPossiblyUnboundVariable = "hint",
 }
 return { settings = { basedpyright = {
-  python = {
-    venvPath = ".",
-    venv = ".venv"
-  },
   analysis = {
     typeCheckingMode = "basic",
     diagnosticMode = "openFilesOnly",
