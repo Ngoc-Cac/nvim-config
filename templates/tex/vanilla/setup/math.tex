@@ -1,0 +1,20 @@
+% needs xparse
+\usepackage{mathtools}
+\usepackage{amsmath, amssymb, amsfonts}
+
+\newcommand{\dd}{\mathrm{d}}
+\NewDocumentCommand{\dv}{ m G{} e{^} }{
+    \frac{\dd\IfNoValueTF{#3}{}{^{#3}}#2}
+        {\dd#1\IfNoValueTF{#3}{}{^{#3}}}
+}
+
+\NewDocumentCommand{\pdv}{ m G{} e{^} }{
+    \frac{\partial\IfNoValueTF{#3}{}{^{#3}}}
+        {\partial#1\IfNoValueTF{#3}{}{^{#3}}}
+}
+
+\DeclareMathOperator{\E}{E}
+\DeclareMathOperator{\var}{Var}
+\DeclareMathOperator{\cov}{Cov}
+\DeclareMathOperator{\prob}{Pr}
+\DeclareMathOperator{\se}{se}
