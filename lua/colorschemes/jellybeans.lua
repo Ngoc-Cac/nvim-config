@@ -6,6 +6,7 @@ local tel_fg = {
 local tel_bg = "#231c1c"
 local function config_hl_group(hl, c)
   hl.ColorColumn = { bg = "#3e3530" }
+  hl.NormalFloat = { bg = "#342d29" }
 
   hl.TelescopePromptTitle  = { bold = true, bg = tel_bg, fg = tel_fg["prompt"] }
   hl.TelescopePreviewTitle = { bold = true, bg = tel_bg, fg = tel_fg["preview"] }
@@ -39,7 +40,10 @@ return {
   "wtfox/jellybeans.nvim",
   lazy = false,
   priority = 1000,
+	---@module "jellybeans"
+  ---@type jellybeans.Config 
   opts = {
+    flat_ui = false,
     on_colors = function(c)
       local bg_coffee = "#2b2522"
       c.background = bg_coffee
