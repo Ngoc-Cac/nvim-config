@@ -1,4 +1,5 @@
 local templates = {
+  minimal = "$XDG_CONFIG_HOME/nvim/templates/tex/minimal.tex",
   vanilla = "$XDG_CONFIG_HOME/nvim/templates/tex/vanilla/",
 }
 
