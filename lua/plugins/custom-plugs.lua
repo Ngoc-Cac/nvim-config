@@ -28,5 +28,10 @@ return {
       { "<leader>c", mode = { "n", "x", "o" }, desc = "Delete trailing whitespaces" }
     },
     opts = {}
+  },
+  {
+    dir = custom_plugins .. "tex-template",
+    cmd = "TexCreate",
+    opts = {}
   }
 }
