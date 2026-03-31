@@ -3,10 +3,13 @@ local options = {
   errorbells = false,
   updatetime = 500,
   encoding = "utf-8",
-  clipboard = "unnamedplus",
+
   mouse = "a",
+  clipboard = "unnamedplus",
   sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,localoptions",
+
   undofile = true, -- persistent undo history
+  confirm = true, -- ask for buffers with unsaved changes
 
   number = true,
   relativenumber = true,
