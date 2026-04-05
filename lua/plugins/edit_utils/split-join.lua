@@ -8,7 +8,19 @@ return {
   },
   config = function()
     local sj = require("treesj")
-    sj.setup({ use_default_keymaps = false })
+    local lang_utils = require('treesj.langs.utils')
+
+    local langs = {
+      latex = {
+        displayed_equation = lang_utils.set_default_preset({
+          join = { space_in_brackets = true }
+        }),
+      }
+    }
+    sj.setup({
+      use_default_keymaps = false,
+      langs = langs
+    })
 
     vim.keymap.set("n", "<leader>sm", sj.toggle)
     vim.keymap.set("n", "<leader>sj", sj.join)
