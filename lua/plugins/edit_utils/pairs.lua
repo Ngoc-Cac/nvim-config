@@ -35,7 +35,7 @@ return {
         Rule("\\left(", "\\right)", { "tex", "latex" }),
         Rule("\\left[", "\\right]", { "tex", "latex" }),
         Rule("\\left\\{", "\\right\\}", { "tex", "latex" }),
-        Rule("\\lvert", "\\rvert", { "tex", "latex" }),
+        Rule("\\left|", "\\right|", { "tex", "latex" }),
       })
     end
   },
