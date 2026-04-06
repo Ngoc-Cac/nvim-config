@@ -1,3 +1,23 @@
+local custom_surrounds = {
+  ["\\"] = {  -- latex environment
+    output = function()
+      local env = MiniSurround.user_input("Environment")
+      local left, right = nil, nil
+
+      if env == "[" then
+        left, right = "\\[ ", " \\]"
+      elseif env == "]" then
+        left, right = "\\[", "\\]"
+      else
+        left = string.format("\\begin{%s}", env)
+        right = string.format("\\end{%s}", env)
+      end
+
+      return { left = left, right = right }
+    end
+  }
+}
+
 return {
   -- an even better fast-wrapping than auto-pairs
   {
@@ -8,6 +28,7 @@ return {
       "ds", "gs", "rs"
     },
     opts = {
+      custom_surroundings = custom_surrounds,
       highlight_duration = 1000,
       mappings = {
         add = "cs", delete = "ds",
