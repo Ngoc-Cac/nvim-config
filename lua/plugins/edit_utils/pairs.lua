@@ -8,12 +8,14 @@ return {
       "ds", "gs", "rs"
     },
     opts = {
+      highlight_duration = 1000,
       mappings = {
         add = "cs", delete = "ds",
         highlight = "gs", replace = "rs",
         find = "", find_left = "",
         suffix_last = "", suffix_next = ""
-      }
+      },
+      respect_selection_type = true,  -- surround each line in the selection
     },
   },
   -- autopairs
