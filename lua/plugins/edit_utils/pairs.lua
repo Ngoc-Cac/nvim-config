@@ -26,7 +26,7 @@ return {
     config = function(opts)
       local npairs = require("nvim-autopairs")
       local Rule = require("nvim-autopairs.rule")
-      local cond = require('nvim-autopairs.conds')
+      local cond = require("nvim-autopairs.conds")
       npairs.setup(opts)
 
       npairs.add_rules({
