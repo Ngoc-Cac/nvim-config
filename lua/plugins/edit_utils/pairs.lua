@@ -1,18 +1,17 @@
+local function get_latex_env(env)
+  if env == "[" then
+    return "\\[ ", " \\]"
+  elseif env == "]" then
+    return "\\[", "\\]"
+  else
+    return string.format("\\begin{%s}", env), string.format("\\end{%s}", env)
+  end
+end
+
 local custom_surrounds = {
   ["\\"] = {  -- latex environment
     output = function()
-      local env = MiniSurround.user_input("Environment")
-      local left, right = nil, nil
-
-      if env == "[" then
-        left, right = "\\[ ", " \\]"
-      elseif env == "]" then
-        left, right = "\\[", "\\]"
-      else
-        left = string.format("\\begin{%s}", env)
-        right = string.format("\\end{%s}", env)
-      end
-
+      local left, right = get_latex_env(MiniSurround.user_input("Environment"))
       return { left = left, right = right }
     end
   }
