@@ -9,8 +9,8 @@ local function get_latex_env(env)
 end
 
 local custom_surrounds = {
-  ["\\"] = {  -- latex environment
-    input = function ()
+  ["e"] = {  -- latex environment
+    input = function()
       local left, right = get_latex_env(MiniSurround.user_input("Environment"))
       return { vim.pesc(left) .. "().-()" .. vim.pesc(right) }
     end,
