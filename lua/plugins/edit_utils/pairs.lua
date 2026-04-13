@@ -1,3 +1,27 @@
+local latex_delims = {
+  ["["] = "]", ["]"] = "[",
+  ["("] = ")", [")"] = "(",
+  ["\\{"] = "\\}", ["\\}"] = "\\{",
+  ["|"] = "|"
+}
+local open_delims = { ["["] = true, ["("] = true, ["{"] = true, ["| "] = true }
+
+local function get_latex_delim(delim)
+  local is_open = open_delims[delim]
+  if delim == "| " then
+    delim = "|"
+  elseif delim == "{" or delim == "}" then
+    delim = "\\" .. delim
+  end
+
+  local right = latex_delims[delim]
+  if not right then return nil, nil end  -- given input is not delim
+
+  if not is_open then delim, right = right, delim end
+
+  local space = is_open and " " or ""
+  return "\\left" .. delim .. space, space .. "\\right" .. right
+end
 local function get_latex_env(env)
   if env == "[" then
     return "\\[ ", " \\]"
@@ -33,6 +57,16 @@ local custom_surrounds = {
     output = function()
       local com = MiniSurround.user_input("Command")
       return com and { left = string.format("\\%s{", com), right = "}" } or {}
+    end
+  },
+  ["b"] = {
+    input = function()
+      local left, right = get_latex_delim(MiniSurround.user_input("Delimiter"))
+      return left and { vim.pesc(left) .. "().-()" .. vim.pesc(right) } or {}
+    end,
+    output = function()
+      local left, right = get_latex_delim(MiniSurround.user_input("Delimiter"))
+      return left and { left = left, right = right } or {}
     end
   }
 }
