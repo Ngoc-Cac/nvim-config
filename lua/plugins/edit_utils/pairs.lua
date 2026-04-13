@@ -11,11 +11,17 @@ end
 local custom_surrounds = {
   ["e"] = {  -- latex environment
     input = function()
-      local left, right = get_latex_env(MiniSurround.user_input("Environment"))
+      local env = MiniSurround.user_input("Environment")
+      if not env then return {} end
+
+      local left, right = get_latex_env(env)
       return { vim.pesc(left) .. "().-()" .. vim.pesc(right) }
     end,
     output = function()
-      local left, right = get_latex_env(MiniSurround.user_input("Environment"))
+      local env = MiniSurround.user_input("Environment")
+      if not env then return {} end
+
+      local left, right = get_latex_env(env)
       return { left = left, right = right }
     end
   },
