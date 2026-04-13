@@ -18,6 +18,16 @@ local custom_surrounds = {
       local left, right = get_latex_env(MiniSurround.user_input("Environment"))
       return { left = left, right = right }
     end
+  },
+  ["c"] = {  -- latex command
+    input = function()
+      local com = MiniSurround.user_input("Command")
+      return com and { vim.pesc(string.format("\\%s{", com)) .. "().-()}" } or {}
+    end,
+    output = function()
+      local com = MiniSurround.user_input("Command")
+      return com and { left = string.format("\\%s{", com), right = "}" } or {}
+    end
   }
 }
 
