@@ -1,6 +1,6 @@
 return {
   "Wansmer/treesj",
-  dependencies = { "nvim-treesitter/nvim-treesitter" },
+  dependencies = { "romus204/tree-sitter-manager.nvim" },
   cmd = { "TSJJoin", "TSJSplit", "TSJToggle" },
   keys = {
     { "<leader>sj", ":TSJJoin<cr>", desc = "Join code block with treesj" },
