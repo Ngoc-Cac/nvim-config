@@ -6,10 +6,13 @@ in case if I make any oopsies; I can restore the previous history.
 ### Terminal Configuration
 Firstly, you need to install a Nerd Font. Some plugins use glyphs that
 is only provided by Nerd Fonts. See [here](https://www.nerdfonts.com/font-downloads)
-for some fonts. 
+for some fonts.
 
 Secondly, make sure your terminal supports 256-color. It might be fine if your terminal
 doesn't support this, won't look nice though.
+
+Optionally, some plugins do uses emojis, so things might look nicer wiht a
+terminal that supports emojis.
 
 ### Getting Neovim
 It's easy, just use a package manager or manually download one of the releases.
@@ -18,24 +21,20 @@ See [here](https://neovim.io/doc/install/) for more information.
 Now, running `nvim` before installing any plugins will **definitely throw errors**,
 because some plugins in this configuration requires some external configuration first.
 
-### Configuration and Setting Up Plugins
-Depends on the machine, clone this repository to the appropriate location. On Linux,
-this will be `~/.config/nvim`. On Windows, this will be `~/AppData/Local/nvim`.
+### Dependency Notes
+**Dependency for** `tree-sitter-manager`:
 
-<details><summary><b>Installing <code>treesitter-nvim</code></b></summary>
+- [`treesitter-cli`]("https://github.com/tree-sitter/tree-sitter/blob/master/crates/cli/README.md")
+
+- [C compiler](https://docs.rs/cc/latest/cc/#compile-time-requirements). In
+  short, `cc` must be in `PATH`.
+
+**Dependency for** `mason.nvim`: [requirements](https://github.com/mason-org/mason.nvim?tab=readme-ov-file#requirements)
+
+<details><summary><b>Notes for Windows</b></summary>
   <p>
-    To start, the most cumbersome plugin is <code>treesitter-nvim</code>, so it is
-    best to get this out of the way first. The plugin requires <code>treesitter</code>
-    (of course) and a C compiler. The installation of
-    <a href="https://github.com/tree-sitter/tree-sitter/blob/master/crates/cli/README.md">
-      <code>treesitter</code></a> is straight-forward, the installation of the
-    <a href="https://docs.rs/cc/latest/cc/#compile-time-requirements">C compiler</a>
-    <b>can</b> be quite annoying.
-  </p>
-  <p>
-    On Linux, several distributions are available, just download one and add them to your
-    <code>PATH</code>. On Windows, this is a bit more complicated because it depends on
-    your build environment. To check, run <code>echo $MSYSTEM</code>:
+    On Windows, the C compiler dependency depends on your build environment. To
+    check, run <code>echo $MSYSTEM</code>:
   </p>
   <ul>
     <li>
@@ -44,23 +43,18 @@ this will be `~/.config/nvim`. On Windows, this will be `~/AppData/Local/nvim`.
     </li>
     <li>Otherwise, install the <code>mingw</code> compiler.</li>
   </ul>
-  <p>Based on this, just follow the installation guide for the correponding environment.</p>
+  <p>
+    <b>Note:</b> If you use the <code>msvc</code> compiler, you <b>MUST</b>
+    install parsers within the Visual Studio's Developer Command Prompt.
+  </p>
 </details>
 
-> [!IMPORTANT]
-> If your Windows uses the `msvc` compiler, you **MUST** install parsers within the Visual Studio's
-Developer Command Prompt.
->
-> This is because Visual Studio does not add the compiler to your `PATH` by default (you probably
-shouldn't add it yourself either). This then cause `treesitter-nvim` to throw errors when running
-`:TSInstall` (or `:TSUpdate`) because it won't be able to find the C compiler.
-
-After this, installing `mason.nvim` should be prioritized. This plugin needs the following
-[requirements](https://github.com/mason-org/mason.nvim?tab=readme-ov-file#requirements). With
-`nvim-lspconfig` and `mason-lspconfig` installed as well, your LSP servers can now work.
-
-Furthermore, if you intend to use `pyright` as a Python LSP server, then you also need to install
-`node` and `npm`. Plugins like `markdown-preview.nvim` also require `npm` or `yarn`. 
+<details><summary><b>Miscellaneous Dependencies</b></summary>
+  <ul>
+    <li><code>pyright</code> needs <code>node</code> and <code>npm</code>.</li>
+    <li><b>markdown-preview.nvim</b> needs <b>npm</b> and <b>yarn</b>.</li>
+  </ul>
+</details>
 
 Other than that, the rest should not need any manual set-up. 
 
@@ -74,39 +68,39 @@ First and necessary plugin is of course:
 
 And, this is the colorscheme used:
 
-- [jellybeans.nvim](https://github.com/WTFox/jellybeans.nvim): A jellybeans theme with treesitter
-  support.
+- [`jellybeans.nvim`](https://github.com/WTFox/jellybeans.nvim): A jellybeans
+  theme with treesitter support.
 
 <details><summary>&#10071<b>Must Have</b></summary>
   <ul>
-    <li>
+    <li><!-- mason -->
       <a href="https://github.com/mason-org/mason.nvim"><code>mason.nvim</code></a>:
       A package manager for LSP servers and more. I mainly use this for LSP support.
     </li>
-    <li>
+    <li><!-- nvim-lspconfig -->
       <a href="https://github.com/neovim/nvim-lspconfig"><code>nvim-lspconfig</code></a>:
       A great helper to set up your LSP servers with no effort. 
     </li>
-    <li>
+    <li><!-- mason-lspconfig -->
       <a href="https://github.com/mason-org/mason-lspconfig.nvim"><code>mason-lspconfig.nvim</code></a>:
       This extends the <code>nvim-lspconfig</code> plugin with automatic enabling of installed LSP
       servers, so you don't have to manually enable it in your config anymore.
     </li>
-    <li>
+    <li><!-- lazydev -->
       <a href="https://github.com/folke/lazydev.nvim"><code>lazydev.nvim</code></a>:
       This is an enhanced Lua LSP server which can recognizes your Neovim configuration.
       This is very useful during configuration with the code analysis.
     </li>
-    <li>
+    <li><!-- blink-cmp -->
       <a href="https://github.com/saghen/blink.cmp"><code>blink.cmp</code></a>:
       Completion engine that uses multiple sources to give suggestions.
     </li>
-    <li>
-      <a href="https://github.com/nvim-treesitter/nvim-treesitter"><code>nvim-treesitter</code></a>:
+    <li><!-- treesitter -->
+      <a href="https://github.com/romus204/tree-sitter-manager.nvim"><code>tree-sitter-manager.nvim</code></a>:
       Plugin for managing tree-sitter parsers. I am mainly using this for syntax
       highlighting and enhanced text-objects.
     </li>
-    <li>
+    <li><!-- nvim-autopairs -->
       <a href="https://github.com/windwp/nvim-autopairs"><code>nvim-autopairs</code></a>:
       Auto-pairing when editing. This pretty much just speeds up the rest of the configuration
       for other plugins, so definitely needs to be installed right of the bat.
