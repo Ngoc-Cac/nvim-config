@@ -33,7 +33,7 @@ return {
   -- color previewer
   {
     "catgoose/nvim-colorizer.lua",
-    event = "BufReadPost",
+    event = "BufReadPre",
     opts = {
       filetypes = {
         "*",
