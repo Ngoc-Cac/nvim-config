@@ -183,11 +183,6 @@ And, this is the colorscheme used:
       This can be nice if you are testing some Markdown that is pushed to some remote
       source like GitHub.
     </li>
-    <li>
-      <a href="https://github.com/jake-stewart/multicursor.nvim"><code>multicursor.nvim</code></a>:
-      A plugin for multicursor editing. I rarely use this, but it does come in very handy
-      when I neeed it.
-    </li>
   </ul>
 </details> 
 
