@@ -50,10 +50,14 @@ end
 
 local parsers = {
   "bash", "c", "comment", "css", "dockerfile",
+
   "git_config", "git_rebase", "gitattributes", "gitignore", "gitcommit",
+
   "hjson",  -- includes extended syntax like //
   "html", "javascript", "jsdoc",
-  "kitty", -- for kitty.conf
+
+  "hyprlang", "kitty", -- for kitty.conf
+
   "latex", "lua", "luadoc", "luap",  -- for the regex pattern
   "markdown", "python", "readline", "regex",
   "requirements", "toml", "vimdoc", "yaml"
