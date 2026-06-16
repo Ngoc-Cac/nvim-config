@@ -49,7 +49,7 @@ local function bind_move_keys()
 end
 
 local parsers = {
-  "bash", "c", "comment", "css", "dockerfile",
+  "bash", "c", "comment", "css", "dockerfile", "ssh_config",
 
   "git_config", "git_rebase", "gitattributes", "gitignore", "gitcommit",
 
