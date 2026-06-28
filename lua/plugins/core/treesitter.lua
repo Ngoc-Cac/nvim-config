@@ -56,7 +56,7 @@ local parsers = {
   "hjson",  -- includes extended syntax like //
   "html", "javascript", "jsdoc",
 
-  "hyprlang", "kitty", -- for kitty.conf
+  "rasi", "hyprlang", "kitty", -- for kitty.conf
 
   "latex", "lua", "luadoc", "luap",  -- for the regex pattern
   "markdown", "python", "readline", "regex",
