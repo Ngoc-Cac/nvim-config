@@ -19,6 +19,27 @@ vim.api.nvim_create_autocmd("FileType", {
   command = "startinsert | 1"
 })
 
+vim.api.nvim_create_autocmd("VimEnter", {
+  group = "UtilAutoCmd",
+  nested = true, -- allow nested autocmds
+  callback = function()
+    local bufname = vim.api.nvim_buf_get_name(0)
+    local lines = vim.api.nvim_buf_get_lines(0, 0, -1, false)
+    local is_blank_buf = bufname == "" and #lines == 1 and lines[1] == ""
+
+    if
+      vim.fn.argc() ~= 0 or
+      not is_blank_buf or
+      #vim.api.nvim_list_wins() > 1 or
+      vim.uv.guess_handle(0) == "pipe"
+    then
+      return
+    end
+
+    vim.schedule(function() vim.cmd("AutoSession search") end)
+  end,
+})
+
 vim.api.nvim_create_autocmd("VimLeave", {
   group = "UtilAutoCmd",
   desc = "Reset the cursor when exiting Neovim",

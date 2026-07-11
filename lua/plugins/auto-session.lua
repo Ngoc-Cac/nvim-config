@@ -12,8 +12,8 @@ return {
 		suppressed_dirs = { "~/Downloads", "/" },
     auto_create = false,
     auto_save = true,
-    auto_restore = true,
-    auto_restore_last_session = true,
+    auto_restore = false,
+    auto_restore_last_session = false,
     bypass_save_filetypes = { "terminal", "netrw", "fugitive", "oil" },
     close_filetypes_on_save = { "checkhealth", "terminal", "netrw", "fugitive", "oil" },
     session_lens = {
