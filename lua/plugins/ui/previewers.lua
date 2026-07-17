@@ -22,7 +22,7 @@ end
 return {
   { -- a web-based version, which is nice to test stuff out, but requires npm 
     "iamcco/markdown-preview.nvim",
-    build = "cd app && npm install && git restore .", -- npm modifies lock for some reason 
+    build = "cd app && npm install && git restore .",
     lazy = true,
     init = function()
       vim.g.mkdp_filetypes = { "markdown" }
@@ -41,6 +41,8 @@ return {
         lua = { mode = "foreground" },
         css =  { mode = "background" },
         html = { mode = "background" },
+        rasi = { mode = "foreground" },
+        conf = { mode = "foreground" },
       },
       options = {
         parsers = {
