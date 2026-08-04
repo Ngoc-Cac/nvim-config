@@ -14,7 +14,6 @@ return {
     "tpope/vim-fugitive",
     cmd = {  "Git", "G" },
     keys = {
-      -- { "<leader>gs", ":vertical G<cr>", desc = "Open vim-fugitive staging area" },
       { "<leader>ga", ":Gwrite<cr>", desc = "Stage all changes in the current buffer" },
       { "<leader>gc", ":G commit<cr>", desc = "Commit the staged changes" },
       { "<leader>gg", ":tab G<cr>", desc = "Open vim-fugitive staging area" },
