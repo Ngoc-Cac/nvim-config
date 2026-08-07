@@ -5,6 +5,8 @@ local tel_fg = {
 }
 local tel_bg = "#231c1c"
 local function config_hl_group(hl, c)
+  hl.HighlightYank = { bg = "#466973" }
+
   hl.ColorColumn = { bg = "#3e3530" }
   hl.NormalFloat = { bg = "#342d29" }
 
