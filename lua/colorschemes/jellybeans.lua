@@ -1,14 +1,18 @@
+local main_bg = "#251c18"
+-- local main_bg = "#1a1513"
+-- local main_bg = "#2b2522"
 local tel_fg = {
   prompt = "#3fb75b",
   preview = "#d68d46",
   results = "#536ee4"
 }
-local tel_bg = "#231c1c"
+local tel_bg = main_bg
+
 local function config_hl_group(hl, c)
   hl.HighlightYank = { bg = "#466973" }
 
   hl.ColorColumn = { bg = "#3e3530" }
-  hl.NormalFloat = { bg = "#342d29" }
+  hl.NormalFloat = { bg = main_bg }
 
   hl.TelescopePromptTitle  = { bold = true, bg = tel_bg, fg = tel_fg["prompt"] }
   hl.TelescopePreviewTitle = { bold = true, bg = tel_bg, fg = tel_fg["preview"] }
@@ -46,10 +50,7 @@ return {
   ---@type jellybeans.Config 
   opts = {
     flat_ui = false,
-    on_colors = function(c)
-      local bg_coffee = "#2b2522"
-      c.background = bg_coffee
-    end,
+    on_colors = function(c) c.background = main_bg end,
     on_highlights = config_hl_group
   },
 }
