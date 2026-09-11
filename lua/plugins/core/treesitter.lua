@@ -62,21 +62,33 @@ local parsers = {
   "markdown", "python", "readline", "regex",
   "requirements", "toml", "vimdoc", "yaml"
 }
+local ft_to_start = {
+  "gitignore", "dockerfile", "requirements",
+  "readline",
+
+  "json", "yaml", "toml",
+  "markdown", "tex", "html", "css",
+  "sh", "lua", "python", "javascript",
+}
 
 return {
   {
-    "romus204/tree-sitter-manager.nvim",
+    'nvim-treesitter/nvim-treesitter',
+    -- build = ':TSUpdate',
     dependencies = { "nvim-treesitter/nvim-treesitter-textobjects" },
     event = { "BufReadPost", "BufNewFile" },
-    cmd = { "TSInstall", "TSUpdate", "TSManager" },
-    opts = {
-      ensure_installed = parsers,
-      auto_install = (vim.fn.has("win32") == 0),
-      border = "rounded",
-      highlight = true,
-    },
-    config = function(opts)
-      require("tree-sitter-manager").setup(opts)
+    cmd = { "TSInstall", "TSUpdate", "TSUninstall", "TSLog" },
+    opts = {},
+    config = function()
+      -- enable syntax highlighting with treesitter
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = ft_to_start,
+        group = vim.api.nvim_create_augroup(
+          "TreesitterAutoStart",
+          { clear = true }
+        ),
+        callback = function() vim.treesitter.start() end,
+      })
     end
   },
   {
