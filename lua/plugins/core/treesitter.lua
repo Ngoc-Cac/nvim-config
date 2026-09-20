@@ -63,12 +63,15 @@ local parsers = {
   "requirements", "toml", "vimdoc", "yaml"
 }
 local ft_to_start = {
-  "gitignore", "dockerfile", "requirements",
-  "readline",
+  "gitconfig", "gitrebase", "gitattributes", "gitcommit", "gitignore",
 
-  "json", "yaml", "toml",
+  "sshconfig", "dockerfile", "requirements", "readline",
+  "rasi", "hyprlang", "kitty",
+
+  "hjson", "jsonc", "json", "yaml", "toml",
   "markdown", "tex", "html", "css",
-  "sh", "lua", "python", "javascript",
+
+  "sh", "lua", "python", "javascript", "c",
 }
 
 return {
