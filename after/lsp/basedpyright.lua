@@ -30,7 +30,7 @@ return { settings = { basedpyright = {
     typeCheckingMode = "basic",
     diagnosticMode = "openFilesOnly",
     autoSearchPaths = true,
-    autoImportCompletions = false,
+    autoImportCompletions = true,
     inlayHints = {
       callArgumentNames = true,
       variableTypes = false,
