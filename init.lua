@@ -14,7 +14,7 @@ vim.api.nvim_create_user_command("R",
 
 
 vim.pack.add({
-  { src = "https://github.com/folke/lazy.nvim", version = 'stable' }
+  { src = "https://github.com/folke/lazy.nvim", version = "stable" }
 })
 
 -- make lazy set up the plugins

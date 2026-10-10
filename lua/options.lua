@@ -2,7 +2,6 @@ local options = {
   termguicolors = true,
   errorbells = false,
   updatetime = 500,
-  encoding = "utf-8",
 
   mouse = "a",
   clipboard = "unnamedplus",
