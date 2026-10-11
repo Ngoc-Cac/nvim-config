@@ -38,8 +38,8 @@ local lsp_servers = {
   "jsonls", "yamlls", "tombi", "cssls",
   "markdown_oxide", "html",
 
-  "bashls", "lua_ls", "ts_ls",
-  "basedpyright", -- NOTE: pyrightconfig.json will override ls conf
+  "bashls", "lua_ls", "ts_ls", "texlab",
+  "basedpyright",  -- NOTE: pyrightconfig.json will override ls conf
 }
 return {
   -- progress report for lsps
@@ -47,8 +47,8 @@ return {
   {
     "mason-org/mason.nvim",
     cmd = "Mason",
-    opts = {-- enable when issue
-      -- log_level = vim.log.levels.DEBUG,
+    opts = {
+      -- log_level = vim.log.levels.DEBUG,  -- enable when issue
     }
   },
   {

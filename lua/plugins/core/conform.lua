@@ -15,6 +15,7 @@ return {
 			yaml = { "yamlfix" },
 			json = { "jsonfix" },
 			toml = { "tombi" },
+			python = { "ruff" },
 		},
 	},
 }
